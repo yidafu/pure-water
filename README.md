@@ -1,3 +1,3 @@
-# Purified Water
+# Pure Water
 
 Frontend All in One Cli.
