@@ -1,0 +1,20 @@
+{
+  "name": "@pure/water",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "bin": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^9.4.0",
+    "minimist": "^1.2.6"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.2"
+  }
+}
