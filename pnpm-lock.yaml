@@ -1,0 +1,29 @@
+lockfileVersion: 5.4
+
+importers:
+
+  packages/pure-water:
+    specifiers:
+      '@types/minimist': ^1.2.2
+      commander: ^9.4.0
+      minimist: ^1.2.6
+    dependencies:
+      commander: 9.4.0
+      minimist: 1.2.6
+    devDependencies:
+      '@types/minimist': 1.2.2
+
+packages:
+
+  /@types/minimist/1.2.2:
+    resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
+    dev: true
+
+  /commander/9.4.0:
+    resolution: {integrity: sha512-sRPT+umqkz90UA8M1yqYfnHlZA7fF6nSphDtxeywPZ49ysjxDQybzk13CL+mXekDRG92skbcqCLVovuCusNmFw==}
+    engines: {node: ^12.20.0 || >=14}
+    dev: false
+
+  /minimist/1.2.6:
+    resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
+    dev: false
