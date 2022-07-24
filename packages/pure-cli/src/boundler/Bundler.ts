@@ -3,6 +3,8 @@ import { CommandService } from "../service/CommandService";
 abstract class Bundler {
   service: CommandService;
 
+  abstract get compileOption(): any;
+
   constructor(service: CommandService) {
     this.service = service;
   }
