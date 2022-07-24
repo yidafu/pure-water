@@ -1,2 +1,2 @@
 export { CommandService } from './service/CommandService';
-export { ViteBundler } from './boundler';
+export { ViteBundler } from './boundler/index';

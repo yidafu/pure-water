@@ -1,8 +1,16 @@
+import merge from 'lodash.merge';
+import debug from 'debug';
 import { Bundler } from "../boundler";
 import minimist, { ParsedArgs } from 'minimist';
-import { runAsyncFns } from "../utils";
-interface IProjectConfig {
+import { exitWithMessage, requireDefault, runAsyncFns, tryResolve } from "../utils";
+import { UserConfig } from 'vite';
+import { resolveProjectConfig } from './utils';
 
+interface IProjectConfig {
+  name: string;
+  presets: string[];
+  plugins: string[];
+  viteConfig: UserConfig,
 }
 
 type CommandOption = string | {
@@ -17,10 +25,12 @@ interface ICommand {
   description?: string;
 }
 
+const log = debug('pure:cli:service');
+
 class CommandService {
   private bundler: Bundler;
 
-  private projectConfig: IProjectConfig = {};
+  private projectConfig: Partial<IProjectConfig> = {};
 
   private argv: ParsedArgs;
 
@@ -42,14 +52,23 @@ class CommandService {
     this.bundler = new BundlerKlass(this);
     this.argv = minimist(process.argv.slice(2));
 
-    this.loadProjectConfig();
-
-    this.addBuiltinCommands();
   }
 
-  registerCommand(cmd: ICommand) {
-    this.commands.push(cmd);
+  async load() {
+
+    await this.loadProjectConfig();
+
+    await this.addBuiltinCommands();
+
+    await this.getPaths();
+
+    await this.loadGlobalConfig();
+
+    this.processExitGuardor();
+
+    await this.loadPlugins();
   }
+
 
   dev = async () => {
     await this.bundler.dev();
@@ -63,21 +82,77 @@ class CommandService {
     return this.projectConfig;
   }
 
-  loadProjectConfig() {
+  async loadProjectConfig() {
     this.projectConfig = {}
+    const configFilePath = await resolveProjectConfig(this.argv.config);
+
+    // this.projectConfig = require(configFilePath);
+    console.log(configFilePath);
+    this.projectConfig = await import(configFilePath);
+
+    let presets = await this.loadPresets();
+    presets.reduce((pV, cV) => {
+      return merge(cV, pV);
+    }, this.projectConfig);
   }
 
-  loadPresets() {
+  async loadPresets() {
+    if (!this.projectConfig.presets?.length) {
+      return [];
+    }
+    let presetMap = new Map<string, IProjectConfig>();
+    for (const presetName of this.projectConfig.presets) {
 
+      if (presetMap.has(presetName)) {
+        continue;
+      }
+      log(`[start] loading preset config: ${presetName}`);
+      let presetCfg = await this.loadPreset(presetName);
+
+      presetMap.set(presetName, presetCfg);
+    }
+
+    return Array.from(presetMap.values());
   }
 
+  async loadPreset(presetName: string): Promise<IProjectConfig> {
+    const presetPrefix = ['@pure/water-preset-']
+    let presetCfg = (await Promise.all(presetPrefix.map(prefix => {
+      let filepathOrFail = tryResolve(prefix + presetName);
+      if (typeof filepathOrFail === 'string') {
+        return requireDefault(filepathOrFail);
+      }
+    }))).find(Boolean);
+
+    if (!presetCfg) {
+      exitWithMessage('请检查是否已经配置过 pure 插件，或者插件配置是否正确');
+    }
+
+    return presetCfg;
+  }
   loadPlugins() {
 
   }
 
+  getPaths() {
+    // throw new Error("Method not implemented.");
+  }
+
+  loadGlobalConfig() {
+    // throw new Error("Method not implemented.");
+  }
+
+  processExitGuardor() {
+    // throw new Error("Method not implemented.");
+  }
+
+  registerCommand(cmd: ICommand) {
+    this.commands.push(cmd);
+  }
+
   private addBuiltinCommands() {
     const defaultOptions = {
-      '--debug': '调试日志打印'
+      // '--debug': '调试日志打印'
     }
     this.registerCommand({
       name: 'dev',
