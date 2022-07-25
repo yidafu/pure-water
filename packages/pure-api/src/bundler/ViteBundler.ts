@@ -35,7 +35,7 @@ class ViteBundler extends Bundler {
    * @return {Promise<void>}
    * @memberof ViteBundler
    */
-  async dev(): Promise<void> {
+  async startDevServer(): Promise<void> {
     log('Vite compile config => %o', this.compileOption);
     const server = await createServer({
       configFile: false,
