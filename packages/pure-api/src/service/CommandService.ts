@@ -13,10 +13,15 @@ interface IProjectConfig {
   viteConfig: UserConfig,
 }
 
+interface IPurePaths {
+  projectConfig: string;
+}
+
 type CommandOption = string | {
   description: string;
   defaultValue?: string;
 }
+
 interface ICommand {
   name: string;
   alias?: string;
@@ -25,7 +30,7 @@ interface ICommand {
   description?: string;
 }
 
-const log = debug('pure:cli:service');
+const log = debug('pure:api:service');
 
 class CommandService {
   private bundler: Bundler;
@@ -35,6 +40,8 @@ class CommandService {
   private argv: ParsedArgs;
 
   public commands: ICommand[] = [];
+
+  private paths: Partial<IPurePaths> = {}
 
   private apiMethods = [];
 
@@ -84,19 +91,19 @@ class CommandService {
 
   async loadProjectConfig() {
     this.projectConfig = {}
-    const configFilePath = await resolveProjectConfig(this.argv.config);
+    this.paths.projectConfig = await resolveProjectConfig(this.argv.config);
 
     // this.projectConfig = require(configFilePath);
-    console.log(configFilePath);
-    this.projectConfig = await import(configFilePath);
+    this.projectConfig = (await import(this.paths.projectConfig)).default;
 
     let presets = await this.loadPresets();
-    presets.reduce((pV, cV) => {
+    this.projectConfig = presets.reduce((pV, cV) => {
       return merge(cV, pV);
     }, this.projectConfig);
   }
 
   async loadPresets() {
+    log('preset will load %s', this.projectConfig.presets);
     if (!this.projectConfig.presets?.length) {
       return [];
     }
@@ -117,18 +124,22 @@ class CommandService {
 
   async loadPreset(presetName: string): Promise<IProjectConfig> {
     const presetPrefix = ['@pure/water-preset-']
-    let presetCfg = (await Promise.all(presetPrefix.map(prefix => {
-      let filepathOrFail = tryResolve(prefix + presetName);
+    const presetCfgList: IProjectConfig[] = [];
+    for (const prefix of presetPrefix) {
+      // FIXME: 
+      let filepathOrFail = tryResolve(prefix + presetName, this.paths.projectConfig);
       if (typeof filepathOrFail === 'string') {
-        return requireDefault(filepathOrFail);
+        presetCfgList.push(await requireDefault(filepathOrFail)); 
       }
-    }))).find(Boolean);
+    }
 
+
+    const presetCfg = presetCfgList.find(Boolean);
     if (!presetCfg) {
       exitWithMessage('请检查是否已经配置过 pure 插件，或者插件配置是否正确');
     }
 
-    return presetCfg;
+    return presetCfg!;
   }
   loadPlugins() {
 
