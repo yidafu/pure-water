@@ -1,0 +1,27 @@
+{
+  "name": "@pure/water-plugin-lint",
+  "version": "1.0.0",
+  "description": "",
+  "exports": "./lib/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yidafu/pure-water.git"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "yidafu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yidafu/pure-water/issues"
+  },
+  "homepage": "https://github.com/yidafu/pure-water#readme",
+  "dependencies": {
+    "@pure/api": "workspace:../pure-api"
+  }
+}

@@ -29,7 +29,17 @@ abstract class Plugin {
   constructor(service: CommandService) {
     this.service = service;
   }
-  abstract getPluginOption(pluginName: string): Record<string, any>;
+
+  /**
+   *
+   *
+   * @param {string} pluginName
+   * @return {Record<string, any>}
+   * @memberof Plugin
+   */
+  getPluginOption(pluginName: string): Record<string, any> {
+    return this.service.getPluginOption(pluginName);
+  }
   /**
    *
    *
