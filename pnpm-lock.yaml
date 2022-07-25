@@ -3,7 +3,25 @@ lockfileVersion: 5.4
 importers:
 
   .:
-    specifiers: {}
+    specifiers:
+      typescript: ^4.7.4
+    dependencies:
+      typescript: 4.7.4
+
+  packages/demo-vite:
+    specifiers:
+      '@pure/cli': workspace:../pure-cli
+      '@pure/water-preset-vue': workspace:../water-preset-vue
+      '@vitejs/plugin-vue': ^3.0.0
+      vite: ^3.0.0
+      vue: ^3.2.37
+    dependencies:
+      '@pure/cli': link:../pure-cli
+      '@pure/water-preset-vue': link:../water-preset-vue
+      vue: 3.2.37
+    devDependencies:
+      '@vitejs/plugin-vue': 3.0.1_vite@3.0.2+vue@3.2.37
+      vite: 3.0.2
 
   packages/pure-api:
     specifiers:
@@ -32,9 +50,11 @@ importers:
 
   packages/pure-cli:
     specifiers:
+      '@pure/api': workspace:../pure-api
       commander: ^9.4.0
       debug: ^4.3.4
     dependencies:
+      '@pure/api': link:../pure-api
       commander: 9.4.0
       debug: 4.3.4
 
@@ -106,7 +126,6 @@ packages:
     dependencies:
       vite: 3.0.2
       vue: 3.2.37
-    dev: false
 
   /@vue/compiler-core/3.2.37:
     resolution: {integrity: sha512-81KhEjo7YAOh0vQJoSmAD68wLfYqJvoiD4ulyedzF+OEk/bk6/hx3fTNVfuzugIIaTrOx4PGx6pAiBRe5e9Zmg==}
@@ -519,6 +538,12 @@ packages:
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
     engines: {node: '>=4'}
+
+  /typescript/4.7.4:
+    resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: false
 
   /vite/3.0.2:
     resolution: {integrity: sha512-TAqydxW/w0U5AoL5AsD9DApTvGb2iNbGs3sN4u2VdT1GFkQVUfgUldt+t08TZgi23uIauh1TUOQJALduo9GXqw==}

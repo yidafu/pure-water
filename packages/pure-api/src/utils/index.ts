@@ -1,4 +1,8 @@
 import chalk from 'chalk';
+import debug from 'debug';
+import { createRequire } from 'module';
+
+const log = debug('pure:api:utils');
 
 type AnyAsnycFn = (...args: any[]) => Promise<any>;
 
@@ -8,20 +12,25 @@ export async function runAsyncFns(fns: AnyAsnycFn[], ...args: any[]) {
     }
 }
 
-export function tryResolve(filepath: string) {
+/**
+ * @see https://stackoverflow.com/questions/54977743/do-require-resolve-for-es-modules
+ * @param filepath 
+ * @returns 
+ */
+export function tryResolve(filepath: string, root = import.meta.url) {
   try {
-    console.log(require.resolve(filepath));
-    return require.resolve(filepath);
+    const customRequire = createRequire(root);
+    return customRequire.resolve(filepath);
   } catch (err) {
+    log('try resolve fail', err)
     return false;
   }
 };
 
 export async function requireDefault(filepath: string) {
-  console.log(filepath)
   // let mod = require(filepath);
   // return mod.__esModule ? mod.default : mod;
-  return import(filepath)
+  return import(filepath).then((mod) => mod.default);
 }
 
 export function exitWithMessage(msg: string) {
