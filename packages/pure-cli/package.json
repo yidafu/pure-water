@@ -16,7 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^9.4.0",
-    "debug": "^4.3.4"
+    "debug": "^4.3.4",
+    "@pure/api": "workspace:../pure-api"
   },
   "devDependencies": {}
 }
