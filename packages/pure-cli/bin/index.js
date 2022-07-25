@@ -1,5 +1,5 @@
 import { program } from 'commander';
-import { CommandService, ViteBundler } from '../lib/index.js';
+import { CommandService, ViteBundler } from '@pure/api/lib/index.js';
 
 const service = new CommandService(ViteBundler);
 

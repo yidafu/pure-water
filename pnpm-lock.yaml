@@ -5,26 +5,12 @@ importers:
   .:
     specifiers: {}
 
-  packages/demo-vite:
-    specifiers:
-      '@pure/cli': workspace:../pure-cli
-      '@pure/water-preset-vue': workspace:../water-preset-vue
-      '@vitejs/plugin-vue': ^3.0.0
-      vite: ^3.0.0
-      vue: ^3.2.37
-    dependencies:
-      '@pure/cli': link:../pure-cli
-      '@pure/water-preset-vue': link:../water-preset-vue
-      vue: 3.2.37
-    devDependencies:
-      '@vitejs/plugin-vue': 3.0.1_vite@3.0.2+vue@3.2.37
-      vite: 3.0.2
-
-  packages/pure-cli:
+  packages/pure-api:
     specifiers:
       '@types/debug': ^4.1.7
       '@types/lodash.merge': ^4.6.7
       '@types/minimist': ^1.2.2
+      '@types/node': ^18.6.0
       chalk: ^4
       commander: ^9.4.0
       debug: ^4.3.4
@@ -42,6 +28,15 @@ importers:
       '@types/debug': 4.1.7
       '@types/lodash.merge': 4.6.7
       '@types/minimist': 1.2.2
+      '@types/node': 18.6.0
+
+  packages/pure-cli:
+    specifiers:
+      commander: ^9.4.0
+      debug: ^4.3.4
+    dependencies:
+      commander: 9.4.0
+      debug: 4.3.4
 
   packages/water-preset-vue:
     specifiers:
@@ -98,6 +93,10 @@ packages:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
+  /@types/node/18.6.0:
+    resolution: {integrity: sha512-WZ/6I1GL0DNAo4bb01lGGKTHH8BHJyECepf11kWONg3OJoHq2WYOm16Es1V54Er7NTUXsbDCpKRKdmBc4X2xhA==}
+    dev: true
+
   /@vitejs/plugin-vue/3.0.1_vite@3.0.2+vue@3.2.37:
     resolution: {integrity: sha512-Ll9JgxG7ONIz/XZv3dssfoMUDu9qAnlJ+km+pBA0teYSXzwPCIzS/e1bmwNYl5dcQGs677D21amgfYAnzMl17A==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -107,6 +106,7 @@ packages:
     dependencies:
       vite: 3.0.2
       vue: 3.2.37
+    dev: false
 
   /@vue/compiler-core/3.2.37:
     resolution: {integrity: sha512-81KhEjo7YAOh0vQJoSmAD68wLfYqJvoiD4ulyedzF+OEk/bk6/hx3fTNVfuzugIIaTrOx4PGx6pAiBRe5e9Zmg==}
