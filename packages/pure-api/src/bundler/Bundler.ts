@@ -1,10 +1,21 @@
-import { CommandService } from "../service/CommandService";
+import {CommandService} from '../service/CommandService';
 
+/**
+ * bundler abstract class
+ *
+ * @abstract
+ * @class Bundler
+ */
 abstract class Bundler {
   service: CommandService;
 
   abstract get compileOption(): any;
 
+  /**
+   * Creates an instance of Bundler.
+   * @param {CommandService} service
+   * @memberof Bundler
+   */
   constructor(service: CommandService) {
     this.service = service;
   }
@@ -34,4 +45,4 @@ abstract class Bundler {
   abstract build(): Promise<void>;
 }
 
-export { Bundler };
+export {Bundler};
