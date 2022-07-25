@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "lint": "es",
+    "lint": "eslint ./packages/ --ext .ts --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
