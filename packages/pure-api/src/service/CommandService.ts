@@ -1,7 +1,7 @@
 import merge from 'lodash.merge';
 import debug from 'debug';
-import {Bundler} from '../bundler';
-import minimist, {ParsedArgs} from 'minimist';
+import { Bundler } from '../bundler';
+import minimist, { ParsedArgs } from 'minimist';
 import {
   exitWithMessage,
   isFunction,
@@ -9,9 +9,9 @@ import {
   runAsyncFns,
   tryResolve,
 } from '../utils';
-import {UserConfig} from 'vite';
-import {resolveProjectConfig} from './utils';
-import {CURRENT_DIRECTORY, PROJECT_ROOT} from '../constant';
+import { UserConfig } from 'vite';
+import { resolveProjectConfig } from './utils';
+import { CURRENT_DIRECTORY, PROJECT_ROOT } from '../constant';
 import path from 'path';
 import {
   IPluginConstructor,
@@ -46,7 +46,7 @@ interface IPurePaths {
 type CommandOption = string | {
   description: string;
   defaultValue?: string;
-}
+};
 
 interface ICommand {
   name: string;
@@ -189,6 +189,7 @@ class CommandService {
       return merge(cV, pV);
     }, this.projectConfig);
   }
+
   /**
    *
    *
@@ -227,8 +228,8 @@ class CommandService {
     for (const prefix of presetPrefix) {
       // FIXME:
       const filepathOrFail = tryResolve(
-          prefix + presetName,
-          this.paths.projectConfig,
+        prefix + presetName,
+        this.paths.projectConfig,
       );
       if (typeof filepathOrFail === 'string') {
         presetCfgList.push(await requireDefault(filepathOrFail));
@@ -249,7 +250,7 @@ class CommandService {
    * @memberof CommandService
    */
   async loadPlugins() {
-    const {plugins = {}} = this.projectConfig;
+    const { plugins = {} } = this.projectConfig;
 
     const loadPlgPromises = Object.keys(plugins).map((pluginName) => {
       try {
@@ -260,35 +261,35 @@ class CommandService {
     });
     const pluginKlasses = await Promise.all(loadPlgPromises);
     pluginKlasses.sort((a, b) => (a?.priority ?? 100) - (b?.priority ?? 100))
-        .forEach((PluginKlass) => {
-          if (PluginKlass) {
-            const plg = new PluginKlass(this);
-            if (isFunction(plg.beforeCompile)) {
-              this.beforeCompileFns.push(async () => plg.beforeCompile!());
-            }
-            if (isFunction(plg.onDevServerReady)) {
-              this.onDevServerReadyFns.push(() => plg.onDevServerReady!());
-            }
-            if (isFunction(plg.onDevCompileDone)) {
-              this.onDevCompileDoneFns.push(() => plg.onDevCompileDone!());
-            }
-            if (isFunction(plg.afterBuild)) {
-              this.afterBuildFns.push(() => plg.afterBuild!());
-            }
-            if (isFunction(plg.onClean)) {
-              this.onCleanFns.push(() => plg.onClean!());
-            }
-            if (isFunction(plg.onPluginReady)) {
-              this.onPluginReadyFns.push(() => plg.onPluginReady!());
-            }
-            if (isFunction(plg.registerCommand)) {
-              const cmd = plg.registerCommand();
-              if (cmd) {
-                this.commands.push(cmd);
-              }
+      .forEach((PluginKlass) => {
+        if (PluginKlass) {
+          const plg = new PluginKlass(this);
+          if (isFunction(plg.beforeCompile)) {
+            this.beforeCompileFns.push(async () => plg.beforeCompile!());
+          }
+          if (isFunction(plg.onDevServerReady)) {
+            this.onDevServerReadyFns.push(() => plg.onDevServerReady!());
+          }
+          if (isFunction(plg.onDevCompileDone)) {
+            this.onDevCompileDoneFns.push(() => plg.onDevCompileDone!());
+          }
+          if (isFunction(plg.afterBuild)) {
+            this.afterBuildFns.push(() => plg.afterBuild!());
+          }
+          if (isFunction(plg.onClean)) {
+            this.onCleanFns.push(() => plg.onClean!());
+          }
+          if (isFunction(plg.onPluginReady)) {
+            this.onPluginReadyFns.push(() => plg.onPluginReady!());
+          }
+          if (isFunction(plg.registerCommand)) {
+            const cmd = plg.registerCommand();
+            if (cmd) {
+              this.commands.push(cmd);
             }
           }
-        });
+        }
+      });
   }
 
   /**
@@ -299,7 +300,7 @@ class CommandService {
    * @memberof CommandService
    */
   async loadPlugin(
-      plgName: string,
+    plgName: string,
   ): Promise<IPluginConstructor> {
     const PLUGIN_PREFIX = ['@pure/water-plugin-'];
     const pluginPath = this.resolveWithPrifix(plgName, PLUGIN_PREFIX);
@@ -311,6 +312,7 @@ class CommandService {
     }
     exitWithMessage('未找到插件, 请检查配置是否正确或依赖是否安装');
   }
+
   /**
    *
    *
@@ -367,6 +369,7 @@ class CommandService {
     });
     this.registerCommand({
       name: 'clean',
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       action: async (e) => {
         // TODO: Clean logic
         // removeDirectory(this.paths.outputPath)
@@ -391,9 +394,9 @@ class CommandService {
   resolveWithPrifix(pkgPostfix: string, prefixList: string[]) {
     for (const prefix of prefixList) {
       const filepathOrFail = tryResolve(
-          prefix + pkgPostfix,
-          // FIXME: plugin 应为 preset 所在文件
-          this.paths.projectConfig,
+        prefix + pkgPostfix,
+        // FIXME: plugin 应为 preset 所在文件
+        this.paths.projectConfig,
       );
       if (filepathOrFail) {
         return filepathOrFail;
@@ -402,4 +405,4 @@ class CommandService {
   }
 }
 
-export {CommandService, ICommand, IProjectConfig};
+export { CommandService, ICommand, IProjectConfig };

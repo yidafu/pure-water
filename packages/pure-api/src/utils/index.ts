@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import debug from 'debug';
-import {createRequire} from 'module';
+import { createRequire } from 'module';
 
 const log = debug('pure:api:utils');
 
@@ -36,7 +36,7 @@ export function tryResolve(filepath: string, root = import.meta.url) {
     log('try resolve fail', err);
     return false;
   }
-};
+}
 
 /**
  * import module default export

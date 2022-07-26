@@ -1,6 +1,6 @@
 import debug from 'debug';
-import {createServer, UserConfig as ViteUserConfig} from 'vite';
-import {Bundler} from './Bundler';
+import { createServer, UserConfig as ViteUserConfig } from 'vite';
+import { Bundler } from './Bundler';
 
 const log = debug('pure:api:bundler:vite');
 
@@ -59,4 +59,4 @@ class ViteBundler extends Bundler {
   }
 }
 
-export {ViteBundler};
+export { ViteBundler };
