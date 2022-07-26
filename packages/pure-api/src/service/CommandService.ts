@@ -1,15 +1,15 @@
 import merge from 'lodash.merge';
 import debug from 'debug';
-import {Bundler} from '../bundler';
-import minimist, {ParsedArgs} from 'minimist';
+import { Bundler } from '../bundler';
+import minimist, { ParsedArgs } from 'minimist';
 import {
   exitWithMessage,
   requireDefault,
   runAsyncFns,
   tryResolve,
 } from '../utils';
-import {UserConfig} from 'vite';
-import {resolveProjectConfig} from './utils';
+import { UserConfig } from 'vite';
+import { resolveProjectConfig } from './utils';
 
 interface IProjectConfig {
   name: string;
@@ -25,7 +25,7 @@ interface IPurePaths {
 type CommandOption = string | {
   description: string;
   defaultValue?: string;
-}
+};
 
 interface ICommand {
   name: string;
@@ -74,6 +74,7 @@ class CommandService {
     this.bundler = new BundlerKlass(this);
     this.argv = minimist(process.argv.slice(2));
   }
+
   /**
    * main logic
    *
@@ -138,6 +139,7 @@ class CommandService {
       return merge(cV, pV);
     }, this.projectConfig);
   }
+
   /**
    *
    *
@@ -176,8 +178,8 @@ class CommandService {
     for (const prefix of presetPrefix) {
       // FIXME:
       const filepathOrFail = tryResolve(
-          prefix + presetName,
-          this.paths.projectConfig,
+        prefix + presetName,
+        this.paths.projectConfig,
       );
       if (typeof filepathOrFail === 'string') {
         presetCfgList.push(await requireDefault(filepathOrFail));
@@ -198,7 +200,7 @@ class CommandService {
    * @memberof CommandService
    */
   async loadPlugins() {
-
+    // empty function
   }
 
   /**
@@ -266,6 +268,7 @@ class CommandService {
     });
     this.registerCommand({
       name: 'clean',
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       action: async (e) => {
         // TODO: Clean logic
         // removeDirectory(this.paths.outputPath)
@@ -280,4 +283,4 @@ class CommandService {
   }
 }
 
-export {CommandService, IProjectConfig};
+export { CommandService, IProjectConfig };

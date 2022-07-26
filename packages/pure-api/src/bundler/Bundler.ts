@@ -1,4 +1,4 @@
-import {CommandService} from '../service/CommandService';
+import { CommandService } from '../service/CommandService';
 
 /**
  * bundler abstract class
@@ -45,4 +45,4 @@ abstract class Bundler {
   abstract build(): Promise<void>;
 }
 
-export {Bundler};
+export { Bundler };
