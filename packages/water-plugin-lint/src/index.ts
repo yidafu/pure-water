@@ -1,7 +1,7 @@
-import {Plugin} from '@pure/api';
+import { Plugin } from '@pure/api';
 
 class LintPlugin extends Plugin {
-  registerComman = function() {
+  registerComman = function () {
     return {
       name: 'lint',
       options: {

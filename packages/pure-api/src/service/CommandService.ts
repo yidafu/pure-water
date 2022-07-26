@@ -9,9 +9,9 @@ import {
   runAsyncFns,
   tryResolve,
 } from '../utils';
-import {UserConfig} from 'vite';
-import {resolveProjectConfig} from './utils';
-import {CURRENT_DIRECTORY, PROJECT_ROOT} from '../constant';
+import { UserConfig } from 'vite';
+import { resolveProjectConfig } from './utils';
+import { CURRENT_DIRECTORY, PROJECT_ROOT } from '../constant';
 import path from 'path';
 import {
   IPluginConstructor,
@@ -250,7 +250,7 @@ class CommandService {
    * @memberof CommandService
    */
   async loadPlugins() {
-    const {plugins = {}} = this.projectConfig;
+    const { plugins = {} } = this.projectConfig;
 
     const loadPlgPromises = Object.keys(plugins).map((pluginName) => {
       try {
@@ -261,35 +261,35 @@ class CommandService {
     });
     const pluginKlasses = await Promise.all(loadPlgPromises);
     pluginKlasses.sort((a, b) => (a?.priority ?? 100) - (b?.priority ?? 100))
-        .forEach((PluginKlass) => {
-          if (PluginKlass) {
-            const plg = new PluginKlass(this);
-            if (isFunction(plg.beforeCompile)) {
-              this.beforeCompileFns.push(async () => plg.beforeCompile!());
-            }
-            if (isFunction(plg.onDevServerReady)) {
-              this.onDevServerReadyFns.push(() => plg.onDevServerReady!());
-            }
-            if (isFunction(plg.onDevCompileDone)) {
-              this.onDevCompileDoneFns.push(() => plg.onDevCompileDone!());
-            }
-            if (isFunction(plg.afterBuild)) {
-              this.afterBuildFns.push(() => plg.afterBuild!());
-            }
-            if (isFunction(plg.onClean)) {
-              this.onCleanFns.push(() => plg.onClean!());
-            }
-            if (isFunction(plg.onPluginReady)) {
-              this.onPluginReadyFns.push(() => plg.onPluginReady!());
-            }
-            if (isFunction(plg.registerCommand)) {
-              const cmd = plg.registerCommand();
-              if (cmd) {
-                this.commands.push(cmd);
-              }
+      .forEach((PluginKlass) => {
+        if (PluginKlass) {
+          const plg = new PluginKlass(this);
+          if (isFunction(plg.beforeCompile)) {
+            this.beforeCompileFns.push(async () => plg.beforeCompile!());
+          }
+          if (isFunction(plg.onDevServerReady)) {
+            this.onDevServerReadyFns.push(() => plg.onDevServerReady!());
+          }
+          if (isFunction(plg.onDevCompileDone)) {
+            this.onDevCompileDoneFns.push(() => plg.onDevCompileDone!());
+          }
+          if (isFunction(plg.afterBuild)) {
+            this.afterBuildFns.push(() => plg.afterBuild!());
+          }
+          if (isFunction(plg.onClean)) {
+            this.onCleanFns.push(() => plg.onClean!());
+          }
+          if (isFunction(plg.onPluginReady)) {
+            this.onPluginReadyFns.push(() => plg.onPluginReady!());
+          }
+          if (isFunction(plg.registerCommand)) {
+            const cmd = plg.registerCommand();
+            if (cmd) {
+              this.commands.push(cmd);
             }
           }
-        });
+        }
+      });
   }
 
   /**
@@ -300,7 +300,7 @@ class CommandService {
    * @memberof CommandService
    */
   async loadPlugin(
-      plgName: string,
+    plgName: string,
   ): Promise<IPluginConstructor> {
     const PLUGIN_PREFIX = ['@pure/water-plugin-'];
     const pluginPath = this.resolveWithPrifix(plgName, PLUGIN_PREFIX);
@@ -312,6 +312,7 @@ class CommandService {
     }
     exitWithMessage('未找到插件, 请检查配置是否正确或依赖是否安装');
   }
+
   /**
    *
    *
@@ -393,9 +394,9 @@ class CommandService {
   resolveWithPrifix(pkgPostfix: string, prefixList: string[]) {
     for (const prefix of prefixList) {
       const filepathOrFail = tryResolve(
-          prefix + pkgPostfix,
-          // FIXME: plugin 应为 preset 所在文件
-          this.paths.projectConfig,
+        prefix + pkgPostfix,
+        // FIXME: plugin 应为 preset 所在文件
+        this.paths.projectConfig,
       );
       if (filepathOrFail) {
         return filepathOrFail;
@@ -404,4 +405,4 @@ class CommandService {
   }
 }
 
-export {CommandService, ICommand, IProjectConfig};
+export { CommandService, ICommand, IProjectConfig };

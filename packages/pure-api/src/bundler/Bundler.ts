@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
-import {CommandService} from '../service/CommandService';
-import {runAsyncFns} from '../utils';
+import { CommandService } from '../service/CommandService';
+import { runAsyncFns } from '../utils';
 
 /**
  * bundler abstract class
@@ -22,6 +22,7 @@ abstract class Bundler {
   constructor(service: CommandService) {
     this.service = service;
   }
+
   /**
    * clean dist directory
    *

@@ -1,4 +1,4 @@
-import {CommandService, ICommand} from '../service/CommandService';
+import { CommandService, ICommand } from '../service/CommandService';
 
 
 export type PluginBeforeCompileHook = () => Promise<void>;
@@ -40,6 +40,7 @@ abstract class Plugin {
   getPluginOption(pluginName: string): Record<string, any> {
     return this.service.getPluginOption(pluginName);
   }
+
   /**
    *
    *
@@ -73,4 +74,4 @@ abstract class Plugin {
   onClean?: PluginOnCleanHook;
 }
 
-export {Plugin};
+export { Plugin };
