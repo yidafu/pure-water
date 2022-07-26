@@ -1,0 +1,21 @@
+{
+  "name": "vite-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.37",
+    "@pure/water-preset-vue": "workspace:../water-preset-vue",
+    "@pure/water-plugin-lint": "workspace:../water-plugin-lint",
+    "@pure/cli": "workspace:../pure-cli"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.0.0",
+    "vite": "^3.0.0"
+  }
+}

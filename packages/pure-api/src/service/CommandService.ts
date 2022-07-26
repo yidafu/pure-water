@@ -4,22 +4,43 @@ import { Bundler } from '../bundler';
 import minimist, { ParsedArgs } from 'minimist';
 import {
   exitWithMessage,
+  isFunction,
   requireDefault,
   runAsyncFns,
   tryResolve,
 } from '../utils';
-import { UserConfig } from 'vite';
-import { resolveProjectConfig } from './utils';
+import {UserConfig} from 'vite';
+import {resolveProjectConfig} from './utils';
+import {CURRENT_DIRECTORY, PROJECT_ROOT} from '../constant';
+import path from 'path';
+import {
+  IPluginConstructor,
+  PluginAfterBuildHook,
+  PluginBeforeCompileHook,
+  PluginOnCleanHook,
+  PluginOnDevCompileDoneHook,
+  PluginOnDevServerReadyHook,
+  PluginOnPluginReadyHook,
+} from '../plugin';
 
 interface IProjectConfig {
   name: string;
+
+  devServer: boolean;
+  outputPath: string;
+
   presets: string[];
-  plugins: string[];
+  plugins: Record<string, any>;
+
+
   viteConfig: UserConfig,
 }
 
 interface IPurePaths {
   projectConfig: string;
+  projectRoot: string;
+  cwd: string;
+  outputPath: string;
 }
 
 type CommandOption = string | {
@@ -51,19 +72,23 @@ class CommandService {
 
   public commands: ICommand[] = [];
 
-  private paths: Partial<IPurePaths> = {};
+  public paths: Partial<IPurePaths> = {};
 
   private apiMethods = [];
 
   private onProcessExitFns = [];
 
-  private onPluginReadyFns = [];
+  private onPluginReadyFns: PluginOnPluginReadyHook[] = [];
 
-  private beforeCompileFns = [];
+  public beforeCompileFns: PluginBeforeCompileHook[] = [];
 
-  private onDevServerReadyFns = [];
+  public onDevServerReadyFns: PluginOnDevServerReadyHook[] = [];
 
-  private onCleanFns = [];
+  public onDevCompileDoneFns: PluginOnDevCompileDoneHook[] = [];
+
+  public afterBuildFns: PluginAfterBuildHook[] = [];
+
+  private onCleanFns: PluginOnCleanHook[] = [];
 
   /**
    * Creates an instance of CommandService.
@@ -76,22 +101,48 @@ class CommandService {
   }
 
   /**
+   *
+   *
+   * @param {string} pluginName
+   * @return {any}
+   * @memberof CommandService
+   */
+  getPluginOption(pluginName: string): any {
+    return this.projectConfig.plugins?.[pluginName] ?? {};
+  }
+
+  /**
    * main logic
    *
    * @memberof CommandService
    */
   async load() {
+    await this.initPaths();
+
     await this.loadProjectConfig();
 
     await this.addBuiltinCommands();
 
-    await this.getPaths();
+    // await this.loadGlobalConfig();
 
-    await this.loadGlobalConfig();
-
-    this.processExitGuardor();
+    await this.processExitGuard();
 
     await this.loadPlugins();
+  }
+
+  /**
+   * init project paths
+   *
+   * @private
+   * @memberof CommandService
+   */
+  private async initPaths() {
+    this.paths = {
+      projectConfig: await resolveProjectConfig(this.argv.config),
+      projectRoot: PROJECT_ROOT,
+      cwd: CURRENT_DIRECTORY,
+      outputPath: path.join(PROJECT_ROOT, 'dist'),
+    };
   }
 
   /**
@@ -115,11 +166,11 @@ class CommandService {
   /**
    *
    *
-   * @return {IProjectConfig}
+   * @return {Partial<IProjectConfig>}
    * @memberof CommandService
    */
-  getProjectConfig() {
-    return this.projectConfig;
+  getProjectConfig(): Partial<IProjectConfig> {
+    return this.projectConfig ?? {};
   }
 
   /**
@@ -129,10 +180,9 @@ class CommandService {
    */
   async loadProjectConfig() {
     this.projectConfig = {};
-    this.paths.projectConfig = await resolveProjectConfig(this.argv.config);
 
     // this.projectConfig = require(configFilePath);
-    this.projectConfig = (await import(this.paths.projectConfig)).default;
+    this.projectConfig = (await import(this.paths.projectConfig!)).default;
 
     const presets = await this.loadPresets();
     this.projectConfig = presets.reduce((pV, cV) => {
@@ -143,10 +193,10 @@ class CommandService {
   /**
    *
    *
-   * @return {Promise<IProjectConfig>}
+   * @return {Promise<IProjectConfig[]>}
    * @memberof CommandService
    */
-  async loadPresets() {
+  async loadPresets(): Promise<IProjectConfig[]> {
     log('preset will load %s', this.projectConfig.presets);
     if (!this.projectConfig.presets?.length) {
       return [];
@@ -200,18 +250,68 @@ class CommandService {
    * @memberof CommandService
    */
   async loadPlugins() {
-    // empty function
+    const {plugins = {}} = this.projectConfig;
+
+    const loadPlgPromises = Object.keys(plugins).map((pluginName) => {
+      try {
+        return this.loadPlugin(pluginName);
+      } catch (err) {
+
+      }
+    });
+    const pluginKlasses = await Promise.all(loadPlgPromises);
+    pluginKlasses.sort((a, b) => (a?.priority ?? 100) - (b?.priority ?? 100))
+        .forEach((PluginKlass) => {
+          if (PluginKlass) {
+            const plg = new PluginKlass(this);
+            if (isFunction(plg.beforeCompile)) {
+              this.beforeCompileFns.push(async () => plg.beforeCompile!());
+            }
+            if (isFunction(plg.onDevServerReady)) {
+              this.onDevServerReadyFns.push(() => plg.onDevServerReady!());
+            }
+            if (isFunction(plg.onDevCompileDone)) {
+              this.onDevCompileDoneFns.push(() => plg.onDevCompileDone!());
+            }
+            if (isFunction(plg.afterBuild)) {
+              this.afterBuildFns.push(() => plg.afterBuild!());
+            }
+            if (isFunction(plg.onClean)) {
+              this.onCleanFns.push(() => plg.onClean!());
+            }
+            if (isFunction(plg.onPluginReady)) {
+              this.onPluginReadyFns.push(() => plg.onPluginReady!());
+            }
+            if (isFunction(plg.registerCommand)) {
+              const cmd = plg.registerCommand();
+              if (cmd) {
+                this.commands.push(cmd);
+              }
+            }
+          }
+        });
   }
 
   /**
    *
    *
+   * @param {string} plgName
+   * @return {Promise<Plugin>}
    * @memberof CommandService
    */
-  async getPaths() {
-    // throw new Error("Method not implemented.");
+  async loadPlugin(
+      plgName: string,
+  ): Promise<IPluginConstructor> {
+    const PLUGIN_PREFIX = ['@pure/water-plugin-'];
+    const pluginPath = this.resolveWithPrifix(plgName, PLUGIN_PREFIX);
+    if (pluginPath) {
+      log('[start] loading plugin %s', plgName);
+      const PlgKlass: IPluginConstructor = await requireDefault(pluginPath);
+      log('[end] finish load plugin %s', plgName);
+      return PlgKlass;
+    }
+    exitWithMessage('未找到插件, 请检查配置是否正确或依赖是否安装');
   }
-
   /**
    *
    *
@@ -226,7 +326,7 @@ class CommandService {
    *
    * @memberof CommandService
    */
-  processExitGuardor() {
+  processExitGuard() {
     // throw new Error("Method not implemented.");
   }
 
@@ -281,6 +381,27 @@ class CommandService {
       },
     });
   }
+
+  /**
+   *
+   *
+   * @param {string} pkgPostfix
+   * @param {string[]} prefixList
+   * @return {string}
+   * @memberof CommandService
+   */
+  resolveWithPrifix(pkgPostfix: string, prefixList: string[]) {
+    for (const prefix of prefixList) {
+      const filepathOrFail = tryResolve(
+          prefix + pkgPostfix,
+          // FIXME: plugin 应为 preset 所在文件
+          this.paths.projectConfig,
+      );
+      if (filepathOrFail) {
+        return filepathOrFail;
+      }
+    }
+  }
 }
 
-export { CommandService, IProjectConfig };
+export {CommandService, ICommand, IProjectConfig};

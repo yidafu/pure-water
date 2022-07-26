@@ -57,7 +57,18 @@ export async function requireDefault(filepath: string) {
  * @export
  * @param {string} msg
  */
-export function exitWithMessage(msg: string) {
+export function exitWithMessage(msg: string): never {
   console.log(chalk.red(msg));
   process.exit(1);
+}
+
+/**
+ *
+ *
+ * @export
+ * @param {any} fn
+ * @return {boolean}  {fn is Function}
+ */
+export function isFunction(fn: any): fn is Function {
+  return typeof fn === 'function';
 }

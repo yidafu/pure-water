@@ -1,15 +1,16 @@
-import { program } from 'commander';
-import { CommandService, ViteBundler } from '@pure/api';
+import {program} from 'commander';
+import {CommandService, ViteBundler} from '@pure/api/lib/index.js';
 
 const service = new CommandService(ViteBundler);
 
 service.load().then(() => {
   service.commands.forEach((cmd) => {
     const cmdInst = program.command(cmd.name)
-      .action((args) => {
-        cmd.action(args);
-      })
-      .description(cmd.description);
+        .action((args) => {
+          cmd.action(args);
+        })
+        .description(cmd.description);
+
 
     // TODO common --config/--debug flag
     // cmdInst.option('--config <config>').description('pure.config.js 文件路径');
