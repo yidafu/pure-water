@@ -1,14 +1,19 @@
 import { Plugin } from '@pure/api';
+import { runEslint } from './eslint';
+
+interface ILintPluginOption {
+  fix: boolean;
+}
 
 class LintPlugin extends Plugin {
-  registerComman = function () {
+  registerCommand = function () {
     return {
       name: 'lint',
       options: {
-        '--fix': 'autofix',
+        '--fix': 'Automatically fix problems',
       },
-      action() {
-        console.log('run lint');
+      async action(option: ILintPluginOption) {
+        await runEslint(option.fix);
       },
       description: 'lint project',
     };

@@ -5,7 +5,8 @@
   "exports": "./lib/index.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build": "rollup -c ./rollup.config.js",
+    "dev": "rollup -c ./rollup.config.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +23,12 @@
   },
   "homepage": "https://github.com/yidafu/pure-water#readme",
   "dependencies": {
-    "@pure/api": "workspace:../pure-api"
+    "@pure/api": "workspace:../pure-api",
+    "debug": "^4.3.4",
+    "eslint": "^8.20.0"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.7",
+    "@types/eslint": "^8.4.5"
   }
 }
