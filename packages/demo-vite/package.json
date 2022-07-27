@@ -9,10 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.37",
-    "@pure/water-preset-vue": "workspace:../water-preset-vue",
+    "@pure/cli": "workspace:../pure-cli",
     "@pure/water-plugin-lint": "workspace:../water-plugin-lint",
-    "@pure/cli": "workspace:../pure-cli"
+    "@pure/water-preset-vue": "workspace:../water-preset-vue",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "vue": "^3.2.37"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.0",
