@@ -25,7 +25,11 @@
   "dependencies": {
     "@pure/api": "workspace:../pure-api",
     "debug": "^4.3.4",
-    "eslint": "^8.20.0"
+    "eslint": "^8.20.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-vue": "^9.3.0"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
