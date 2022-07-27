@@ -256,7 +256,7 @@ class CommandService {
       try {
         return this.loadPlugin(pluginName);
       } catch (err) {
-
+        exitWithMessage(`加载插件[${pluginName}]失败,请检查依赖是否按住`);
       }
     });
     const pluginKlasses = await Promise.all(loadPlgPromises);

@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import debug from 'debug';
 import { createRequire } from 'module';
+import deepmerge from 'deepmerge';
 
 const log = debug('pure:api:utils');
 
@@ -72,3 +73,5 @@ export function exitWithMessage(msg: string): never {
 export function isFunction(fn: any): fn is Function {
   return typeof fn === 'function';
 }
+
+export { deepmerge };
