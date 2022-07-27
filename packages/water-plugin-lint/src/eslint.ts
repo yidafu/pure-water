@@ -4,11 +4,12 @@ const log = debug('pure:plugin:lint:eslint');
 
 export async function runEslint(option: ESLint.Options) {
   try {
-    log('[start] eslint');
+    log('[start] eslint %s', JSON.stringify(option));
     const eslint = new ESLint(option);
 
-    // const config = await eslint.calculateConfigForFile('./eslint-config/vue3.ts');
-    // console.log(config);
+    // const config = await eslint.calculateConfigForFile('/mnt/d/gitlab/pure-water/packages/water-plugin-lint/test.js');
+    // const { rules, ...cfg } = config;
+    // console.log(cfg);
 
     const results = await eslint.lintFiles([
       'src/**/*.ts',

@@ -2,9 +2,9 @@ import { deepmerge } from '@pure/api';
 import { Linter } from 'eslint';
 import { baseEslintConfig } from './base';
 
-const vueBaseEslintConfig: Linter.Config = {
+const vue3BaseEslintConfig: Linter.Config = {
   parser: 'vue-eslint-parser',
-  extends: ['plugin:vue/vue3-recommended'],
+  extends: [ 'plugin:vue/vue3-recommended' ],
   parserOptions: {
     parser: '@typescript-eslint/parser',
     extraFileExtensions: ['.vue'],
@@ -15,6 +15,6 @@ const vueBaseEslintConfig: Linter.Config = {
   },
 };
 
-const vue3EslintConfig: Linter.Config = deepmerge(baseEslintConfig, vueBaseEslintConfig);
+const vue3EslintConfig = deepmerge(baseEslintConfig, vue3BaseEslintConfig);
 
 export { vue3EslintConfig }; 
