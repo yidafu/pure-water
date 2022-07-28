@@ -21,6 +21,7 @@
     "eslint": "^8.20.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-vue": "^9.3.0",
     "eslint-plugin@latest": "link:typescript-eslint/eslint-plugin@latest",
     "husky": "^8.0.0",
     "rollup": "^2.77.0",

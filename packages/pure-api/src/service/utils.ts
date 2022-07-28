@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'node:fs/promises';
-import {PROJECT_ROOT} from '../constant';
+import { PROJECT_ROOT } from '../constant';
 
 /**
  * require
