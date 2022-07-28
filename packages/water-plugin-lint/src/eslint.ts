@@ -24,8 +24,14 @@ export async function runEslint(option: ESLint.Options) {
     const formatter = await eslint.loadFormatter('stylish');
 
     const resultText = await formatter.format(results);
-    log('[end] eslint');
     console.log(resultText);
+    log('[end] eslint');
+
+    // 如果 lint 报错直接退出
+    const hasError = results.find(res => res.errorCount > 0 || res.fatalErrorCount > 0);
+    if (hasError) {
+      process.exit(1);
+    }
   } catch (err) {
     console.error(err);
     process.exit(1);

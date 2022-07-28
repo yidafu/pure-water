@@ -1,5 +1,3 @@
-import path from 'path';
-import url from 'url';
 import { Plugin } from '@pure/api';
 import { ESLint } from 'eslint';
 import { runEslint } from './eslint';
@@ -7,7 +5,9 @@ import { runStylelint } from './stylelint';
 import { ESLINT_CONFIG_MAP } from './eslint-config';
 import { STYLELINT_CONFIG } from './stylelint-config';
 import stylelint from 'stylelint';
-import { tryResolve } from '@pure/api/lib/utils';
+import { runCommitlint } from './commitlint';
+import { UserConfig } from '@commitlint/types';
+import { ICommitlintMode } from './commitlint-config';
 
 interface ILintPluginActionOption {
   fix: boolean;
@@ -15,8 +15,9 @@ interface ILintPluginActionOption {
 
 interface ILintPluginOption {
   type?: 'base' | 'vue' | 'vue3';
-  eslintOption?: ESLint.Options,
-  stylelitOption?: stylelint.LinterOptions,
+  eslint?: ESLint.Options,
+  stylelint?: stylelint.LinterOptions,
+  commitlint?: { mode?: ICommitlintMode } & UserConfig,
 }
 
 class LintPlugin extends Plugin {
@@ -28,8 +29,11 @@ class LintPlugin extends Plugin {
         '--fix': 'Automatically fix problems',
       },
       async action(option: ILintPluginActionOption) {
-        const { type, eslintOption = {}, stylelitOption = {} } = lintPlgOption;
+        const { type, eslint: eslintOption = {}, stylelint: stylelitOption = {}, commitlint = {} } = lintPlgOption;
         const eslintConfig = ESLINT_CONFIG_MAP.get(type ?? 'base');
+
+        const { mode, ...commitlintUserOpt } = commitlint;
+        await runCommitlint(mode, commitlintUserOpt);
 
         await runEslint({
           ...eslintOption,
