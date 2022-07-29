@@ -2,7 +2,6 @@
   "name": "vite-demo",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,8 +9,10 @@
   },
   "dependencies": {
     "@pure/cli": "workspace:../pure-cli",
+    "@pure/eslint-config-water": "workspace:../eslint-config-water",
     "@pure/water-plugin-lint": "workspace:../water-plugin-lint",
     "@pure/water-preset-vue": "workspace:../water-preset-vue",
+    "@pure/stylelint-config-water": "workspace:../stylelint-config-water",
     "@rollup/plugin-typescript": "^8.3.3",
     "vue": "^3.2.37"
   },
