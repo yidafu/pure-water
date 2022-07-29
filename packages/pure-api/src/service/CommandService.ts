@@ -181,8 +181,8 @@ class CommandService {
   async loadProjectConfig() {
     this.projectConfig = {};
 
-    // this.projectConfig = require(configFilePath);
-    this.projectConfig = (await import(this.paths.projectConfig!)).default;
+    this.projectConfig = require(this.paths.projectConfig!);
+    // this.projectConfig = (await import(this.paths.projectConfig!)).default;
 
     const presets = await this.loadPresets();
     this.projectConfig = presets.reduce((pV, cV) => {

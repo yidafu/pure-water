@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
-  "type": "module",
   "scripts": {
     "dev": "rollup -c ./rollup.config.js --watch",
     "build": "NODE_ENV=production rollup -c ./rollup.config.js",

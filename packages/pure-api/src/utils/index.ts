@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import debug from 'debug';
-import { createRequire } from 'module';
+// import { createRequire } from 'module';
 import deepmerge from 'deepmerge';
 
 const log = debug('pure:api:utils');
@@ -29,10 +29,12 @@ export async function runAsyncFns(fns: AnyAsnycFn[], ...args: any[]) {
  * @param {String} [root=import.meta.url]
  * @return {Promise<string | boolen>}
  */
-export function tryResolve(filepath: string, root = import.meta.url) {
+export function tryResolve(filepath: string, root = __dirname) {
   try {
-    const customRequire = createRequire(root);
-    return customRequire.resolve(filepath);
+    console.log('filepath %s, root: %s', filepath, root)
+    // const customRequire = createRequire(root);
+    // return customRequire.resolve(filepath);
+    return require.resolve(filepath, { paths: [root] });
   } catch (err) {
     log('try resolve fail', err);
     return false;
@@ -47,9 +49,9 @@ export function tryResolve(filepath: string, root = import.meta.url) {
  * @return {Promise<any>}
  */
 export async function requireDefault(filepath: string) {
-  // let mod = require(filepath);
-  // return mod.__esModule ? mod.default : mod;
-  return import(filepath).then((mod) => mod.default);
+  let mod = require(filepath);
+  return mod.__esModule ? mod.default : mod;
+  // return import(filepath).then((mod) => mod.default);
 }
 
 /**

@@ -1,8 +1,14 @@
 const vue = require('@vitejs/plugin-vue');
 
 module.exports = {
-  plugin: [],
   viteConfig: {
-      plugins: [vue()]
-  }
-}
+    plugins: [vue()],
+  },
+  plugins: {
+    lint: {
+      presetEslint: 'vue3',
+      eslint: {},
+      presetCommitlint: 'recommended',
+    },
+  },
+};

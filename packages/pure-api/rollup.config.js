@@ -4,7 +4,7 @@ module.exports = {
   input: 'src/index.ts',
   output: {
     dir: 'lib',
-    format: 'esm',
+    format: 'cjs',
   },
   plugins: [typescript()],
 };

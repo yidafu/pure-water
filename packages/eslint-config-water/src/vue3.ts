@@ -1,6 +1,6 @@
 import { deepmerge } from '@pure/api';
 import { Linter } from 'eslint';
-import { baseEslintConfig } from './base';
+import baseEslintConfig from './base';
 
 const vue3BaseEslintConfig: Linter.Config = {
   parser: 'vue-eslint-parser',
@@ -17,4 +17,4 @@ const vue3BaseEslintConfig: Linter.Config = {
 
 const vue3EslintConfig = deepmerge(baseEslintConfig, vue3BaseEslintConfig);
 
-export { vue3EslintConfig }; 
+export = vue3EslintConfig;

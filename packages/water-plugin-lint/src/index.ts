@@ -2,8 +2,8 @@ import { Plugin } from '@pure/api';
 import { ESLint } from 'eslint';
 import { runEslint } from './eslint';
 import { runStylelint } from './stylelint';
-import { ESLINT_CONFIG_MAP } from './eslint-config';
-import { STYLELINT_CONFIG } from './stylelint-config';
+import { ESLINT_CONFIG_MAP } from '@pure/eslint-config-water';
+import stylelintConfig from '@pure/stylelint-config-water';
 import stylelint from 'stylelint';
 import { runCommitlint } from './commitlint';
 import { UserConfig } from '@commitlint/types';
@@ -13,11 +13,12 @@ interface ILintPluginActionOption {
   fix: boolean;
 }
 
-interface ILintPluginOption {
-  type?: 'base' | 'vue' | 'vue3';
+export interface ILintPluginOption {
+  presetCommitlint?: ICommitlintMode
+  commitlint?: UserConfig,
+  presetEslint?: 'base' | 'vue' | 'vue3';
   eslint?: ESLint.Options,
   stylelint?: stylelint.LinterOptions,
-  commitlint?: { mode?: ICommitlintMode } & UserConfig,
 }
 
 class LintPlugin extends Plugin {
@@ -29,12 +30,17 @@ class LintPlugin extends Plugin {
         '--fix': 'Automatically fix problems',
       },
       async action(option: ILintPluginActionOption) {
-        const { type, eslint: eslintOption = {}, stylelint: stylelitOption = {}, commitlint = {} } = lintPlgOption;
-        const eslintConfig = ESLINT_CONFIG_MAP.get(type ?? 'base');
+        const { 
+          presetCommitlint,
+          commitlint: commitlintUserOpt = {}, 
+          presetEslint, 
+          eslint: eslintOption = {}, 
+          stylelint: stylelitOption = {},
+        } = lintPlgOption;
 
-        const { mode, ...commitlintUserOpt } = commitlint;
-        await runCommitlint(mode, commitlintUserOpt);
+        await runCommitlint(presetCommitlint, commitlintUserOpt);
 
+        const eslintConfig = ESLINT_CONFIG_MAP.get(presetEslint ?? 'base');
         await runEslint({
           ...eslintOption,
           baseConfig: eslintConfig,
@@ -42,7 +48,7 @@ class LintPlugin extends Plugin {
         });
 
         await runStylelint({
-          config: STYLELINT_CONFIG,
+          config: stylelintConfig,
           formatter: 'string',
           files: ['src/**/*.css', 'src/**.scss'],
           ...stylelitOption,
@@ -54,5 +60,4 @@ class LintPlugin extends Plugin {
   };
 }
 
-export * from './eslint-config';
 export default LintPlugin;
