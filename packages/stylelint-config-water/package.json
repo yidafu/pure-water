@@ -1,0 +1,19 @@
+{
+  "name": "@pure/stylelint-config-water",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yidafu",
+  "license": "ISC",
+  "devDependencies": {
+    "stylelint": "^14.9.1"
+  },
+  "peerDependencies": {
+    "stylelint": ">=14.0.0"
+  }
+}
