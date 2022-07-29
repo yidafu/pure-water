@@ -2,8 +2,7 @@
   "name": "@pure/water-plugin-lint",
   "version": "1.0.0",
   "description": "",
-  "exports": "./lib/index.js",
-  "type": "module",
+  "main": "./lib/index.js",
   "scripts": {
     "build": "rollup -c ./rollup.config.js",
     "dev": "rollup -c ./rollup.config.js --watch",
@@ -42,7 +41,13 @@
     "stylelint-config-standard-scss": "^5.0.0"
   },
   "devDependencies": {
+    "@pure/eslint-config-water": "workspace:../eslint-config-water",
+    "@pure/stylelint-config-water": "workspace:../stylelint-config-water",
     "@types/debug": "^4.1.7",
     "@types/eslint": "^8.4.5"
+  },
+  "peerDependencies": {
+    "@pure/eslint-config-water": "workspace:../eslint-config-water",
+    "@pure/stylelint-config-water": "workspace:../stylelint-config-water"
   }
 }

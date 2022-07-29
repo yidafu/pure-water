@@ -7,17 +7,6 @@ import { LintOptions, ParserOptions, UserConfig } from '@commitlint/types';
 import { COMMITLINT_CONFIG_MAP, ICommitlintMode } from './commitlint-config';
 import { deepmerge } from '@pure/api';
 
-type LoadFn = typeof load;
-type ReadFn = typeof read;
-type LintFn = typeof lint;
-type FormatFn = typeof format;
-
-// FIXME: commitlint 导出有点问题
-const realLoad = (load as any).default as LoadFn;
-const realRead = (read as any).default as ReadFn;
-const realLint = (lint as any).default as LintFn;
-const realFormat = (format as any).default as FormatFn;
-
 const log = debug('pure:lint:commitlint');
 
 export async function runCommitlint(
@@ -28,17 +17,17 @@ export async function runCommitlint(
   
   const userConfig = deepmerge(defaultConfig, commitlintOption);
   log('[start] commitlint config mode => %s, => %s', mode, JSON.stringify(userConfig));
-  const [config, messages]  = await Promise.all([realLoad(userConfig), realRead({ edit: true })]);
+  const [config, messages]  = await Promise.all([load(userConfig), read({ edit: true })]);
 
   const { rules, parserPreset, plugins = [] } = config;
   for (const msg of messages) {
     log('lint commit message => %s', msg);
-    const result = await realLint(
+    const result = await lint(
       msg, 
       rules, 
       (parserPreset ? { parserOpts: parserPreset.parserOpts as ParserOptions, plugins } : {}) as LintOptions,
     );
-    const output = realFormat({
+    const output = format({
       results: [result],
     });
     console.log(output);
