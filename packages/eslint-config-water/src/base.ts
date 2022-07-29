@@ -1,6 +1,6 @@
 import { Linter } from 'eslint';
 
-export const baseEslintConfig: Linter.Config = {
+const baseEslintConfig: Linter.Config = {
   extends: [
     'airbnb-base',
     'airbnb-typescript/base',
@@ -10,3 +10,5 @@ export const baseEslintConfig: Linter.Config = {
     project: './tsconfig.json',
   },
 };
+
+export = baseEslintConfig;

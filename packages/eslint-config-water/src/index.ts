@@ -1,7 +1,7 @@
 import { Linter } from 'eslint';
-import { baseEslintConfig } from './base';
-import { vueEslintConfig } from './vue';
-import { vue3EslintConfig } from './vue3';
+import baseEslintConfig from './base';
+import vueEslintConfig from './vue';
+import vue3EslintConfig from './vue3';
 
 const ESLINT_CONFIG_MAP = new Map<string, Linter.Config>([
   ['base', baseEslintConfig],
@@ -9,7 +9,8 @@ const ESLINT_CONFIG_MAP = new Map<string, Linter.Config>([
   ['vue3', vue3EslintConfig],
 ]);
 
-// TODO: esline config should be a independent package
+export default baseEslintConfig;
+
 export {
   baseEslintConfig,
   vueEslintConfig,
