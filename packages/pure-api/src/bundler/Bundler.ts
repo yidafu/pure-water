@@ -1,5 +1,3 @@
-import fs from 'fs/promises';
-import path from 'path';
 import { CommandService } from '../service/CommandService';
 import { runAsyncFns } from '../utils';
 
@@ -52,23 +50,21 @@ abstract class Bundler {
    * @returns {Promise<void>}
    * @memberof Bundler
    */
-  abstract build(): Promise<void>;
+  async build(): Promise<void> {
+    await runAsyncFns(this.service.beforeCompileFns);
+    await this.runBuiding();
+    await runAsyncFns(this.service.afterBuildFns);
+    await this.dumpCompileConfig();
+  }
+
+  abstract runBuiding(): Promise<void>;
 
   /**
    *
    *
    * @memberof Bundler
    */
-  async dumpCompileConfig() {
-    const viteConfigFile = `export default ${
-      JSON.stringify(this.compileOption)
-    }`;
-    const outputPath = path.join(
-      this.service.paths.outputPath!,
-      'vite.config.js',
-    );
-    fs.writeFile(outputPath, viteConfigFile);
-  }
+  abstract dumpCompileConfig(): Promise<void>;
 }
 
 export { Bundler };

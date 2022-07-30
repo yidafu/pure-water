@@ -1,6 +1,6 @@
 import merge from 'lodash.merge';
 import debug from 'debug';
-import { Bundler } from '../bundler';
+import { Bundler, EmptyBundler, ViteBundler, WebpackBundler } from '../bundler';
 import minimist, { ParsedArgs } from 'minimist';
 import {
   exitWithMessage,
@@ -17,14 +17,18 @@ import {
   IPluginConstructor,
   PluginAfterBuildHook,
   PluginBeforeCompileHook,
+  PluginChainWebpackConfig,
   PluginOnCleanHook,
   PluginOnDevCompileDoneHook,
   PluginOnDevServerReadyHook,
   PluginOnPluginReadyHook,
 } from '../plugin';
+import { Configuration } from 'webpack';
 
 interface IProjectConfig {
   name: string;
+  
+  bundler: 'vite' | 'webpack';
 
   devServer: boolean;
   outputPath: string;
@@ -34,6 +38,8 @@ interface IProjectConfig {
 
 
   viteConfig: UserConfig,
+
+  webpackConfig: Configuration,
 }
 
 interface IPurePaths {
@@ -78,6 +84,8 @@ class CommandService {
 
   private onProcessExitFns = [];
 
+  public chainWebpackConfigFns: PluginChainWebpackConfig[] = [];
+
   private onPluginReadyFns: PluginOnPluginReadyHook[] = [];
 
   public beforeCompileFns: PluginBeforeCompileHook[] = [];
@@ -88,15 +96,15 @@ class CommandService {
 
   public afterBuildFns: PluginAfterBuildHook[] = [];
 
-  private onCleanFns: PluginOnCleanHook[] = [];
+  public onCleanFns: PluginOnCleanHook[] = [];
 
   /**
    * Creates an instance of CommandService.
    * @param {Bundler} BundlerKlass
    * @memberof CommandService
    */
-  constructor(BundlerKlass: new (service: CommandService) => Bundler) {
-    this.bundler = new BundlerKlass(this);
+  constructor() {
+    this.bundler = new EmptyBundler(this);
     this.argv = minimist(process.argv.slice(2));
   }
 
@@ -182,8 +190,11 @@ class CommandService {
     this.projectConfig = {};
 
     this.projectConfig = require(this.paths.projectConfig!);
-    // this.projectConfig = (await import(this.paths.projectConfig!)).default;
-
+    if (this.argv.bundler === 'webpack' || this.projectConfig.bundler === 'webpack') {
+      this.bundler = new WebpackBundler(this);
+    } else {
+      this.bundler = new ViteBundler(this);
+    }
     const presets = await this.loadPresets();
     this.projectConfig = presets.reduce((pV, cV) => {
       return merge(cV, pV);
@@ -264,8 +275,11 @@ class CommandService {
       .forEach((PluginKlass) => {
         if (PluginKlass) {
           const plg = new PluginKlass(this);
+          if (isFunction(plg.chainWebpackConfig)) {
+            this.chainWebpackConfigFns.push((config) => plg.chainWebpackConfig!(config));
+          }
           if (isFunction(plg.beforeCompile)) {
-            this.beforeCompileFns.push(async () => plg.beforeCompile!());
+            this.beforeCompileFns.push(() => plg.beforeCompile!());
           }
           if (isFunction(plg.onDevServerReady)) {
             this.onDevServerReadyFns.push(() => plg.onDevServerReady!());
@@ -350,6 +364,10 @@ class CommandService {
   private addBuiltinCommands() {
     const defaultOptions = {
       // '--debug': '调试日志打印'
+      '--bundler': {
+        description: '打包器, 可选: vite/webpack, 默认: vite',
+        defaultValue: 'vite',
+      },
     };
     this.registerCommand({
       name: 'dev',

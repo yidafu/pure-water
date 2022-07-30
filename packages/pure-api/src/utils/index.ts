@@ -1,3 +1,4 @@
+import fs from 'fs/promises';
 import chalk from 'chalk';
 import debug from 'debug';
 // import { createRequire } from 'module';
@@ -31,7 +32,6 @@ export async function runAsyncFns(fns: AnyAsnycFn[], ...args: any[]) {
  */
 export function tryResolve(filepath: string, root = __dirname) {
   try {
-    console.log('filepath %s, root: %s', filepath, root)
     // const customRequire = createRequire(root);
     // return customRequire.resolve(filepath);
     return require.resolve(filepath, { paths: [root] });
@@ -76,4 +76,17 @@ export function isFunction(fn: any): fn is Function {
   return typeof fn === 'function';
 }
 
+/**
+ * ensure directory exists. will create if directory not exists.
+ *
+ * @export
+ * @param {string} dirpath
+ */
+export async function ensureDirectory(dirpath: string) {
+  try {
+    await fs.access(dirpath);
+  } catch (err) {
+    await fs.mkdir(dirpath, { recursive: true });
+  }
+}
 export { deepmerge };
