@@ -1,4 +1,3 @@
-import fs from 'fs/promises';
 import chalk from 'chalk';
 import debug from 'debug';
 // import { createRequire } from 'module';
@@ -76,29 +75,6 @@ export function isFunction(fn: any): fn is Function {
   return typeof fn === 'function';
 }
 
-/**
- * ensure directory exists. will create if directory not exists.
- *
- * @export
- * @param {string} dirpath
- */
-export async function ensureDirectory(dirpath: string) {
-  try {
-    await fs.access(dirpath);
-  } catch (err) {
-    await fs.mkdir(dirpath, { recursive: true });
-  }
-}
-
-export async function fileExist(filepath: string) {
-  try {
-    await fs.access(filepath);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
 export { deepmerge };
-
+export * from './fs';
 export * from './env';
