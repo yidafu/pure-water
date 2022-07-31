@@ -78,3 +78,4 @@ export function isFunction(fn: any): fn is Function {
 export { deepmerge };
 export * from './fs';
 export * from './env';
+export * from './path';

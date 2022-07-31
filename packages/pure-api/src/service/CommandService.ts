@@ -6,12 +6,12 @@ import {
   exitWithMessage,
   isFunction,
   requireDefault,
+  resolveProjectRoot,
   runAsyncFns,
   tryResolve,
 } from '../utils';
 import { UserConfig } from 'vite';
-import { resolveProjectConfig } from './utils';
-import { CURRENT_DIRECTORY, PROJECT_ROOT } from '../constant';
+import { CURRENT_DIRECTORY } from '../constant';
 import path from 'path';
 import {
   IPluginConstructor,
@@ -147,11 +147,12 @@ class CommandService {
    * @memberof CommandService
    */
   private async initPaths() {
+    const projectRoot = resolveProjectRoot(this.argv.config);
     this.paths = {
-      projectConfig: await resolveProjectConfig(this.argv.config),
-      projectRoot: PROJECT_ROOT,
+      projectRoot,
+      projectConfig: path.join(projectRoot, this.argv.config ?? 'pure.config.js'),
       cwd: CURRENT_DIRECTORY,
-      outputPath: path.join(PROJECT_ROOT, 'dist'),
+      outputPath: path.join(projectRoot, 'dist'),
     };
   }
 
