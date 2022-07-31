@@ -1,6 +1,10 @@
 import debug from 'debug';
-import { createServer, UserConfig as ViteUserConfig } from 'vite';
+import path from 'path';
+import fs from 'fs/promises';
+
+import { createServer, UserConfig as ViteUserConfig, build } from 'vite';
 import { Bundler } from './Bundler';
+import { ensureDirectory } from '../utils';
 
 const log = debug('pure:api:bundler:vite');
 
@@ -11,6 +15,8 @@ const log = debug('pure:api:bundler:vite');
  * @extends {Bundler}
  */
 class ViteBundler extends Bundler {
+  name = 'vite';
+
   /**
    *
    *
@@ -48,14 +54,22 @@ class ViteBundler extends Bundler {
     server.printUrls();
   }
 
-  /**
-   *
-   *
-   * @return {Promise<void>}
-   * @memberof ViteBundler
-   */
-  async build(): Promise<void> {
-    console.log('vite build function');
+  async runBuiding(): Promise<void> {
+    const config = this.compileOption;
+    await build(config);
+  }
+
+  async dumpCompileConfig(): Promise<void> {
+    {
+      const viteConfigFile = `export default ${JSON.stringify(this.compileOption)
+      }`;
+      const outputPath = path.join(
+        this.service.paths.outputPath!,
+        'vite.config.js',
+      );
+      await ensureDirectory(this.service.paths.outputPath!);
+      await fs.writeFile(outputPath, viteConfigFile);
+    }
   }
 }
 

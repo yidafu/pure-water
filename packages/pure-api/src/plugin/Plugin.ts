@@ -1,6 +1,7 @@
+import Config from 'webpack-chain';
 import { CommandService, ICommand } from '../service/CommandService';
 
-
+export type PluginChainWebpackConfig = (config: Config) => Promise<void>;
 export type PluginBeforeCompileHook = () => Promise<void>;
 export type PluginOnPluginReadyHook = () => Promise<void>;
 export type PluginOnDevServerReadyHook = () => Promise<void>;
@@ -19,7 +20,7 @@ export interface IPluginConstructor {
  * @class Plugin
  */
 abstract class Plugin {
-  private service: CommandService;
+  protected service: CommandService;
 
   /**
    * Creates an instance of Plugin.
@@ -28,6 +29,10 @@ abstract class Plugin {
    */
   constructor(service: CommandService) {
     this.service = service;
+  }
+
+  get PROJECT_ROOT() {
+    return this.service.paths.projectRoot!;
   }
 
   /**
@@ -42,12 +47,20 @@ abstract class Plugin {
   }
 
   /**
-   *
+   * plugin priority. 0 is heighest, 100 is lowest.
    *
    * @static
    * @memberof Plugin
    */
   public static priority = 100;
+
+  /**
+   * only work when bundler is webpack
+   *
+   * @type {PluginChainWebpackConfig}
+   * @memberof Plugin
+   */
+  chainWebpackConfig?: PluginChainWebpackConfig;
 
   /**
    *
