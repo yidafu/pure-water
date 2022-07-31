@@ -162,6 +162,9 @@ class CommandService {
    * @memberof CommandService
    */
   dev = async () => {
+    if ((this.argv.env ?? 'dev') === 'dev') {
+      process.env.NODE_ENV = 'development';
+    }
     await this.bundler.dev();
   };
 
@@ -171,6 +174,9 @@ class CommandService {
    * @memberof CommandService
    */
   build = async () => {
+    if ((this.argv.env ?? 'prod') === 'prod') {
+      process.env.NODE_ENV = 'production';
+    }
     await this.bundler.build();
   };
 
@@ -383,6 +389,9 @@ class CommandService {
       '--bundler': {
         description: '打包器, 可选: vite/webpack, 默认: vite',
         defaultValue: 'vite',
+      },
+      '--env': {
+        description: '打包环境, 可选: dev/prod. dev 命令默认是: dev, build 命令默认是: prod',
       },
     };
     this.registerCommand({

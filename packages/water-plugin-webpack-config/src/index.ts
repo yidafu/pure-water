@@ -53,5 +53,21 @@ export default class BaseWebpackPlugin extends Plugin {
       .plugin('define-plugin')
       .use(webpack.DefinePlugin, [{ __DEBUG__: JSON.stringify(isDev) }])
       .end();
+    if (isDev()) {
+      config.devServer
+        .staticOptions({
+          directory: this.OUTPUT_PATH,
+          publicPath: '/',
+        })
+        .hot(true)
+        .host('127.0.0.1')
+        .port(3000)
+        // .http2(true)
+        // .https(true)
+        // .useLocalIp(true)
+        // .writeToDisk(true)
+        // .allowedHosts()
+        .headers({ 'Access-Control-Allow-Origin': '*' });
+    }
   };
 }
