@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs/promises';
 import webpack, { Configuration } from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
 import ChainConfig from 'webpack-chain';
 import mergeWebpack from 'webpack-merge';
 import { ensureDirectory, runAsyncFns } from '../utils';
@@ -26,11 +27,19 @@ class WebpackBundler extends Bundler {
     const compileOption = await this.compileOption; 
     try {
       const compiler = webpack(compileOption);
-      compiler.watch({}, (err) => {
-        if (err) {
-          console.log(err);
-        }
-      });
+      const { staticOptions, ...restOpts } = compileOption.devServer as any;
+      const server = new WebpackDevServer(
+        {
+          static: staticOptions,
+          ...restOpts,
+          client: {
+            progress: true,
+          },
+          open: true,
+        },
+        compiler,
+      );
+      server.start();
     } catch (err: any) {
       console.error(err.message);
     }

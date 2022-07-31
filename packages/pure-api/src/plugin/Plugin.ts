@@ -35,6 +35,10 @@ abstract class Plugin {
     return this.service.paths.projectRoot!;
   }
 
+  get OUTPUT_PATH() {
+    return this.service.paths.outputPath!;
+  }
+
   /**
    *
    *
