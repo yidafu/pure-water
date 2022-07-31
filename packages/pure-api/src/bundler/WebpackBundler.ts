@@ -7,6 +7,7 @@ import { ensureDirectory, runAsyncFns } from '../utils';
 import { Bundler } from './Bundler';
 
 class WebpackBundler extends Bundler {
+  name = 'webpack';
 
   get compileOption(): Promise<Configuration> {
     const prjConfig = this.service.getProjectConfig().webpackConfig ?? {};
@@ -23,20 +24,39 @@ class WebpackBundler extends Bundler {
 
   async startDevServer(): Promise<void> {
     const compileOption = await this.compileOption; 
-    const compiler = webpack(compileOption);
-    compiler.watch({}, (err, status) => {
-      console.log(status);
-      console.log(err);
-    });
+    try {
+      const compiler = webpack(compileOption);
+      compiler.watch({}, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    } catch (err: any) {
+      console.error(err.message);
+    }
   }
 
   async runBuiding(): Promise<void> {
     const compileOption = await this.compileOption;
-    const compiler = webpack(compileOption);
-    compiler.run((err, status) => {
-      console.log(status);
-      console.log(err);
-    });
+    try {
+
+      const compiler = webpack(compileOption);
+      await new Promise((resolve, reject) => {
+        compiler.run((err, status) => {
+          if ((status?.compilation?.errors?.length ?? 0) > 0) {
+            console.log(status?.compilation?.errors.join('\n'));
+          }
+          if (err) {
+            reject(err);
+          } else {
+            resolve(status);
+          }
+        });
+      });
+
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   async dumpCompileConfig(): Promise<void> {

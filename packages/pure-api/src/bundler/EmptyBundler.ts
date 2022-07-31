@@ -1,6 +1,8 @@
 import { Bundler } from './Bundler';
 
 class EmptyBundler extends Bundler {
+  name = 'empty';
+
   get compileOption(): any {
     throw new Error('You should specify --bundler option');
   }

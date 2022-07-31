@@ -36,7 +36,7 @@ export function tryResolve(filepath: string, root = __dirname) {
     // return customRequire.resolve(filepath);
     return require.resolve(filepath, { paths: [root] });
   } catch (err) {
-    log('try resolve fail', err);
+    log('try resolve fail ' + root  + ' ==> ', err);
     return false;
   }
 }
@@ -89,4 +89,16 @@ export async function ensureDirectory(dirpath: string) {
     await fs.mkdir(dirpath, { recursive: true });
   }
 }
+
+export async function fileExist(filepath: string) {
+  try {
+    await fs.access(filepath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export { deepmerge };
+
+export * from './env';

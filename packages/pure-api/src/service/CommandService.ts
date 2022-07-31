@@ -25,6 +25,8 @@ import {
 } from '../plugin';
 import { Configuration } from 'webpack';
 
+const PRESET_PATH_KEY = '__PRESET_PATH__';
+
 interface IProjectConfig {
   name: string;
   
@@ -190,15 +192,19 @@ class CommandService {
     this.projectConfig = {};
 
     this.projectConfig = require(this.paths.projectConfig!);
-    if (this.argv.bundler === 'webpack' || this.projectConfig.bundler === 'webpack') {
-      this.bundler = new WebpackBundler(this);
-    } else {
-      this.bundler = new ViteBundler(this);
-    }
+  
     const presets = await this.loadPresets();
     this.projectConfig = presets.reduce((pV, cV) => {
       return merge(cV, pV);
     }, this.projectConfig);
+
+    if (this.argv.bundler === 'webpack' || this.projectConfig.bundler === 'webpack') {
+      log('projectConfig#bundler => webpack');
+      this.bundler = new WebpackBundler(this);
+    } else {
+      log('projectConfig#bundler => vite');
+      this.bundler = new ViteBundler(this);
+    }
   }
 
   /**
@@ -243,7 +249,15 @@ class CommandService {
         this.paths.projectConfig,
       );
       if (typeof filepathOrFail === 'string') {
-        presetCfgList.push(await requireDefault(filepathOrFail));
+        const presetCfg: IProjectConfig = await requireDefault(filepathOrFail);
+        if (presetCfg) {
+          if (presetCfg.plugins) {
+            Object.values(presetCfg.plugins).forEach((plgCfg: any) => {
+              plgCfg[PRESET_PATH_KEY] = filepathOrFail;
+            });
+          }
+          presetCfgList.push(presetCfg);
+        }
       }
     }
 
@@ -265,7 +279,7 @@ class CommandService {
 
     const loadPlgPromises = Object.keys(plugins).map((pluginName) => {
       try {
-        return this.loadPlugin(pluginName);
+        return this.loadPlugin(pluginName, plugins[pluginName][PRESET_PATH_KEY]);
       } catch (err) {
         exitWithMessage(`加载插件[${pluginName}]失败,请检查依赖是否按住`);
       }
@@ -315,11 +329,12 @@ class CommandService {
    */
   async loadPlugin(
     plgName: string,
+    rootPath: string,
   ): Promise<IPluginConstructor> {
+    log('[start] loading plugin %s at root %s', plgName, rootPath);
     const PLUGIN_PREFIX = ['@pure/water-plugin-'];
-    const pluginPath = this.resolveWithPrifix(plgName, PLUGIN_PREFIX);
+    const pluginPath = this.resolveWithPrifix(plgName, PLUGIN_PREFIX, rootPath);
     if (pluginPath) {
-      log('[start] loading plugin %s', plgName);
       const PlgKlass: IPluginConstructor = await requireDefault(pluginPath);
       log('[end] finish load plugin %s', plgName);
       return PlgKlass;
@@ -406,15 +421,15 @@ class CommandService {
    *
    * @param {string} pkgPostfix
    * @param {string[]} prefixList
+   * @param {string} rootPath
    * @return {string}
    * @memberof CommandService
    */
-  resolveWithPrifix(pkgPostfix: string, prefixList: string[]) {
+  resolveWithPrifix(pkgPostfix: string, prefixList: string[], rootPath: string) {
     for (const prefix of prefixList) {
       const filepathOrFail = tryResolve(
         prefix + pkgPostfix,
-        // FIXME: plugin 应为 preset 所在文件
-        this.paths.projectConfig,
+        rootPath,
       );
       if (filepathOrFail) {
         return filepathOrFail;

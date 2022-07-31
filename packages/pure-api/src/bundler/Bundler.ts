@@ -1,5 +1,8 @@
+import debug from 'debug';
 import { CommandService } from '../service/CommandService';
 import { runAsyncFns } from '../utils';
+
+const log = debug('pure:api:bundler');
 
 /**
  * bundler abstract class
@@ -8,6 +11,8 @@ import { runAsyncFns } from '../utils';
  * @class Bundler
  */
 abstract class Bundler {
+  name?: string;
+
   service: CommandService;
 
   abstract get compileOption(): any;
@@ -51,10 +56,11 @@ abstract class Bundler {
    * @memberof Bundler
    */
   async build(): Promise<void> {
+    log('run bundler', this.name);
+    await this.dumpCompileConfig();
     await runAsyncFns(this.service.beforeCompileFns);
     await this.runBuiding();
     await runAsyncFns(this.service.afterBuildFns);
-    await this.dumpCompileConfig();
   }
 
   abstract runBuiding(): Promise<void>;

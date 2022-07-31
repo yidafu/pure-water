@@ -15,6 +15,8 @@ const log = debug('pure:api:bundler:vite');
  * @extends {Bundler}
  */
 class ViteBundler extends Bundler {
+  name = 'vite';
+
   /**
    *
    *

@@ -20,7 +20,7 @@ export interface IPluginConstructor {
  * @class Plugin
  */
 abstract class Plugin {
-  private service: CommandService;
+  protected service: CommandService;
 
   /**
    * Creates an instance of Plugin.
@@ -31,7 +31,9 @@ abstract class Plugin {
     this.service = service;
   }
 
-
+  get PROJECT_ROOT() {
+    return this.service.paths.projectRoot!;
+  }
 
   /**
    *
