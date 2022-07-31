@@ -1,0 +1,27 @@
+{
+  "name": "@pure/water-preset-vue2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "yidafu",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/preset-env": "^7.18.9",
+    "@pure/water-plugin-babel": "workspace:../water-plugin-babel",
+    "@pure/water-plugin-lint": "workspace:../water-plugin-lint",
+    "@pure/water-plugin-vue2": "workspace:../water-plugin-vue2",
+    "@pure/water-plugin-webpack-config": "workspace:../water-plugin-webpack-config"
+  },
+  "devDependencies": {
+    "vite": "^3.0.0",
+    "vue": "^3.2.25"
+  },
+  "peerDependencies": {
+    "vite": "^3.0.0",
+    "vue": "^3.2.25"
+  }
+}
