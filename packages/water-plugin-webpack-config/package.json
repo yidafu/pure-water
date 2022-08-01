@@ -1,9 +1,16 @@
 {
-  "name": "@pure/water-plugin-webpack-config",
-  "version": "1.0.0",
+  "name": "@pure-org/water-plugin-webpack-config",
+  "version": "0.1.0",
+  "private": false,
   "description": "",
   "main": "lib/index.js",
-  "files": ["./lib"],
+  "files": [
+    "./lib"
+  ],
+  "types": "./lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
     "dev": "tsc --watch",
     "build": "rm -fr ./lib && tsc",
@@ -13,8 +20,11 @@
   "keywords": [],
   "author": "yidafu",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
-    "@pure/api": "^0.0.1",
+    "@pure-org/api": "workspace:^",
     "webpackbar": "^5.0.2"
   },
   "devDependencies": {

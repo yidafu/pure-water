@@ -5,7 +5,7 @@ import lint from '@commitlint/lint';
 import format from '@commitlint/format';
 import { LintOptions, ParserOptions, UserConfig } from '@commitlint/types';
 import { COMMITLINT_CONFIG_MAP, ICommitlintMode } from './commitlint-config';
-import { deepmerge } from '@pure/api';
+import { deepmerge } from '@pure-org/api';
 
 const log = debug('pure:lint:commitlint');
 

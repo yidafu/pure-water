@@ -1,9 +1,14 @@
 {
-  "name": "@pure/stylelint-config-water",
-  "version": "1.0.0",
+  "name": "@pure-org/stylelint-config-water",
+  "version": "0.1.0",
+  "private": false,
   "description": "",
   "main": "index.js",
-  "files": ["./index.js", "./index.d.ts"],
+  "types": "./index.d.ts",
+  "files": [
+    "./index.js",
+    "./index.d.ts"
+  ],
   "scripts": {
     "dev": "tsc --watch",
     "build": "rm -f index.{js,d.ts} && tsc",
@@ -12,6 +17,9 @@
   },
   "author": "yidafu",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "devDependencies": {
     "stylelint": "^14.9.1"
   },

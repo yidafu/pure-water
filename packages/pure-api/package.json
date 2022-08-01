@@ -1,9 +1,16 @@
 {
-  "name": "@pure/api",
-  "version": "1.0.0",
+  "name": "@pure-org/api",
+  "version": "0.1.0",
+  "private": false,
   "description": "",
   "main": "lib/index.js",
-  "files": ["./lib"],
+  "files": [
+    "./lib"
+  ],
+  "types": "./lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
     "dev": "tsc --watch",
     "build": "rm -fr ./lib/ && NODE_ENV=production tsc",
@@ -23,6 +30,9 @@
     "url": "https://github.com/yidafu/pure-water/issues"
   },
   "homepage": "https://github.com/yidafu/pure-water#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "chalk": "^4",
     "commander": "^9.4.0",
