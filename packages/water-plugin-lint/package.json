@@ -39,6 +39,8 @@
     "@commitlint/read": "^17.0.0",
     "@commitlint/types": "^17.0.0",
     "@pure-org/api": "workspace:^",
+    "@pure-org/eslint-config-water": "workspace:^",
+    "@pure-org/stylelint-config-water": "workspace:^",
     "debug": "^4.3.4",
     "eslint": "^8.20.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -51,13 +53,7 @@
     "stylelint-config-standard-scss": "^5.0.0"
   },
   "devDependencies": {
-    "@pure-org/eslint-config-water": "workspace:^",
-    "@pure-org/stylelint-config-water": "workspace:^",
     "@types/debug": "^4.1.7",
     "@types/eslint": "^8.4.5"
-  },
-  "peerDependencies": {
-    "@pure-org/eslint-config-water": "workspace:^",
-    "@pure-org/stylelint-config-water": "workspace:^"
   }
 }
