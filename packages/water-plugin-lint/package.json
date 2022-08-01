@@ -23,6 +23,9 @@
     "url": "https://github.com/yidafu/pure-water/issues"
   },
   "homepage": "https://github.com/yidafu/pure-water#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "@commitlint/config-conventional": "^17.0.3",
     "@commitlint/format": "^17.0.0",

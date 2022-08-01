@@ -23,6 +23,9 @@
     "url": "https://github.com/yidafu/pure-water/issues"
   },
   "homepage": "https://github.com/yidafu/pure-water#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "chalk": "^4",
     "commander": "^9.4.0",

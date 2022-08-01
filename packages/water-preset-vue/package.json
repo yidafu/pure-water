@@ -10,6 +10,9 @@
   "keywords": [],
   "author": "yidafu",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "@vitejs/plugin-vue": "^3.0.1",
     "@pure/water-plugin-lint": "^0.0.1"

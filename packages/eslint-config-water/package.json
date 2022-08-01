@@ -12,6 +12,9 @@
   },
   "author": "yidafu",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "@pure/api": "^0.0.1"
   },

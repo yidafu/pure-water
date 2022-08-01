@@ -10,6 +10,9 @@
   "keywords": [],
   "author": "yidafu",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "@babel/preset-env": "^7.18.9",
     "@pure/water-plugin-babel": "^0.0.1",
