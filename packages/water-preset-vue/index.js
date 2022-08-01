@@ -6,7 +6,7 @@ module.exports = {
   },
   plugins: {
     lint: {
-      presetEslint: 'vue3',
+      presetEslint: 'vue',
       eslint: {},
       presetCommitlint: 'recommended',
     },
