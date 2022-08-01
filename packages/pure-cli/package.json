@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/cli",
-  "version": "0.1.0",
+  "version": "0.1.1-beta.0",
   "private": false,
   "description": "",
   "exports": "lib/index.js",
@@ -12,8 +12,9 @@
     "lib": "lib"
   },
   "files": [
-    "./lib",
-    "./bin"
+    "lib/*",
+    "README.md",
+    "CHANGELOG.md"
   ],
   "type": "module",
   "node": ">=14.16",
