@@ -1,10 +1,14 @@
 {
   "name": "@pure-org/water-plugin-webpack-config",
-  "version": "0.1.0",
+  "version": "0.1.1-beta.0",
   "private": false,
   "description": "",
   "main": "lib/index.js",
-  "files": [ "lib/*", "README.md", "CHANGELOG.md" ],
+  "files": [
+    "lib/*",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "types": "./lib/index.d.ts",
   "directories": {
     "lib": "lib"
