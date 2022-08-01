@@ -1,7 +1,9 @@
+import { UserConfig } from 'vite';
 import Config from 'webpack-chain';
 import { CommandService, ICommand } from '../service/CommandService';
 
-export type PluginChainWebpackConfig = (config: Config) => Promise<void>;
+export type PluginChainWebpackConfigHook = (config: Config) => Promise<void>;
+export type PluginViteConfigHook = () => UserConfig;
 export type PluginBeforeCompileHook = () => Promise<void>;
 export type PluginOnPluginReadyHook = () => Promise<void>;
 export type PluginOnDevServerReadyHook = () => Promise<void>;
@@ -61,10 +63,18 @@ abstract class Plugin {
   /**
    * only work when bundler is webpack
    *
-   * @type {PluginChainWebpackConfig}
+   * @type {PluginChainWebpackConfigHook}
    * @memberof Plugin
    */
-  chainWebpackConfig?: PluginChainWebpackConfig;
+  chainWebpackConfig?: PluginChainWebpackConfigHook;
+
+  /**
+   * only work when bundler is vite
+   *
+   * @type {PluginViteConfigHook}
+   * @memberof Plugin
+   */
+  viteConfig?: PluginViteConfigHook;
 
   /**
    *

@@ -17,11 +17,12 @@ import {
   IPluginConstructor,
   PluginAfterBuildHook,
   PluginBeforeCompileHook,
-  PluginChainWebpackConfig,
+  PluginChainWebpackConfigHook,
   PluginOnCleanHook,
   PluginOnDevCompileDoneHook,
   PluginOnDevServerReadyHook,
   PluginOnPluginReadyHook,
+  PluginViteConfigHook,
 } from '../plugin';
 import { Configuration } from 'webpack';
 
@@ -86,7 +87,9 @@ class CommandService {
 
   private onProcessExitFns = [];
 
-  public chainWebpackConfigFns: PluginChainWebpackConfig[] = [];
+  public chainWebpackConfigFns: PluginChainWebpackConfigHook[] = [];
+
+  public viteConfigFns: PluginViteConfigHook[] = [];
 
   private onPluginReadyFns: PluginOnPluginReadyHook[] = [];
 
@@ -298,6 +301,9 @@ class CommandService {
           const plg = new PluginKlass(this);
           if (isFunction(plg.chainWebpackConfig)) {
             this.chainWebpackConfigFns.push((config) => plg.chainWebpackConfig!(config));
+          }
+          if (isFunction(plg.viteConfig)) {
+            this.viteConfigFns.push(() => plg.viteConfig!());
           }
           if (isFunction(plg.beforeCompile)) {
             this.beforeCompileFns.push(() => plg.beforeCompile!());
