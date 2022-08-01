@@ -1,4 +1,4 @@
-import { fileExist, Plugin, PluginChainWebpackConfig } from '@pure/api';
+import { fileExist, Plugin, PluginChainWebpackConfig } from '@pure-org/api';
 import path from 'path';
 import ForkTsCheckerWepackPlugin from 'fork-ts-checker-webpack-plugin';
 

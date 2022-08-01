@@ -1,4 +1,4 @@
-import { Plugin, PluginChainWebpackConfig } from '@pure/api';
+import { Plugin, PluginChainWebpackConfig } from '@pure-org/api';
 import DartSass from 'sass';
 import { VueLoaderPlugin } from 'vue-loader';
 import HtmlWebpackPlugin from 'html-webpack-plugin';

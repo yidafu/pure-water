@@ -1,5 +1,5 @@
 {
-  "name": "@pure/eslint-config-water",
+  "name": "@pure-org/eslint-config-water",
   "version": "0.0.1",
   "private": false,
   "description": "eslint-config",
@@ -18,7 +18,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@pure/api": "^0.0.1"
+    "@pure-org/api": "^0.0.1"
   },
   "peerDependencies": {
     "eslint": "^8.0.0"

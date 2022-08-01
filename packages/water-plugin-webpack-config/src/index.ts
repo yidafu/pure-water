@@ -1,5 +1,5 @@
 import path from 'path';
-import { isDev, isProd, Plugin, PluginChainWebpackConfig } from '@pure/api';
+import { isDev, isProd, Plugin, PluginChainWebpackConfig } from '@pure-org/api';
 import WebpackBar from 'webpackbar';
 import webpack from 'webpack';
 

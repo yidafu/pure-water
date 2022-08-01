@@ -1,9 +1,9 @@
-import { Plugin } from '@pure/api';
+import { Plugin } from '@pure-org/api';
 import { ESLint } from 'eslint';
 import { runEslint } from './eslint';
 import { runStylelint } from './stylelint';
-import { ESLINT_CONFIG_MAP } from '@pure/eslint-config-water';
-import stylelintConfig from '@pure/stylelint-config-water';
+import { ESLINT_CONFIG_MAP } from '@pure-org/eslint-config-water';
+import stylelintConfig from '@pure-org/stylelint-config-water';
 import stylelint from 'stylelint';
 import { runCommitlint } from './commitlint';
 import { UserConfig } from '@commitlint/types';

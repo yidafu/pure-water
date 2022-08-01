@@ -1,5 +1,5 @@
 {
-  "name": "@pure/water-plugin-lint",
+  "name": "@pure-org/water-plugin-lint",
   "version": "0.0.1",
   "private": false,
   "main": "./lib/index.js",
@@ -40,7 +40,7 @@
     "@commitlint/load": "^17.0.3",
     "@commitlint/read": "^17.0.0",
     "@commitlint/types": "^17.0.0",
-    "@pure/api": "workspace:../pure-api",
+    "@pure-org/api": "workspace:../pure-api",
     "debug": "^4.3.4",
     "eslint": "^8.20.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -53,13 +53,13 @@
     "stylelint-config-standard-scss": "^5.0.0"
   },
   "devDependencies": {
-    "@pure/eslint-config-water": "^0.0.1",
-    "@pure/stylelint-config-water": "^0.0.1",
+    "@pure-org/eslint-config-water": "^0.0.1",
+    "@pure-org/stylelint-config-water": "^0.0.1",
     "@types/debug": "^4.1.7",
     "@types/eslint": "^8.4.5"
   },
   "peerDependencies": {
-    "@pure/eslint-config-water": "^0.0.1",
-    "@pure/stylelint-config-water": "^0.0.1"
+    "@pure-org/eslint-config-water": "^0.0.1",
+    "@pure-org/stylelint-config-water": "^0.0.1"
   }
 }

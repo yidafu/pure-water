@@ -247,7 +247,7 @@ class CommandService {
    * @memberof CommandService
    */
   async loadPreset(presetName: string): Promise<IProjectConfig> {
-    const presetPrefix = ['@pure/water-preset-'];
+    const presetPrefix = ['@pure-org/water-preset-'];
     const presetCfgList: IProjectConfig[] = [];
     for (const prefix of presetPrefix) {
       // FIXME:
@@ -339,7 +339,7 @@ class CommandService {
     rootPath: string,
   ): Promise<IPluginConstructor> {
     log('[start] loading plugin %s at root %s', plgName, rootPath);
-    const PLUGIN_PREFIX = ['@pure/water-plugin-'];
+    const PLUGIN_PREFIX = ['@pure-org/water-plugin-'];
     const pluginPath = this.resolveWithPrifix(plgName, PLUGIN_PREFIX, rootPath);
     if (pluginPath) {
       const PlgKlass: IPluginConstructor = await requireDefault(pluginPath);

@@ -1,5 +1,5 @@
 {
-  "name": "@pure/water-plugin-webpack-config",
+  "name": "@pure-org/water-plugin-webpack-config",
   "version": "0.0.1",
   "private": false,
   "description": "",
@@ -22,7 +22,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@pure/api": "^0.0.1",
+    "@pure-org/api": "^0.0.1",
     "webpackbar": "^5.0.2"
   },
   "devDependencies": {

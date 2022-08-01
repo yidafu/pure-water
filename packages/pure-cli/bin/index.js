@@ -1,5 +1,5 @@
 import { program } from 'commander';
-import { CommandService } from '@pure/api';
+import { CommandService } from '@pure-org/api';
 
 const service = new CommandService();
 
