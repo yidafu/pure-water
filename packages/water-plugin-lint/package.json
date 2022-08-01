@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "./lib/index.js",
+  "files": ["./lib"],
   "scripts": {
-    "build": "rollup -c ./rollup.config.js",
-    "dev": "rollup -c ./rollup.config.js --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -fr ./lib && tsc --watch",
+    "dev": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -41,13 +43,13 @@
     "stylelint-config-standard-scss": "^5.0.0"
   },
   "devDependencies": {
-    "@pure/eslint-config-water": "workspace:../eslint-config-water",
-    "@pure/stylelint-config-water": "workspace:../stylelint-config-water",
+    "@pure/eslint-config-water": "^0.0.1",
+    "@pure/stylelint-config-water": "^0.0.1",
     "@types/debug": "^4.1.7",
     "@types/eslint": "^8.4.5"
   },
   "peerDependencies": {
-    "@pure/eslint-config-water": "workspace:../eslint-config-water",
-    "@pure/stylelint-config-water": "workspace:../stylelint-config-water"
+    "@pure/eslint-config-water": "^0.0.1",
+    "@pure/stylelint-config-water": "^0.0.1"
   }
 }

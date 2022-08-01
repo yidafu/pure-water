@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "files": ["index.js"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,10 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "@babel/preset-env": "^7.18.9",
-    "@pure/water-plugin-babel": "workspace:../water-plugin-babel",
-    "@pure/water-plugin-lint": "workspace:../water-plugin-lint",
-    "@pure/water-plugin-vue2": "workspace:../water-plugin-vue2",
-    "@pure/water-plugin-webpack-config": "workspace:../water-plugin-webpack-config"
+    "@pure/water-plugin-babel": "^0.0.1",
+    "@pure/water-plugin-lint": "^0.0.1",
+    "@pure/water-plugin-vue2": "^0.0.1",
+    "@pure/water-plugin-webpack-config": "^0.0.1"
   },
   "devDependencies": {
     "vite": "^3.0.0",

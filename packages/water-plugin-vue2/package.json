@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
+  "files": ["./lib"],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -fr ./lib && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [],
   "author": "yidafu",
   "license": "ISC",
   "dependencies": {
-    "@pure/api": "workspace:../pure-api",
+    "@pure/api": "^0.0.1",
     "css-loader": "^6.7.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",

@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "eslint-config",
   "main": "lib/index.js",
+  "files": ["./*.js", "./*/.d.ts"],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -f ./*.js && rm -f ./*.d.ts && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build"
   },
   "author": "yidafu",
   "license": "ISC",
   "dependencies": {
-    "@pure/api": "workspace:../pure-api"
+    "@pure/api": "^0.0.1"
   },
   "peerDependencies": {
     "eslint": "^8.0.0"
