@@ -11,10 +11,7 @@
   "directories": {
     "lib": "lib"
   },
-  "files": [
-    "./lib",
-    "./bin"
-  ],
+  "files": [ "lib/*", "README.md", "CHANGELOG.md" ],
   "type": "module",
   "node": ">=14.16",
   "scripts": {

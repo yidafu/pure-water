@@ -4,9 +4,7 @@
   "private": false,
   "description": "",
   "main": "lib/index.js",
-  "files": [
-    "./lib"
-  ],
+  "files": [ "lib/*", "README.md", "CHANGELOG.md" ],
   "types": "./lib/index.d.ts",
   "directories": {
     "lib": "lib"
