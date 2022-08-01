@@ -1,6 +1,7 @@
 {
   "name": "@pure/eslint-config-water",
   "version": "0.0.1",
+  "private": false,
   "description": "eslint-config",
   "main": "lib/index.js",
   "files": ["./*.js", "./*/.d.ts"],

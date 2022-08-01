@@ -1,6 +1,7 @@
 {
   "name": "water-plugin-vue2",
   "version": "0.0.1",
+  "private": false,
   "description": "",
   "main": "lib/index.js",
   "files": ["./lib"],

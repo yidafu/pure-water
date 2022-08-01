@@ -1,6 +1,7 @@
 {
   "name": "@pure/cli",
   "version": "0.0.1",
+  "private": false,
   "description": "",
   "exports": "lib/index.js",
   "bin": {
