@@ -1,10 +1,21 @@
 # @pure-org/water-preset-vue
 
+## 0.1.1-beta.3
+
+### Patch Changes
+
+- e2963f0: #### Internal fix dependencies problem
+- fix eslint-config-water pacakge pacakge.json#files config
+- Updated dependencies [e2963f0]
+- Updated dependencies
+  - @pure-org/water-plugin-lint@0.1.1-beta.3
+
 ## 0.1.1-beta.2
 
 ### Patch Changes
 
 #### Internal
+
 - fix dependencies problem
 - Updated dependencies
   - @pure-org/water-plugin-lint@0.1.1-beta.2

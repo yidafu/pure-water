@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-plugin-vue2",
-  "version": "0.1.1-beta.1",
+  "version": "0.1.1-beta.2",
   "private": false,
   "description": "",
   "main": "lib/index.js",

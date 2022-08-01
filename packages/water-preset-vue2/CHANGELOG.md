@@ -1,10 +1,24 @@
 # @pure-org/water-preset-vue2
 
+## 0.1.1-beta.3
+
+### Patch Changes
+
+- e2963f0: #### Internal fix dependencies problem
+- fix eslint-config-water pacakge pacakge.json#files config
+- Updated dependencies [e2963f0]
+- Updated dependencies
+  - @pure-org/water-plugin-babel@0.1.1-beta.2
+  - @pure-org/water-plugin-lint@0.1.1-beta.3
+  - @pure-org/water-plugin-vue2@0.1.1-beta.2
+  - @pure-org/water-plugin-webpack-config@0.1.1-beta.2
+
 ## 0.1.1-beta.2
 
 ### Patch Changes
 
 #### Internal
+
 - fix dependencies problem
 - Updated dependencies
   - @pure-org/water-plugin-babel@0.1.1-beta.1

@@ -1,10 +1,18 @@
 # @pure-org/stylelint-config-water
 
+## 0.1.1-beta.2
+
+### Patch Changes
+
+- e2963f0: #### Internal fix dependencies problem
+- fix eslint-config-water pacakge pacakge.json#files config
+
 ## 0.1.1-beta.1
 
 ### Patch Changes
 
 #### Internal
+
 - fix dependencies problem
 
 ## 0.1.1
