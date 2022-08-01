@@ -1,12 +1,23 @@
 # @pure-org/water-plugin-lint
 
+## 0.1.1-beta.2
+
+### Patch Changes
+
+#### Internal
+- fix dependencies problem
+- Updated dependencies
+  - @pure-org/eslint-config-water@0.1.1-beta.1
+  - @pure-org/api@0.1.1-beta.1
+  - @pure-org/stylelint-config-water@0.1.1-beta.1
+
 ## 0.1.1-beta.1
 
 ### Patch Changes
 
 #### Internal
 
-  - fix `@pure-org/water-preset-vue2` and `@pure-org/water-plugin-lint` dependencies [#17](https://github.com/yidafu/pure-water/pull/17)
+- fix `@pure-org/water-preset-vue2` and `@pure-org/water-plugin-lint` dependencies [#17](https://github.com/yidafu/pure-water/pull/17)
 
 ## 2.0.0-beta.0
 

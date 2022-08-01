@@ -1,5 +1,14 @@
 # @pure-org/water-preset-vue
 
+## 0.1.1-beta.2
+
+### Patch Changes
+
+#### Internal
+- fix dependencies problem
+- Updated dependencies
+  - @pure-org/water-plugin-lint@0.1.1-beta.2
+
 ## 0.1.1-beta.1
 
 ### Patch Changes

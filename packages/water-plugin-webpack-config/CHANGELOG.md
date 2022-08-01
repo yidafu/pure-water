@@ -1,5 +1,14 @@
 # @pure-org/water-plugin-webpack-config
 
+## 0.1.1-beta.1
+
+### Patch Changes
+
+#### Internal
+- fix dependencies problem
+- Updated dependencies
+  - @pure-org/api@0.1.1-beta.1
+
 ## 0.1.1
 
 ### Minor Changes

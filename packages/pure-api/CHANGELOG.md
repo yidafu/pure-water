@@ -1,5 +1,12 @@
 # @pure-org/api
 
+## 0.1.1-beta.1
+
+### Patch Changes
+
+#### Internal
+- fix dependencies problem
+
 ## 0.1.1
 
 ### Minor Changes

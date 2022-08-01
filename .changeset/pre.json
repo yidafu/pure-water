@@ -2,18 +2,19 @@
   "mode": "pre",
   "tag": "beta",
   "initialVersions": {
-    "@pure-org/eslint-config-water": "0.1.0",
-    "@pure-org/api": "0.1.0",
-    "@pure-org/cli": "0.1.0",
-    "@pure-org/stylelint-config-water": "0.1.0",
-    "@pure-org/water-plugin-babel": "0.1.0",
-    "@pure-org/water-plugin-lint": "0.1.0",
-    "@pure-org/water-plugin-vue2": "0.1.0",
-    "@pure-org/water-plugin-webpack-config": "0.1.0",
-    "@pure-org/water-preset-vue": "0.1.0",
-    "@pure-org/water-preset-vue2": "0.1.0"
+    "@pure-org/eslint-config-water": "0.1.1-beta.0",
+    "@pure-org/api": "0.1.1-beta.0",
+    "@pure-org/cli": "0.1.1-beta.0",
+    "@pure-org/stylelint-config-water": "0.1.1-beta.0",
+    "@pure-org/water-plugin-babel": "0.1.1-beta.0",
+    "@pure-org/water-plugin-lint": "0.1.1-beta.1",
+    "@pure-org/water-plugin-vue2": "0.1.1-beta.0",
+    "@pure-org/water-plugin-webpack-config": "0.1.1-beta.0",
+    "@pure-org/water-preset-vue": "0.1.1-beta.1",
+    "@pure-org/water-preset-vue2": "0.1.1-beta.1"
   },
   "changesets": [
-    "breezy-clocks-peel"
+    "breezy-clocks-peel",
+    "real-elephants-sleep"
   ]
 }
