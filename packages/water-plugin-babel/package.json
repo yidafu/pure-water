@@ -1,10 +1,12 @@
 {
   "name": "@pure-org/water-plugin-babel",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": false,
   "description": "",
   "main": "lib/index.js",
-  "files": ["./lib"],
+  "files": [
+    "./lib"
+  ],
   "types": "./lib/index.d.ts",
   "directories": {
     "lib": "lib"
@@ -23,7 +25,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.18.9",
-    "@pure-org/api": "workspace:../pure-api",
+    "@pure-org/api": "workspace:^",
     "babel-loader": "^8.2.5",
     "fork-ts-checker-webpack-plugin": "^7.2.13",
     "vue-template-compiler": "^2.7.8"

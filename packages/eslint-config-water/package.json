@@ -1,10 +1,13 @@
 {
   "name": "@pure-org/eslint-config-water",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": false,
   "description": "eslint-config",
   "main": "lib/index.js",
-  "files": ["./*.js", "./*/.d.ts"],
+  "files": [
+    "./*.js",
+    "./*/.d.ts"
+  ],
   "types": "./index.d.ts",
   "scripts": {
     "dev": "tsc --watch",
@@ -18,7 +21,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@pure-org/api": "workspace:../pure-api"
+    "@pure-org/api": "workspace:^"
   },
   "peerDependencies": {
     "eslint": "^8.0.0"

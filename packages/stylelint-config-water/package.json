@@ -1,11 +1,14 @@
 {
   "name": "@pure-org/stylelint-config-water",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": false,
   "description": "",
   "main": "index.js",
   "types": "./index.d.ts",
-  "files": ["./index.js", "./index.d.ts"],
+  "files": [
+    "./index.js",
+    "./index.d.ts"
+  ],
   "scripts": {
     "dev": "tsc --watch",
     "build": "rm -f index.{js,d.ts} && tsc",

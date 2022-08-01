@@ -1,10 +1,12 @@
 {
   "name": "@pure-org/water-preset-vue",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": false,
   "description": "",
   "main": "index.js",
-  "files": ["index.js"],
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,7 +18,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^3.0.1",
-    "@pure-org/water-plugin-lint": "workspace:../water-plugin-lint"
+    "@pure-org/water-plugin-lint": "workspace:^"
   },
   "devDependencies": {
     "vite": "^3.0.0",
