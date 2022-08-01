@@ -6,10 +6,14 @@
   "bin": {
     "pure": "bin/index.js"
   },
+  "files":["./lib", "./bin"],
   "type": "module",
   "node": ">=14.16",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsc --watch",
+    "build": "rm -fr ./lib && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +21,7 @@
   "dependencies": {
     "commander": "^9.4.0",
     "debug": "^4.3.4",
-    "@pure/api": "workspace:../pure-api"
+    "@pure/api": "^0.0.1"
   },
   "devDependencies": {}
 }
