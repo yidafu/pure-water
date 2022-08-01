@@ -16,7 +16,7 @@ interface ILintPluginActionOption {
 export interface ILintPluginOption {
   presetCommitlint?: ICommitlintMode
   commitlint?: UserConfig,
-  presetEslint?: 'base' | 'vue' | 'vue3';
+  presetEslint?: 'base' | 'vue2' | 'vue';
   eslint?: ESLint.Options,
   stylelint?: stylelint.LinterOptions,
 }
