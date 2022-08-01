@@ -1,9 +1,13 @@
 {
   "name": "@pure/water-plugin-babel",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "lib/index.js",
   "files": ["./lib"],
+  "types": "./lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
     "dev": "tsc --watch",
     "build": "rm -fr ./lib/ && tsc",

@@ -1,9 +1,10 @@
 {
   "name": "@pure/eslint-config-water",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "eslint-config",
   "main": "lib/index.js",
   "files": ["./*.js", "./*/.d.ts"],
+  "types": "./index.d.ts",
   "scripts": {
     "dev": "tsc --watch",
     "build": "rm -f ./*.js && rm -f ./*.d.ts && tsc",

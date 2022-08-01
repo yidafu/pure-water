@@ -1,9 +1,15 @@
 {
   "name": "@pure/water-plugin-lint",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
   "main": "./lib/index.js",
-  "files": ["./lib"],
+  "files": [
+    "./lib"
+  ],
+  "types": "./lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "description": "",
   "scripts": {
     "build": "rm -fr ./lib && tsc",
     "dev": "tsc --watch",

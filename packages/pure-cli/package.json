@@ -1,10 +1,14 @@
 {
   "name": "@pure/cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "exports": "lib/index.js",
   "bin": {
     "pure": "bin/index.js"
+  },
+  "types": "./lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
   },
   "files":["./lib", "./bin"],
   "type": "module",

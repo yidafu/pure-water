@@ -1,8 +1,9 @@
 {
   "name": "@pure/stylelint-config-water",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "types": "./index.d.ts",
   "files": ["./index.js", "./index.d.ts"],
   "scripts": {
     "dev": "tsc --watch",
