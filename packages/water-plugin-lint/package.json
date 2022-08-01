@@ -53,13 +53,13 @@
     "stylelint-config-standard-scss": "^5.0.0"
   },
   "devDependencies": {
-    "@pure-org/eslint-config-water": "^0.0.1",
-    "@pure-org/stylelint-config-water": "^0.0.1",
+    "@pure-org/eslint-config-water": "workspace:../eslint-config-water",
+    "@pure-org/stylelint-config-water": "workspace:../stylelint-config-water",
     "@types/debug": "^4.1.7",
     "@types/eslint": "^8.4.5"
   },
   "peerDependencies": {
-    "@pure-org/eslint-config-water": "^0.0.1",
-    "@pure-org/stylelint-config-water": "^0.0.1"
+    "@pure-org/eslint-config-water": "workspace:../eslint-config-water/api",
+    "@pure-org/stylelint-config-water": "workspace:../stylelint-config-water"
   }
 }

@@ -29,7 +29,7 @@
   "dependencies": {
     "commander": "^9.4.0",
     "debug": "^4.3.4",
-    "@pure-org/api": "^0.0.1"
+    "@pure-org/api": "workspace:../pure-api"
   },
   "devDependencies": {}
 }
