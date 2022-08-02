@@ -11,7 +11,9 @@ service.load().then(() => {
       })
       .allowUnknownOption()
       .description(cmd.description);
-
+    if (cmd.alias) {
+      cmdInst.alias(cmd.alias);
+    }
 
     // TODO common --config/--debug flag
     // cmdInst.option('--config <config>').description('pure.config.js 文件路径');
