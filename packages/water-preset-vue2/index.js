@@ -1,4 +1,3 @@
-
 module.exports = {
   bundler: 'webpack',
   plugins: {
@@ -10,7 +9,7 @@ module.exports = {
     vue2: {},
     babel: {
       typeCheck: false,
-      presets: [ '@babel/preset-env' ],
+      presets: ['@babel/preset-env', [{ targets: '> 2%, not dead' }]],
     },
     'webpack-config': {},
   },
