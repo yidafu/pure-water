@@ -2,9 +2,9 @@ import debug from 'debug';
 import path from 'path';
 import fs from 'fs/promises';
 
-import { createServer, UserConfig as ViteUserConfig, build } from 'vite';
+import { createServer, UserConfig as ViteUserConfig, build, mergeConfig } from 'vite';
 import { Bundler } from './Bundler';
-import { ensureDirectory } from '../utils';
+import { ensureDirectory, runAsyncFns } from '../utils';
 
 const log = debug('pure:api:bundler:vite');
 
@@ -25,7 +25,12 @@ class ViteBundler extends Bundler {
    * @memberof ViteBundler
    */
   get compileOption(): ViteUserConfig {
-    return this.service.getProjectConfig().viteConfig ?? {};
+    const baseConfig = this.service.getProjectConfig().viteConfig ?? {};
+    for (const viteConfigFn of this.service.viteConfigFns) {
+      const overrideConfig = viteConfigFn();
+      mergeConfig(baseConfig, overrideConfig, false);
+    }
+    return baseConfig;
   }
 
   /**

@@ -19,15 +19,8 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
+    "@pure-org/water-plugin-lint": "workspace:^",
     "@vitejs/plugin-vue": "^3.0.1",
-    "@pure-org/water-plugin-lint": "workspace:^"
-  },
-  "devDependencies": {
-    "vite": "^3.0.0",
-    "vue": "^3.2.25"
-  },
-  "peerDependencies": {
-    "vite": "^3.0.0",
-    "vue": "^3.2.25"
+    "vite": "^3.0.4"
   }
 }
