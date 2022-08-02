@@ -135,6 +135,8 @@ importers:
       '@commitlint/read': 17.0.0
       '@commitlint/types': 17.0.0
       '@pure-org/api': link:../pure-api
+      '@pure-org/eslint-config-water': link:../eslint-config-water
+      '@pure-org/stylelint-config-water': link:../stylelint-config-water
       debug: 4.3.4
       eslint: 8.20.0
       eslint-config-airbnb-base: 15.0.0_afl3vkhn63baibzal45igheroq
@@ -146,8 +148,6 @@ importers:
       stylelint-config-recommended-vue: 1.4.0_5rxrxgs7sjazj2ve56ds3kmipi
       stylelint-config-standard-scss: 5.0.0_uyk3cwxn3favstz4untq233szu
     devDependencies:
-      '@pure-org/eslint-config-water': link:../eslint-config-water
-      '@pure-org/stylelint-config-water': link:../stylelint-config-water
       '@types/debug': 4.1.7
       '@types/eslint': 8.4.5
 
@@ -209,8 +209,7 @@ importers:
       '@pure-org/water-plugin-lint': workspace:^
       '@pure-org/water-plugin-vue2': workspace:^
       '@pure-org/water-plugin-webpack-config': workspace:^
-      vite: ^3.0.0
-      vue: ^3.2.25
+      vue: ^2.7.8
     dependencies:
       '@babel/preset-env': 7.18.9_@babel+core@7.18.9
       '@pure-org/water-plugin-babel': link:../water-plugin-babel
@@ -218,8 +217,7 @@ importers:
       '@pure-org/water-plugin-vue2': link:../water-plugin-vue2
       '@pure-org/water-plugin-webpack-config': link:../water-plugin-webpack-config
     devDependencies:
-      vite: 3.0.2
-      vue: 3.2.37
+      vue: 2.7.8
 
 packages:
 
@@ -2175,6 +2173,14 @@ packages:
       '@vue/compiler-core': 3.2.37
       '@vue/shared': 3.2.37
 
+  /@vue/compiler-sfc/2.7.8:
+    resolution: {integrity: sha512-2DK4YWKfgLnW9VDR9gnju1gcYRk3flKj8UNsms7fsRmFcg35slVTZEkqwBtX+wJBXaamFfn6NxSsZh3h12Ix/Q==}
+    dependencies:
+      '@babel/parser': 7.18.9
+      postcss: 8.4.14
+      source-map: 0.6.1
+    dev: true
+
   /@vue/compiler-sfc/3.2.37:
     resolution: {integrity: sha512-+7i/2+9LYlpqDv+KTtWhOZH+pa8/HnX/905MdVmAcI/mPQOBwkHHIzrsEsucyOIZQYMkXUiTkmZq5am/NyXKkg==}
     dependencies:
@@ -3259,6 +3265,10 @@ packages:
 
   /csstype/2.6.20:
     resolution: {integrity: sha512-/WwNkdXfckNgw6S5R125rrW8ez139lBHWouiBvX8dfMFtcn6V81REDqnH7+CRpRipfYlyU1CmOnOxrmGcFOjeA==}
+
+  /csstype/3.1.0:
+    resolution: {integrity: sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==}
+    dev: true
 
   /csv-generate/3.4.3:
     resolution: {integrity: sha512-w/T+rqR0vwvHqWs/1ZyMDWtHHSJaN06klRqJXBEpDJaM/+dZkso0OKh1VcuuYvK3XM53KysVNq8Ko/epCK8wOw==}
@@ -7012,6 +7022,13 @@ packages:
   /vue-template-es2015-compiler/1.9.1:
     resolution: {integrity: sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==}
     dev: false
+
+  /vue/2.7.8:
+    resolution: {integrity: sha512-ncwlZx5qOcn754bCu5/tS/IWPhXHopfit79cx+uIlLMyt3vCMGcXai5yCG5y+I6cDmEj4ukRYyZail9FTQh7lQ==}
+    dependencies:
+      '@vue/compiler-sfc': 2.7.8
+      csstype: 3.1.0
+    dev: true
 
   /vue/3.2.37:
     resolution: {integrity: sha512-bOKEZxrm8Eh+fveCqS1/NkG/n6aMidsI6hahas7pa0w/l7jkbssJVsRhVDs07IdDq7h9KHswZOgItnwJAgtVtQ==}
