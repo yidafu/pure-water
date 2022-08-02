@@ -1,4 +1,3 @@
-import merge from 'lodash.merge';
 import debug from 'debug';
 import minimist, { ParsedArgs } from 'minimist';
 import { UserConfig } from 'vite';
@@ -27,6 +26,7 @@ import {
   PluginOnPluginReadyHook,
   PluginViteConfigHook,
 } from '../plugin';
+import { mergeProjectConfig } from './utils';
 
 const PRESET_PATH_KEY = Symbol('__PRESET_PATH__');
 
@@ -204,7 +204,10 @@ class CommandService {
 
     this.projectConfig = await requireDefault(this.paths.projectConfig!);
     const presets = await this.loadPresets();
-    this.projectConfig = presets.reduce((pV, cV) => merge(cV, pV), this.projectConfig);
+    this.projectConfig = presets.reduce(
+      (pV, cV) => mergeProjectConfig(cV, pV),
+      this.projectConfig,
+    );
 
     if (this.argv.bundler === 'webpack' || this.projectConfig.bundler === 'webpack') {
       log('projectConfig#bundler => webpack');
@@ -221,12 +224,12 @@ class CommandService {
    * @return {Promise<IProjectConfig[]>}
    * @memberof CommandService
    */
-  async loadPresets(): Promise<IProjectConfig[]> {
+  async loadPresets(): Promise<Partial<IProjectConfig>[]> {
     log('preset will load %s', this.projectConfig.presets);
     if (!this.projectConfig.presets?.length) {
       return [];
     }
-    const presetMap = new Map<string, IProjectConfig>();
+    const presetMap = new Map<string, Partial<IProjectConfig>>();
     // eslint-disable-next-line no-restricted-syntax
     for (const presetName of this.projectConfig.presets) {
       if (presetMap.has(presetName)) {
