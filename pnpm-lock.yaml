@@ -7,6 +7,7 @@ importers:
       '@changesets/cli': ^2.24.1
       '@pure-org/cli': workspace:*
       '@pure-org/eslint-config-water': workspace:*
+      '@pure-org/tsconfig': workspace:*
       '@pure-org/water-preset-vue': workspace:*
       '@rollup/plugin-typescript': ^8.3.3
       '@typescript-eslint/eslint-plugin': ^5.30.7
@@ -26,6 +27,7 @@ importers:
       '@changesets/cli': 2.24.1
       '@pure-org/cli': link:packages/pure-cli
       '@pure-org/eslint-config-water': link:packages/eslint-config-water
+      '@pure-org/tsconfig': link:packages/tsconfig
       '@pure-org/water-preset-vue': link:packages/water-preset-vue
       '@rollup/plugin-typescript': 8.3.3_sbpikdwgo7pbmeew3vug7t5zyu
       '@typescript-eslint/eslint-plugin': 5.30.7_6wltbjakwuqm7awqswigmiuhd4
@@ -116,6 +118,12 @@ importers:
       stylelint-order: 5.0.0_stylelint@14.9.1
     devDependencies:
       stylelint: 14.9.1
+
+  packages/tsconfig:
+    specifiers:
+      '@tsconfig/node16': ^1.0.3
+    dependencies:
+      '@tsconfig/node16': 1.0.3
 
   packages/water-plugin-babel:
     specifiers:

@@ -1,0 +1,19 @@
+{
+  "name": "@pure-org/tsconfig",
+  "version": "0.1.1-beta.4",
+  "private": false,
+  "description": "tsconfig",
+  "files": [
+    "tsconfig.json",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "author": "yidafu",
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "@tsconfig/node16": "^1.0.3"
+  }
+}
