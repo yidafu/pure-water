@@ -9,7 +9,12 @@ module.exports = {
     vue2: {},
     babel: {
       typeCheck: false,
-      presets: ['@babel/preset-env', [{ targets: '> 2%, not dead' }]],
+      presets: [
+        [
+          '@babel/preset-env',
+          { targets: '> 2%, not dead' },
+        ],
+      ],
     },
     'webpack-config': {},
   },
