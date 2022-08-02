@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-plugin-webpack-config",
-  "version": "0.1.1-beta.0",
+  "version": "0.1.1-beta.3",
   "private": false,
   "description": "",
   "main": "lib/index.js",
@@ -27,9 +27,13 @@
   },
   "dependencies": {
     "@pure-org/api": "workspace:^",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "terser-webpack-plugin": "^5.3.3",
     "webpackbar": "^5.0.2"
   },
   "devDependencies": {
+    "@types/case-sensitive-paths-webpack-plugin": "^2.1.6",
     "webpack": "^5.74.0"
   },
   "peerDependencies": {

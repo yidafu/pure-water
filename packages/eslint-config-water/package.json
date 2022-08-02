@@ -1,12 +1,14 @@
 {
   "name": "@pure-org/eslint-config-water",
-  "version": "0.1.1-beta.0",
+  "version": "0.1.1-beta.3",
   "private": false,
   "description": "eslint-config",
-  "main": "lib/index.js",
+  "main": "index.js",
   "files": [
-    "./*.js",
-    "./*/.d.ts"
+    "*.js",
+    "*.d.ts",
+    "README.md",
+    "CHANGELOG.md"
   ],
   "types": "./index.d.ts",
   "scripts": {
