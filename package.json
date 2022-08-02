@@ -16,6 +16,9 @@
   "license": "ISC",
   "devDependencies": {
     "@changesets/cli": "^2.24.1",
+    "@pure-org/cli": "workspace:*",
+    "@pure-org/water-preset-vue": "workspace:*",
+    "@pure-org/eslint-config-water": "workspace:*",
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
