@@ -9,6 +9,7 @@ const ESLINT_CONFIG_MAP = new Map<string, Linter.Config>([
   ['vue', vueEslintConfig],
 ]);
 
+// eslint-disable-next-line import/no-default-export
 export default baseEslintConfig;
 
 export {

@@ -9,6 +9,12 @@ const baseEslintConfig: Linter.Config = {
   parserOptions: {
     project: './tsconfig.json',
   },
+  rules: {
+    'import/no-default-export': 'error',
+    'import/prefer-default-export': 'off',
+    'consistent-return': 'warn',
+    'import/no-cycle': 'warn',
+  },
 };
 
 export = baseEslintConfig;

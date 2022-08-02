@@ -14,17 +14,16 @@ class WebpackBundler extends Bundler {
     const prjConfig = this.service.getProjectConfig().webpackConfig ?? {};
     const plgConfig = new ChainConfig();
     return runAsyncFns(this.service.chainWebpackConfigFns, plgConfig)
-      .then(() => {
-        return mergeWebpack(plgConfig.toConfig(), prjConfig);
-      });
+      .then(() => mergeWebpack(plgConfig.toConfig(), prjConfig));
   }
 
+  // eslint-disable-next-line class-methods-use-this
   cleanDist(): void {
     throw new Error('Method not implemented.');
   }
 
   async startDevServer(): Promise<void> {
-    const compileOption = await this.compileOption; 
+    const compileOption = await this.compileOption;
     try {
       const compiler = webpack(compileOption);
       const { staticOptions, ...restOpts } = compileOption.devServer as any;
@@ -51,7 +50,6 @@ class WebpackBundler extends Bundler {
   async runBuiding(): Promise<void> {
     const compileOption = await this.compileOption;
     try {
-
       const compiler = webpack(compileOption);
       await new Promise((resolve, reject) => {
         compiler.run((err, status) => {
@@ -65,7 +63,6 @@ class WebpackBundler extends Bundler {
           }
         });
       });
-
     } catch (err) {
       console.error(err);
     }

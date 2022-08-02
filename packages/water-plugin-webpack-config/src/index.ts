@@ -1,11 +1,14 @@
 import path from 'path';
-import { isDev, isProd, Plugin, PluginChainWebpackConfig } from '@pure-org/api';
+import {
+  isDev, isProd, Plugin, PluginChainWebpackConfig,
+} from '@pure-org/api';
 import WebpackBar from 'webpackbar';
 import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 
+// eslint-disable-next-line import/no-default-export
 export default class BaseWebpackPlugin extends Plugin {
   static priority = 5;
 

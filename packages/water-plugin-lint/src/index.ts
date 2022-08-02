@@ -1,24 +1,26 @@
 import { Plugin } from '@pure-org/api';
 import { ESLint } from 'eslint';
-import { runEslint } from './eslint';
-import { runStylelint } from './stylelint';
 import { ESLINT_CONFIG_MAP } from '@pure-org/eslint-config-water';
 import stylelintConfig from '@pure-org/stylelint-config-water';
 import stylelint from 'stylelint';
-import { runCommitlint } from './commitlint';
 import { UserConfig } from '@commitlint/types';
+import { runCommitlint } from './commitlint';
+import { runStylelint } from './stylelint';
+import { runEslint } from './eslint';
 import { ICommitlintMode } from './commitlint-config';
 
 interface ILintPluginActionOption {
   fix: boolean;
 }
 
+type StylelintOption = stylelint.LinterOptions & { entry?: string[], disable?: boolean };
+type ESlintOption = ESLint.Options & { entry?: string[], disable?: boolean };
 export interface ILintPluginOption {
   presetCommitlint?: ICommitlintMode
-  commitlint?: UserConfig,
+  commitlint?: UserConfig & { disable?: boolean },
   presetEslint?: 'base' | 'vue2' | 'vue';
-  eslint?: ESLint.Options,
-  stylelint?: stylelint.LinterOptions,
+  eslint?: ESlintOption,
+  stylelint?: StylelintOption,
 }
 
 class LintPlugin extends Plugin {
@@ -30,34 +32,51 @@ class LintPlugin extends Plugin {
         '--fix': 'Automatically fix problems',
       },
       async action(option: ILintPluginActionOption) {
-        const { 
+        const {
           presetCommitlint,
-          commitlint: commitlintUserOpt = {}, 
-          presetEslint, 
-          eslint: eslintOption = {}, 
-          stylelint: stylelitOption = {},
+          commitlint: commitlintOption = {},
+          presetEslint,
+          eslint: eslintOption = {},
+          stylelint: stylelitOption = {} as StylelintOption,
         } = lintPlgOption;
 
-        await runCommitlint(presetCommitlint, commitlintUserOpt);
+        const { diable, ...restCommitlintOption } = commitlintOption;
+        if (!diable) {
+          await runCommitlint(presetCommitlint, restCommitlintOption);
+        }
 
         const eslintConfig = ESLINT_CONFIG_MAP.get(presetEslint ?? 'base');
-        await runEslint({
-          ...eslintOption,
-          baseConfig: eslintConfig,
-          fix: option.fix,
-        });
-
-        await runStylelint({
-          config: stylelintConfig,
-          formatter: 'string',
-          files: ['src/**/*.css', 'src/**.scss'],
-          ...stylelitOption,
-          fix: option.fix,
-        });
+        const {
+          entry: eslintEntry = [],
+          disable: eslintDisable = false,
+          ...restEslintConfig
+        } = eslintOption;
+        if (!eslintDisable) {
+          await runEslint(eslintEntry, {
+            ...restEslintConfig,
+            baseConfig: eslintConfig,
+            fix: option.fix,
+          });
+        }
+        const {
+          entry: stylelintEntry = [],
+          disable: stylelintDisable = false,
+          ...restStylelintConfig
+        } = stylelitOption;
+        if (!stylelintDisable) {
+          await runStylelint({
+            config: stylelintConfig,
+            formatter: 'string',
+            files: stylelintEntry,
+            ...restStylelintConfig,
+            fix: option.fix,
+          });
+        }
       },
       description: 'lint project',
     };
   };
 }
 
+// eslint-disable-next-line import/no-default-export
 export default LintPlugin;

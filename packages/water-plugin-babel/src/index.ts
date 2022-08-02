@@ -9,10 +9,13 @@ export interface IPluginBabelOption {
   plugins?: string[];
 }
 
+// eslint-disable-next-line import/no-default-export
 export default class BabelPlugin extends Plugin {
   chainWebpackConfig: PluginChainWebpackConfig = async (config) => {
     const babelOption = this.getPluginOption('babel');
-    const { compilePackages, presets, plugins, checkType } = babelOption;
+    const {
+      compilePackages, presets, plugins, checkType,
+    } = babelOption;
     config.resolve.extensions.merge(['.js', '.ts', '.jsx', '.tsx', '.mjs']).end();
 
     const babelExcludeRegExp = compilePackages?.length > 0
@@ -21,13 +24,15 @@ export default class BabelPlugin extends Plugin {
     config.module.rule('compile-script')
       .test(/\.(js|ts|jsx|tsx|mjs)/)
       .exclude.add(babelExcludeRegExp).end()
-      .use('babel').loader(require.resolve('babel-loader')).options({
+      .use('babel').loader(require.resolve('babel-loader'))
+      .options({
         cwd: this.PROJECT_ROOT,
-        presets: presets,
-        plugins: plugins,
+        presets,
+        plugins,
         // TODO: cache config
-      }).end();
-    
+      })
+      .end();
+
     // ts check
     const tsconfigPath = path.join(this.PROJECT_ROOT, 'tsconfig.json');
     if (await fileExist(tsconfigPath) && checkType) {
@@ -52,6 +57,5 @@ export default class BabelPlugin extends Plugin {
           },
         }]).end();
     }
-    
   };
 }

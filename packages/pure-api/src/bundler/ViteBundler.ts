@@ -26,6 +26,7 @@ class ViteBundler extends Bundler {
    */
   get compileOption(): ViteUserConfig {
     const baseConfig = this.service.getProjectConfig().viteConfig ?? {};
+    // eslint-disable-next-line no-restricted-syntax
     for (const viteConfigFn of this.service.viteConfigFns) {
       const overrideConfig = viteConfigFn();
       mergeConfig(baseConfig, overrideConfig, false);
@@ -38,6 +39,7 @@ class ViteBundler extends Bundler {
    *
    * @memberof ViteBundler
    */
+  // eslint-disable-next-line class-methods-use-this
   cleanDist(): void {}
 
   /**
@@ -65,16 +67,14 @@ class ViteBundler extends Bundler {
   }
 
   async dumpCompileConfig(): Promise<void> {
-    {
-      const viteConfigFile = `export default ${JSON.stringify(this.compileOption)
-      }`;
-      const outputPath = path.join(
-        this.service.paths.outputPath!,
-        'vite.config.js',
-      );
-      await ensureDirectory(this.service.paths.outputPath!);
-      await fs.writeFile(outputPath, viteConfigFile);
-    }
+    const viteConfigFile = `export default ${JSON.stringify(this.compileOption)
+    }`;
+    const outputPath = path.join(
+      this.service.paths.outputPath!,
+      'vite.config.js',
+    );
+    await ensureDirectory(this.service.paths.outputPath!);
+    await fs.writeFile(outputPath, viteConfigFile);
   }
 }
 

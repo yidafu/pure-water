@@ -6,7 +6,7 @@ const vueBaseEslintConfig: Linter.Config = {
   parser: 'vue-eslint-parser',
   extends: ['plugin:vue/recommended'],
   parserOptions: {
-    'parser': '@typescript-eslint/parser',
+    parser: '@typescript-eslint/parser',
   },
 };
 

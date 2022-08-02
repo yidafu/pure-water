@@ -8,7 +8,12 @@ module.exports = {
   plugins: {
     lint: {
       presetEslint: 'vue',
-      eslint: {},
+      eslint: {
+        entry: ['src/**/*.ts', 'src/**/*.vue'],
+      },
+      stylelint: {
+        entry: ['src/**/*.css', 'src/**/*.scss'],
+      },
       presetCommitlint: 'recommended',
     },
   },

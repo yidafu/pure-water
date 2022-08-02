@@ -4,7 +4,7 @@ import baseEslintConfig from './base';
 
 const vue3BaseEslintConfig: Linter.Config = {
   parser: 'vue-eslint-parser',
-  extends: [ 'plugin:vue/vue3-recommended' ],
+  extends: ['plugin:vue/vue3-recommended'],
   parserOptions: {
     parser: '@typescript-eslint/parser',
     extraFileExtensions: ['.vue'],
