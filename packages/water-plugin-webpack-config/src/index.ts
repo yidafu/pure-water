@@ -1,6 +1,6 @@
 import path from 'path';
 import {
-  isDev, isProd, Plugin, PluginChainWebpackConfig,
+  isDev, isProd, Plugin, PluginChainWebpackConfigHook,
 } from '@pure-org/api';
 import WebpackBar from 'webpackbar';
 import webpack from 'webpack';
@@ -12,7 +12,7 @@ import CopyPlugin from 'copy-webpack-plugin';
 export default class BaseWebpackPlugin extends Plugin {
   static priority = 5;
 
-  chainWebpackConfig: PluginChainWebpackConfig = async (config) => {
+  chainWebpackConfig: PluginChainWebpackConfigHook = async (config) => {
     config
       .entry('main')
       .add(path.join(this.PROJECT_ROOT, './src/main.js'))
