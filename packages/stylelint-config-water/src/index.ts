@@ -5,7 +5,12 @@ const stylelintConfig: Config = {
     'stylelint-config-standard-scss',
     'stylelint-config-recommended-vue',
   ],
-  rules: {},
+  plugins: [
+    'stylelint-order',
+  ],
+  rules: {
+    'order/properties-alphabetical-order': 'always',
+  },
 };
 
 export = stylelintConfig;
