@@ -105,5 +105,7 @@ export default class BaseWebpackPlugin extends Plugin {
         // .allowedHosts()
         .headers({ 'Access-Control-Allow-Origin': '*' });
     }
+
+    // TODO: ESLint plugin
   };
 }

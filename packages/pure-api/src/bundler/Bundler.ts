@@ -1,6 +1,6 @@
 import debug from 'debug';
 import { CommandService } from '../service/CommandService';
-import { runAsyncFns } from '../utils';
+import { isProd, runAsyncFns } from '../utils';
 
 const log = debug('pure:api:bundler');
 
@@ -57,7 +57,9 @@ abstract class Bundler {
    */
   async build(): Promise<void> {
     log('run bundler', this.name);
-    await this.dumpCompileConfig();
+    if (!isProd()) {
+      await this.dumpCompileConfig();
+    }
     await runAsyncFns(this.service.beforeCompileFns);
     await this.runBuiding();
     await runAsyncFns(this.service.afterBuildFns);

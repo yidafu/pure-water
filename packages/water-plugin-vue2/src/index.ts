@@ -5,8 +5,14 @@ import path from 'path';
 import { cssConfig } from './css-config';
 import { assetConfig } from './asset-config';
 
+declare module '@pure-org/api' {
+  interface IProjectPluginConfig {
+    vue2: IPluginVu2Options
+  }
+}
+
 export interface IPluginVu2Options {
-  htmlOption: HtmlWebpackPlugin.Options,
+  htmlOption?: HtmlWebpackPlugin.Options,
 }
 
 // eslint-disable-next-line import/no-default-export
@@ -14,8 +20,8 @@ export default class Vu2Plugin extends Plugin {
   static priority = 40;
 
   chainWebpackConfig: PluginChainWebpackConfigHook = async (config) => {
-    const vue2Options = this.getPluginOption('vue2');
-    const { htmlOption } = vue2Options;
+    const vue2Options: IPluginVu2Options = this.getPluginOption('vue2');
+    const { htmlOption = {} } = vue2Options;
     config.resolve.extensions.add('.vue');
     config.module
       .rule('compile-vue')
