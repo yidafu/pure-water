@@ -332,7 +332,11 @@ class CommandService {
           if (isFunction(plg.registerCommand)) {
             const cmd = plg.registerCommand();
             if (cmd) {
-              this.commands.push(cmd);
+              if (Array.isArray(cmd)) {
+                this.commands.push(...cmd);
+              } else {
+                this.commands.push(cmd);
+              }
             }
           }
         }

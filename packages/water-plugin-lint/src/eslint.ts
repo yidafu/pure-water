@@ -7,7 +7,7 @@ const log = debug('pure:plugin:lint:eslint');
 export async function runEslint(entry: string[], option: ESLint.Options) {
   const spinner = ora({
     text: '开始 ESlint ...',
-    spinner: 'dots8Bit',
+    spinner: 'dots13',
     color: 'green',
   }).start();
   try {

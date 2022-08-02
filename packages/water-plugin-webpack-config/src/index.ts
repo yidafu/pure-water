@@ -67,13 +67,15 @@ export default class BaseWebpackPlugin extends Plugin {
           NODE_ENV: isProd() ? '"production"' : '"development"',
           BASE_URL: '"/"',
         },
-      }]).end()
+      }])
+      .end()
 
       .plugin('CaseSensitivePathsPlugin')
       .use(CaseSensitivePathsPlugin)
       .end()
-      
-      .plugin('copy-plugin').use(CopyPlugin, [{
+
+      .plugin('copy-plugin')
+      .use(CopyPlugin, [{
         patterns: [{
           from: this.PUBLIC_PATH,
           to: this.OUTPUT_PATH,
@@ -86,7 +88,7 @@ export default class BaseWebpackPlugin extends Plugin {
           info: { minimized: true },
         }],
       }]);
-  
+
     if (isDev()) {
       config.devServer
         .staticOptions({
