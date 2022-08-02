@@ -15,7 +15,9 @@ type AnyAsnycFn = (...args: any[]) => Promise<any>;
  * @param {...any[]} args
  */
 export async function runAsyncFns(fns: AnyAsnycFn[], ...args: any[]) {
+  // eslint-disable-next-line no-restricted-syntax
   for (const fn of fns) {
+    // eslint-disable-next-line no-await-in-loop
     await fn(...args);
   }
 }
@@ -35,7 +37,7 @@ export function tryResolve(filepath: string, root = __dirname) {
     // return customRequire.resolve(filepath);
     return require.resolve(filepath, { paths: [root] });
   } catch (err) {
-    log('try resolve fail ' + root  + ' ==> ', err);
+    log(`try resolve fail ${root} ==> `, err);
     return false;
   }
 }
@@ -48,7 +50,9 @@ export function tryResolve(filepath: string, root = __dirname) {
  * @return {Promise<any>}
  */
 export async function requireDefault(filepath: string) {
-  let mod = require(filepath);
+  // eslint-disable-next-line import/no-dynamic-require,global-require
+  const mod = require(filepath);
+  // eslint-disable-next-line no-underscore-dangle
   return mod.__esModule ? mod.default : mod;
   // return import(filepath).then((mod) => mod.default);
 }

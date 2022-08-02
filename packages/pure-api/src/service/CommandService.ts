@@ -1,7 +1,12 @@
 import merge from 'lodash.merge';
 import debug from 'debug';
-import { Bundler, EmptyBundler, ViteBundler, WebpackBundler } from '../bundler';
 import minimist, { ParsedArgs } from 'minimist';
+import { UserConfig } from 'vite';
+import path from 'path';
+import { Configuration } from 'webpack';
+import {
+  Bundler, EmptyBundler, ViteBundler, WebpackBundler,
+} from '../bundler';
 import {
   exitWithMessage,
   isFunction,
@@ -10,9 +15,7 @@ import {
   runAsyncFns,
   tryResolve,
 } from '../utils';
-import { UserConfig } from 'vite';
 import { CURRENT_DIRECTORY } from '../constant';
-import path from 'path';
 import {
   IPluginConstructor,
   PluginAfterBuildHook,
@@ -23,13 +26,12 @@ import {
   PluginOnDevServerReadyHook,
   PluginOnPluginReadyHook,
 } from '../plugin';
-import { Configuration } from 'webpack';
 
-const PRESET_PATH_KEY = '__PRESET_PATH__';
+const PRESET_PATH_KEY = Symbol('__PRESET_PATH__');
 
 interface IProjectConfig {
   name: string;
-  
+
   bundler: 'vite' | 'webpack';
 
   devServer: boolean;
@@ -37,7 +39,6 @@ interface IProjectConfig {
 
   presets: string[];
   plugins: Record<string, any>;
-
 
   viteConfig: UserConfig,
 
@@ -198,12 +199,9 @@ class CommandService {
   async loadProjectConfig() {
     this.projectConfig = {};
 
-    this.projectConfig = require(this.paths.projectConfig!);
-  
+    this.projectConfig = await requireDefault(this.paths.projectConfig!);
     const presets = await this.loadPresets();
-    this.projectConfig = presets.reduce((pV, cV) => {
-      return merge(cV, pV);
-    }, this.projectConfig);
+    this.projectConfig = presets.reduce((pV, cV) => merge(cV, pV), this.projectConfig);
 
     if (this.argv.bundler === 'webpack' || this.projectConfig.bundler === 'webpack') {
       log('projectConfig#bundler => webpack');
@@ -226,11 +224,14 @@ class CommandService {
       return [];
     }
     const presetMap = new Map<string, IProjectConfig>();
+    // eslint-disable-next-line no-restricted-syntax
     for (const presetName of this.projectConfig.presets) {
       if (presetMap.has(presetName)) {
+        // eslint-disable-next-line no-continue
         continue;
       }
       log(`[start] loading preset config: ${presetName}`);
+      // eslint-disable-next-line no-await-in-loop
       const presetCfg = await this.loadPreset(presetName);
 
       presetMap.set(presetName, presetCfg);
@@ -246,9 +247,11 @@ class CommandService {
    * @return {Promise<IProjectConfig>}
    * @memberof CommandService
    */
+  // eslint-disable-next-line no-param-reassign
   async loadPreset(presetName: string): Promise<IProjectConfig> {
     const presetPrefix = ['@pure-org/water-preset-'];
     const presetCfgList: IProjectConfig[] = [];
+    // eslint-disable-next-line no-restricted-syntax
     for (const prefix of presetPrefix) {
       // FIXME:
       const filepathOrFail = tryResolve(
@@ -256,11 +259,13 @@ class CommandService {
         this.paths.projectConfig,
       );
       if (typeof filepathOrFail === 'string') {
+        // eslint-disable-next-line no-await-in-loop
         const presetCfg: IProjectConfig = await requireDefault(filepathOrFail);
         if (presetCfg) {
           if (presetCfg.plugins) {
             Object.values(presetCfg.plugins).forEach((plgCfg: any) => {
-              plgCfg[PRESET_PATH_KEY] = filepathOrFail;
+              // eslint-disable-next-line no-param-reassign
+              plgCfg[PRESET_PATH_KEY] = [filepathOrFail];
             });
           }
           presetCfgList.push(presetCfg);
@@ -284,6 +289,7 @@ class CommandService {
   async loadPlugins() {
     const { plugins = {} } = this.projectConfig;
 
+    // eslint-disable-next-line array-callback-return
     const loadPlgPromises = Object.keys(plugins).map((pluginName) => {
       try {
         return this.loadPlugin(pluginName, plugins[pluginName][PRESET_PATH_KEY]);
@@ -336,16 +342,21 @@ class CommandService {
    */
   async loadPlugin(
     plgName: string,
-    rootPath: string,
+    rootPaths: string[],
   ): Promise<IPluginConstructor> {
-    log('[start] loading plugin %s at root %s', plgName, rootPath);
+    log('[start] loading plugin %s at root %s', plgName, rootPaths);
     const PLUGIN_PREFIX = ['@pure-org/water-plugin-'];
-    const pluginPath = this.resolveWithPrifix(plgName, PLUGIN_PREFIX, rootPath);
-    if (pluginPath) {
-      const PlgKlass: IPluginConstructor = await requireDefault(pluginPath);
-      log('[end] finish load plugin %s', plgName);
-      return PlgKlass;
+    // eslint-disable-next-line no-restricted-syntax
+    for (const rootPath of rootPaths) {
+      const pluginPath = this.resolveWithPrifix(plgName, PLUGIN_PREFIX, rootPath);
+      if (pluginPath) {
+        // eslint-disable-next-line no-await-in-loop
+        const PlgKlass: IPluginConstructor = await requireDefault(pluginPath);
+        log('[end] finish load plugin %s', plgName);
+        return PlgKlass;
+      }
     }
+
     exitWithMessage('未找到插件, 请检查配置是否正确或依赖是否安装');
   }
 
@@ -354,15 +365,7 @@ class CommandService {
    *
    * @memberof CommandService
    */
-  loadGlobalConfig() {
-    // throw new Error("Method not implemented.");
-  }
-
-  /**
-   *
-   *
-   * @memberof CommandService
-   */
+  // eslint-disable-next-line class-methods-use-this
   processExitGuard() {
     // throw new Error("Method not implemented.");
   }
@@ -435,7 +438,9 @@ class CommandService {
    * @return {string}
    * @memberof CommandService
    */
+  // eslint-disable-next-line class-methods-use-this
   resolveWithPrifix(pkgPostfix: string, prefixList: string[], rootPath: string) {
+    // eslint-disable-next-line no-restricted-syntax
     for (const prefix of prefixList) {
       const filepathOrFail = tryResolve(
         prefix + pkgPostfix,
@@ -445,6 +450,7 @@ class CommandService {
         return filepathOrFail;
       }
     }
+    return false;
   }
 }
 

@@ -8,6 +8,7 @@ export interface IPluginVu2Options {
   htmlOption: HtmlWebpackPlugin.Options,
 }
 
+// eslint-disable-next-line import/no-default-export
 export default class Vu2Plugin extends Plugin {
   static priority = 40;
 
@@ -24,7 +25,8 @@ export default class Vu2Plugin extends Plugin {
         compileOptions: {
           preserveWhitespace: false,
         },
-      }).end();
+      })
+      .end();
 
     config.module
       .rule('compile-style')
@@ -53,5 +55,7 @@ export default class Vu2Plugin extends Plugin {
       publicPath: 'http://127.0.0.1:5501/packages/demo-vue2/dist',
       ...htmlOption,
     }]);
+
+    // TODO: Eslint Webpack config
   };
 }

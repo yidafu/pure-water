@@ -1,4 +1,5 @@
 import { Config } from 'stylelint';
+
 const stylelintConfig: Config = {
   extends: [
     'stylelint-config-standard-scss',

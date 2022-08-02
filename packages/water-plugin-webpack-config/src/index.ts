@@ -1,8 +1,11 @@
 import path from 'path';
-import { isDev, isProd, Plugin, PluginChainWebpackConfig } from '@pure-org/api';
+import {
+  isDev, isProd, Plugin, PluginChainWebpackConfig,
+} from '@pure-org/api';
 import WebpackBar from 'webpackbar';
 import webpack from 'webpack';
 
+// eslint-disable-next-line import/no-default-export
 export default class BaseWebpackPlugin extends Plugin {
   static priority = 5;
 
@@ -51,8 +54,34 @@ export default class BaseWebpackPlugin extends Plugin {
       .use(WebpackBar, [{ color: 'green' }])
       .end()
       .plugin('define-plugin')
-      .use(webpack.DefinePlugin, [{ __DEBUG__: JSON.stringify(isDev) }])
-      .end();
+      .use(webpack.DefinePlugin, [{
+        __DEBUG__: JSON.stringify(isDev()),
+        'process.env': {
+          NODE_ENV: isProd() ? '"production"' : '"development"',
+          BASE_URL: '"/"',
+        },
+      }])
+      .end()
+
+      .plugin('CaseSensitivePathsPlugin')
+      .use(CaseSensitivePathsPlugin)
+      .end()
+
+      .plugin('copy-plugin')
+      .use(CopyPlugin, [{
+        patterns: [{
+          from: this.PUBLIC_PATH,
+          to: this.OUTPUT_PATH,
+          globOptions: {
+            ignore: [
+              '**/.DS_Store',
+              path.join(this.PUBLIC_PATH, 'index.html'),
+            ],
+          },
+          info: { minimized: true },
+        }],
+      }]);
+
     if (isDev()) {
       config.devServer
         .staticOptions({

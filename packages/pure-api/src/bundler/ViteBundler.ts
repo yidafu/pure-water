@@ -2,7 +2,9 @@ import debug from 'debug';
 import path from 'path';
 import fs from 'fs/promises';
 
-import { createServer, UserConfig as ViteUserConfig, build } from 'vite';
+import {
+  createServer, UserConfig as ViteUserConfig, build, mergeConfig,
+} from 'vite';
 import { Bundler } from './Bundler';
 import { ensureDirectory } from '../utils';
 
@@ -25,7 +27,13 @@ class ViteBundler extends Bundler {
    * @memberof ViteBundler
    */
   get compileOption(): ViteUserConfig {
-    return this.service.getProjectConfig().viteConfig ?? {};
+    const baseConfig = this.service.getProjectConfig().viteConfig ?? {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const viteConfigFn of this.service.viteConfigFns) {
+      const overrideConfig = viteConfigFn();
+      mergeConfig(baseConfig, overrideConfig, false);
+    }
+    return baseConfig;
   }
 
   /**
@@ -33,6 +41,7 @@ class ViteBundler extends Bundler {
    *
    * @memberof ViteBundler
    */
+  // eslint-disable-next-line class-methods-use-this
   cleanDist(): void {}
 
   /**
@@ -60,16 +69,14 @@ class ViteBundler extends Bundler {
   }
 
   async dumpCompileConfig(): Promise<void> {
-    {
-      const viteConfigFile = `export default ${JSON.stringify(this.compileOption)
-      }`;
-      const outputPath = path.join(
-        this.service.paths.outputPath!,
-        'vite.config.js',
-      );
-      await ensureDirectory(this.service.paths.outputPath!);
-      await fs.writeFile(outputPath, viteConfigFile);
-    }
+    const viteConfigFile = `export default ${JSON.stringify(this.compileOption)
+    }`;
+    const outputPath = path.join(
+      this.service.paths.outputPath!,
+      'vite.config.js',
+    );
+    await ensureDirectory(this.service.paths.outputPath!);
+    await fs.writeFile(outputPath, viteConfigFile);
   }
 }
 
