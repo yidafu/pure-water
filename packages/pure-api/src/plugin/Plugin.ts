@@ -86,7 +86,7 @@ abstract class Plugin {
    *
    * @memberof Plugin
    */
-  registerCommand?: () => (ICommand | undefined);
+  registerCommand?: () => (ICommand | ICommand[] | undefined);
 
   /**
    *

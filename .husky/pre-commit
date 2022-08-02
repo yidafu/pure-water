@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
-echo "pre-commit"
-# cd ./packages/demo-vite && DEBUG=pure:* ./node_modules/.bin/pure  lint 
+
+npx pure pre-commit
