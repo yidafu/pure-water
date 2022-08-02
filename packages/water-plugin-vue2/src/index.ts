@@ -1,4 +1,4 @@
-import { Plugin, PluginChainWebpackConfig } from '@pure-org/api';
+import { Plugin, PluginChainWebpackConfigHook } from '@pure-org/api';
 import { VueLoaderPlugin } from 'vue-loader';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
@@ -13,7 +13,7 @@ export interface IPluginVu2Options {
 export default class Vu2Plugin extends Plugin {
   static priority = 40;
 
-  chainWebpackConfig: PluginChainWebpackConfig = async (config) => {
+  chainWebpackConfig: PluginChainWebpackConfigHook = async (config) => {
     const vue2Options = this.getPluginOption('vue2');
     const { htmlOption } = vue2Options;
     config.resolve.extensions.add('.vue');

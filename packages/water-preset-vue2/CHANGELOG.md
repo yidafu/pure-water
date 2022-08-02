@@ -1,5 +1,21 @@
 # @pure-org/water-preset-vue2
 
+## 0.1.1-beta.4
+
+### Patch Changes
+
+- feat(plugin-vue2): copy webpack config from offical vue template by yidafu [#18](https://github.com/yidafu/pure-water/pull/18)
+- feat(api): Plugin add viteConfig hook by yidafu [#19](https://github.com/yidafu/pure-water/pull/19)
+- feat: Lint Spinner by yidafu [#20](https://github.com/yidafu/pure-water/pull/20)
+- feat: add new lint command by yidafu [#21](https://github.com/yidafu/pure-water/pull/21)
+- docs(readme): modify README.md file, delete old content by yidafu [#22](https://github.com/yidafu/pure-water/pull/22)
+- feat(root): using lint-staged to only modified files by yidafu [#23](https://github.com/yidafu/pure-water/pull/23)
+- Updated dependencies
+- @pure-org/water-plugin-lint@0.1.1-beta.4
+- @pure-org/water-plugin-babel@0.1.1-beta.4
+- @pure-org/water-plugin-vue2@0.1.1-beta.4
+- @pure-org/water-plugin-webpack-config@0.1.1-beta.4
+
 ## 0.1.1-beta.3
 
 ### Patch Changes
@@ -8,10 +24,10 @@
 - fix eslint-config-water pacakge pacakge.json#files config
 - Updated dependencies [e2963f0]
 - Updated dependencies
-  - @pure-org/water-plugin-babel@0.1.1-beta.2
-  - @pure-org/water-plugin-lint@0.1.1-beta.3
-  - @pure-org/water-plugin-vue2@0.1.1-beta.2
-  - @pure-org/water-plugin-webpack-config@0.1.1-beta.2
+- @pure-org/water-plugin-babel@0.1.1-beta.2
+- @pure-org/water-plugin-lint@0.1.1-beta.3
+- @pure-org/water-plugin-vue2@0.1.1-beta.2
+- @pure-org/water-plugin-webpack-config@0.1.1-beta.2
 
 ## 0.1.1-beta.2
 
@@ -21,10 +37,10 @@
 
 - fix dependencies problem
 - Updated dependencies
-  - @pure-org/water-plugin-babel@0.1.1-beta.1
-  - @pure-org/water-plugin-lint@0.1.1-beta.2
-  - @pure-org/water-plugin-vue2@0.1.1-beta.1
-  - @pure-org/water-plugin-webpack-config@0.1.1-beta.1
+- @pure-org/water-plugin-babel@0.1.1-beta.1
+- @pure-org/water-plugin-lint@0.1.1-beta.2
+- @pure-org/water-plugin-vue2@0.1.1-beta.1
+- @pure-org/water-plugin-webpack-config@0.1.1-beta.1
 
 ## 0.1.1-beta.1
 
@@ -35,7 +51,7 @@
 - fix `@pure-org/water-preset-vue2` and `@pure-org/water-plugin-lint` dependencies [#17](https://github.com/yidafu/pure-water/pull/17)
 
 - Updated dependencies
-  - @pure-org/water-plugin-lint@2.0.0-beta.1
+- @pure-org/water-plugin-lint@2.0.0-beta.1
 
 ## 0.1.1
 
@@ -43,15 +59,15 @@
 
 - ### Internal
 
-  - update package.json#files field [#16](https://github.com/yidafu/pure-water/pull/16)
+- update package.json#files field [#16](https://github.com/yidafu/pure-water/pull/16)
 
 ### Patch Changes
 
 - Updated dependencies
-  - @pure-org/water-plugin-lint@2.0.0-beta.0
-  - @pure-org/water-plugin-babel@0.1.1-beta.0
-  - @pure-org/water-plugin-vue2@0.1.1-beta.0
-  - @pure-org/water-plugin-webpack-config@0.1.1-beta.0
+- @pure-org/water-plugin-lint@2.0.0-beta.0
+- @pure-org/water-plugin-babel@0.1.1-beta.0
+- @pure-org/water-plugin-vue2@0.1.1-beta.0
+- @pure-org/water-plugin-webpack-config@0.1.1-beta.0
 
 ## 0.1.0
 
@@ -62,7 +78,7 @@
 ### Patch Changes
 
 - Updated dependencies
-  - @pure-org/water-plugin-babel@0.1.0
-  - @pure-org/water-plugin-lint@1.0.0
-  - @pure-org/water-plugin-vue2@0.1.0
-  - @pure-org/water-plugin-webpack-config@0.1.0
+- @pure-org/water-plugin-babel@0.1.0
+- @pure-org/water-plugin-lint@1.0.0
+- @pure-org/water-plugin-vue2@0.1.0
+- @pure-org/water-plugin-webpack-config@0.1.0

@@ -7,7 +7,7 @@ const log = debug('pure:lint:stylelint');
 export async function runStylelint(options: stylelint.LinterOptions) {
   const spinner = ora({
     text: '开始 Style Lint ...',
-    spinner: 'dots13',
+    spinner: 'dots3' as any,
     color: 'green',
   }).start();
 

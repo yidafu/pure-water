@@ -16,7 +16,7 @@ export async function runCommitlint(
 ) {
   const spinner = ora({
     text: '开始校验 Commit Message ...',
-    spinner: 'dots13',
+    spinner: 'dots3',
     color: 'green',
   }).start();
   const defaultConfig = COMMITLINT_CONFIG_MAP.get(mode)!;

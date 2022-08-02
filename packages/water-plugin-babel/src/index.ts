@@ -1,4 +1,4 @@
-import { fileExist, Plugin, PluginChainWebpackConfig } from '@pure-org/api';
+import { fileExist, Plugin, PluginChainWebpackConfigHook } from '@pure-org/api';
 import path from 'path';
 import ForkTsCheckerWepackPlugin from 'fork-ts-checker-webpack-plugin';
 
@@ -11,7 +11,7 @@ export interface IPluginBabelOption {
 
 // eslint-disable-next-line import/no-default-export
 export default class BabelPlugin extends Plugin {
-  chainWebpackConfig: PluginChainWebpackConfig = async (config) => {
+  chainWebpackConfig: PluginChainWebpackConfigHook = async (config) => {
     const babelOption = this.getPluginOption('babel');
     const {
       compilePackages, presets, plugins, checkType,
