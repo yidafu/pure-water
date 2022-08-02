@@ -30,6 +30,10 @@ import { mergeProjectConfig } from './utils';
 
 const PRESET_PATH_KEY = Symbol('__PRESET_PATH__');
 
+interface IProjectPluginConfig {
+  [key: string]: any;
+}
+
 interface IProjectConfig {
   name: string;
 
@@ -39,7 +43,7 @@ interface IProjectConfig {
   outputPath: string;
 
   presets: string[];
-  plugins: Record<string, any>;
+  plugins: IProjectPluginConfig;
 
   viteConfig: UserConfig,
 
@@ -467,4 +471,6 @@ class CommandService {
   }
 }
 
-export { CommandService, ICommand, IProjectConfig };
+export {
+  CommandService, ICommand, IProjectConfig, IProjectPluginConfig,
+};

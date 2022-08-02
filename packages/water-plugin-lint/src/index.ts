@@ -9,6 +9,12 @@ import { runStylelint } from './stylelint';
 import { runEslint } from './eslint';
 import { ICommitlintMode } from './commitlint-config';
 
+declare module '@pure-org/api' {
+  interface IProjectPluginConfig {
+    lint: ILintPluginOption
+  }
+}
+
 interface ILintPluginActionOption {
   fix: boolean;
 }
@@ -86,25 +92,15 @@ class LintPlugin extends Plugin {
         description: 'lint commit message',
       },
       {
-        name: 'pre-commit',
+        name: 'lint',
+        alias: 'pre-commit',
         options: {
           '--fix': 'Automatically fix problems',
         },
         action: preCommitAction,
         description: 'lint TS/JS/CSS Code',
       },
-      {
-        name: 'lint',
-        options: {
-          '--fix': 'Automatically fix problems',
-        },
-        async action(option: ILintPluginActionOption) {
-          await commitMsgLintAction(option);
-
-          await preCommitAction(option);
-        },
-        description: 'lint project',
-      }];
+    ];
   };
 }
 

@@ -2,6 +2,12 @@ import { fileExist, Plugin, PluginChainWebpackConfigHook } from '@pure-org/api';
 import path from 'path';
 import ForkTsCheckerWepackPlugin from 'fork-ts-checker-webpack-plugin';
 
+declare module '@pure-org/api' {
+  interface IProjectPluginConfig {
+    babel: IPluginBabelOption;
+  }
+}
+
 export interface IPluginBabelOption {
   compilePackages?: string[];
   checkType: boolean;
