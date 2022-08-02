@@ -1,3 +1,4 @@
+import path from 'path';
 import Config from 'webpack-chain';
 import { CommandService, ICommand } from '../service/CommandService';
 
@@ -37,6 +38,10 @@ abstract class Plugin {
 
   get OUTPUT_PATH() {
     return this.service.paths.outputPath!;
+  }
+
+  get PUBLIC_PATH() {
+    return path.join(this.PROJECT_ROOT, 'public');
   }
 
   /**
