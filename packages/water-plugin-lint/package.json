@@ -1,9 +1,13 @@
 {
   "name": "@pure-org/water-plugin-lint",
-  "version": "1.0.0",
+  "version": "0.1.1-beta.3",
   "private": false,
   "main": "./lib/index.js",
-  "files": [ "lib/*", "README.md", "CHANGELOG.md" ],
+  "files": [
+    "lib/*",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "types": "./lib/index.d.ts",
   "directories": {
     "lib": "lib"
@@ -49,13 +53,7 @@
     "stylelint": "^14.9.1"
   },
   "devDependencies": {
-    "@pure-org/eslint-config-water": "workspace:^",
-    "@pure-org/stylelint-config-water": "workspace:^",
     "@types/debug": "^4.1.7",
     "@types/eslint": "^8.4.5"
-  },
-  "peerDependencies": {
-    "@pure-org/eslint-config-water": "workspace:^",
-    "@pure-org/stylelint-config-water": "workspace:^"
   }
 }

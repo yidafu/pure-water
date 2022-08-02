@@ -1,8 +1,9 @@
 import { Plugin, PluginChainWebpackConfig } from '@pure-org/api';
-import DartSass from 'sass';
 import { VueLoaderPlugin } from 'vue-loader';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
+import { cssConfig } from './css-config';
+import { assetConfig } from './asset-config';
 
 export interface IPluginVu2Options {
   htmlOption: HtmlWebpackPlugin.Options,
@@ -28,21 +29,9 @@ export default class Vu2Plugin extends Plugin {
       })
       .end();
 
-    config.module
-      .rule('compile-style')
-      .test(/\.s?css$/i)
-      .use('vue-style-loader').loader(require.resolve('vue-style-loader')).options({
-        ssrId: false,
-      }).end()
-      .use('css-loader').loader(require.resolve('css-loader')).options({ esModule: false }).end()
-      // .use(require.resolve('')).options()
-      .use('sass-loader').loader(require.resolve('sass-loader')).options({
-        implementation: DartSass,
-      }).end();
+    cssConfig(config);
 
-    config.module.rule('assets')
-      .test(/\.(ttf|eot|svg|gif|png|jpg|jpeg)(\?v=[0-9]\.[0-9]\.[0-9])?$/)
-      .use('file-loader').loader(require.resolve('file-loader')).end();
+    assetConfig(config);
 
     config.plugin('vue-loader-plugin').use(VueLoaderPlugin);
 
@@ -52,7 +41,7 @@ export default class Vu2Plugin extends Plugin {
       templateParameters: {
         BASE_URL: '/',
       },
-      publicPath: 'http://127.0.0.1:5501/packages/demo-vue2/dist',
+      publicPath: '/',
       ...htmlOption,
     }]);
 

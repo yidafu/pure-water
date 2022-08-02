@@ -7,38 +7,27 @@ export function cssConfig(config: WebpackChain) {
   config.module
     .rule('compile-style')
     .test(/\.s?css$/i)
-    .use('css-extract').loader(MiniCssExtractPlugin.loader)
-    .options({
+    .use('css-extract').loader(MiniCssExtractPlugin.loader).options({
       publicPath: '/',
-    })
-    .end()
+    }).end()
     // .use('vue-style-loader').loader(require.resolve('vue-style-loader')).options({
     //   ssrId: false,
     // }).end()
-    .use('css-loader')
-    .loader(require.resolve('css-loader'))
-    .options({
+    .use('css-loader').loader(require.resolve('css-loader')).options({
       esModule: false,
       sourceMap: false,
       modules: {
         localIdentName: isProd() ? '[name]_[hash:base64:8]' : '[name]',
       },
-    })
-    .end()
-    .use('postcss-loader')
-    .loader(require.resolve('postcss-loader'))
-    .options({
+    }).end()
+    .use('postcss-loader').loader(require.resolve('postcss-loader')).options({
       sourceMap: !isProd(),
-    })
-    .end()
+    }).end()
     // .use(require.resolve('')).options()
-    .use('sass-loader')
-    .loader(require.resolve('sass-loader'))
-    .options({
+    .use('sass-loader').loader(require.resolve('sass-loader')).options({
       implementation: DartSass,
       sourceMap: !isProd(),
-    })
-    .end();
+    }).end();
 
   config.plugin('mini-css-extract-plugin').use(MiniCssExtractPlugin, [{
     filename: 'css/[name]-[contenthash:8].css',

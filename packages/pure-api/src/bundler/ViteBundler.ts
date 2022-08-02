@@ -2,11 +2,9 @@ import debug from 'debug';
 import path from 'path';
 import fs from 'fs/promises';
 
-import {
-  createServer, UserConfig as ViteUserConfig, build, mergeConfig,
-} from 'vite';
+import { createServer, UserConfig as ViteUserConfig, build, mergeConfig } from 'vite';
 import { Bundler } from './Bundler';
-import { ensureDirectory } from '../utils';
+import { ensureDirectory, runAsyncFns } from '../utils';
 
 const log = debug('pure:api:bundler:vite');
 

@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-preset-vue2",
-  "version": "0.1.0",
+  "version": "0.1.1-beta.3",
   "private": false,
   "description": "",
   "main": "index.js",
@@ -26,11 +26,9 @@
     "@pure-org/water-plugin-webpack-config": "workspace:^"
   },
   "devDependencies": {
-    "vite": "^3.0.0",
-    "vue": "^3.2.25"
+    "vue": "^2.7.8"
   },
   "peerDependencies": {
-    "vite": "^3.0.0",
-    "vue": "^3.2.25"
+    "vue": "^2.7.8"
   }
 }

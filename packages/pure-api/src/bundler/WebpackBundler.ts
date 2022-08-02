@@ -34,6 +34,9 @@ class WebpackBundler extends Bundler {
           client: {
             progress: true,
           },
+          devMiddleware: {
+            writeToDisk: true,
+          },
           open: true,
         },
         compiler,

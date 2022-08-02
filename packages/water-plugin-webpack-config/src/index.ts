@@ -4,6 +4,9 @@ import {
 } from '@pure-org/api';
 import WebpackBar from 'webpackbar';
 import webpack from 'webpack';
+import TerserPlugin from 'terser-webpack-plugin';
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 
 // eslint-disable-next-line import/no-default-export
 export default class BaseWebpackPlugin extends Plugin {
@@ -32,27 +35,31 @@ export default class BaseWebpackPlugin extends Plugin {
 
     config.context(this.service.paths.projectRoot!);
 
-    // config.optimization.splitChunks({
-    //   cacheGroups: {
-    //     // vendors: {
-    //     //   name: 'vendors',
-    //     //   minSzie: 0,
-    //     //   minChunks: 2,
-    //     //   chunks: 'all',
-    //     //   priority: -10,
-    //     //   reuseExistingChunk: true,
-    //     // },
-    //   },
-    // });
-
-    config.optimization.runtimeChunk({
-      name: 'vendors',
-    });
+    config.optimization
+      .splitChunks({
+        cacheGroups: {
+          defaultVendors: {
+            name: 'chunk-vendors',
+            test: /[\\/]node_modules[\\/]/,
+            priority: -10,
+            chunks: 'initial',
+          },
+          common: {
+            name: 'chunk-common',
+            minChunks: 2,
+            priority: -20,
+            chunks: 'initial',
+            reuseExistingChunk: true,
+          },
+        },
+      })
+      .minimizer('terser').use(TerserPlugin);
 
     config
       .plugin('webpack-bar')
       .use(WebpackBar, [{ color: 'green' }])
       .end()
+
       .plugin('define-plugin')
       .use(webpack.DefinePlugin, [{
         __DEBUG__: JSON.stringify(isDev()),
@@ -60,15 +67,13 @@ export default class BaseWebpackPlugin extends Plugin {
           NODE_ENV: isProd() ? '"production"' : '"development"',
           BASE_URL: '"/"',
         },
-      }])
-      .end()
+      }]).end()
 
       .plugin('CaseSensitivePathsPlugin')
       .use(CaseSensitivePathsPlugin)
       .end()
-
-      .plugin('copy-plugin')
-      .use(CopyPlugin, [{
+      
+      .plugin('copy-plugin').use(CopyPlugin, [{
         patterns: [{
           from: this.PUBLIC_PATH,
           to: this.OUTPUT_PATH,
@@ -81,7 +86,7 @@ export default class BaseWebpackPlugin extends Plugin {
           info: { minimized: true },
         }],
       }]);
-
+  
     if (isDev()) {
       config.devServer
         .staticOptions({
