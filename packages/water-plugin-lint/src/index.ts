@@ -81,7 +81,7 @@ class LintPlugin extends Plugin {
     return [
       {
         name: 'commit-msg',
-        options: {},
+        options: {} as any,
         action: commitMsgLintAction,
         description: 'lint commit message',
       },
