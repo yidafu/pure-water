@@ -27,7 +27,7 @@ async function getPackageManager(dir: string) {
 function execCommand(command: string, args: readonly string[]) {
   return new Promise<void>((resolve, reject) => {
     const chilhProc = spawn(command, args, { timeout: 2 * 60 * 1000 });
-    const outputBuffer = [];
+    const outputBuffer: any[] = [];
     chilhProc.stdout.on('data', (data) => {
       outputBuffer.push(data);
     });
