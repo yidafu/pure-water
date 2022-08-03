@@ -1,6 +1,7 @@
-import debug from 'debug';
 import fs from 'fs';
 import path from 'path';
+
+import debug from 'debug';
 
 const log = debug('pure:api:utils');
 

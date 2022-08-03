@@ -1,19 +1,13 @@
+import path from 'path';
+
 import debug from 'debug';
 import minimist, { ParsedArgs } from 'minimist';
 import { UserConfig } from 'vite';
-import path from 'path';
 import { Configuration } from 'webpack';
+
 import {
   Bundler, EmptyBundler, ViteBundler, WebpackBundler,
 } from '../bundler';
-import {
-  exitWithMessage,
-  isFunction,
-  requireDefault,
-  resolveProjectRoot,
-  runAsyncFns,
-  tryResolve,
-} from '../utils';
 import { CURRENT_DIRECTORY } from '../constant';
 import {
   IPluginConstructor,
@@ -26,6 +20,15 @@ import {
   PluginOnPluginReadyHook,
   PluginViteConfigHook,
 } from '../plugin';
+import {
+  exitWithMessage,
+  isFunction,
+  requireDefault,
+  resolveProjectRoot,
+  runAsyncFns,
+  tryResolve,
+} from '../utils';
+
 import { mergeProjectConfig } from './utils';
 
 const PRESET_PATH_KEY = Symbol('__PRESET_PATH__');

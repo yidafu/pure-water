@@ -1,10 +1,13 @@
-import path from 'path';
 import fs from 'fs/promises';
+import path from 'path';
+
 import webpack, { Configuration } from 'webpack';
-import WebpackDevServer from 'webpack-dev-server';
 import ChainConfig from 'webpack-chain';
+import WebpackDevServer from 'webpack-dev-server';
 import mergeWebpack from 'webpack-merge';
+
 import { ensureDirectory, runAsyncFns } from '../utils';
+
 import { Bundler } from './Bundler';
 
 class WebpackBundler extends Bundler {

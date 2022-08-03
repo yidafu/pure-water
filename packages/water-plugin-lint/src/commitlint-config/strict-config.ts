@@ -1,4 +1,5 @@
 import { UserConfig } from '@commitlint/types';
+
 import { bizModulePlugin } from './biz-module-plugin';
 
 export const STRICT_COMMITLINT_CONFIG: UserConfig = {

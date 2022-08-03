@@ -1,6 +1,8 @@
-import { UserConfig } from 'vite';
 import path from 'path';
+
+import { UserConfig } from 'vite';
 import Config from 'webpack-chain';
+
 import { CommandService, ICommand } from '../service/CommandService';
 
 export type PluginChainWebpackConfigHook = (config: Config) => Promise<void>;

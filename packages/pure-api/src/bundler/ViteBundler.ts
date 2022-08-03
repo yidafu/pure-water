@@ -1,12 +1,15 @@
-import debug from 'debug';
-import path from 'path';
 import fs from 'fs/promises';
+import path from 'path';
+
+import debug from 'debug';
 
 import {
   createServer, UserConfig as ViteUserConfig, build, mergeConfig,
 } from 'vite';
-import { Bundler } from './Bundler';
+
 import { ensureDirectory } from '../utils';
+
+import { Bundler } from './Bundler';
 
 const log = debug('pure:api:bundler:vite');
 

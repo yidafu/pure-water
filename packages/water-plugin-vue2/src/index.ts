@@ -1,9 +1,11 @@
-import { Plugin, PluginChainWebpackConfigHook } from '@pure-org/api';
-import { VueLoaderPlugin } from 'vue-loader';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
-import { cssConfig } from './css-config';
+
+import { Plugin, PluginChainWebpackConfigHook } from '@pure-org/api';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { VueLoaderPlugin } from 'vue-loader';
+
 import { assetConfig } from './asset-config';
+import { cssConfig } from './css-config';
 
 declare module '@pure-org/api' {
   interface IProjectPluginConfig {

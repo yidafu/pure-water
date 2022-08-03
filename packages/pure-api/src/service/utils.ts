@@ -1,5 +1,6 @@
-import { IProjectConfig } from './CommandService';
 import { deepmerge } from '../utils';
+
+import { IProjectConfig } from './CommandService';
 
 export function mergeProjectConfig(
   target: Partial<IProjectConfig>,

@@ -7,12 +7,13 @@
     "packages/*"
   ],
   "scripts": {
-    "lint": "eslint ./packages/ --ext .ts,.vue",
+    "dev": "pnpm run --recursive --parallel dev",
+    "lint": "pure lint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.ts": "pure pre-commit"
+    "*.*.{js,ts}": "pure lint"
   },
   "keywords": [],
   "author": "",
@@ -21,8 +22,8 @@
     "@changesets/cli": "^2.24.1",
     "@pure-org/cli": "workspace:*",
     "@pure-org/eslint-config-water": "workspace:*",
-    "@pure-org/water-preset-vue": "workspace:*",
     "@pure-org/tsconfig": "workspace:*",
+    "@pure-org/water-preset-vue": "workspace:*",
     "@rollup/plugin-typescript": "^8.3.3",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",

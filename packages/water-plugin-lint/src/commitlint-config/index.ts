@@ -1,4 +1,5 @@
 import { UserConfig } from '@commitlint/types';
+
 import { LOOSE_COMMITLINT_CONFIG } from './loose-config';
 import { RECOMMENDED_COMMITLINT_CONFIG } from './recommended-config';
 import { STRICT_COMMITLINT_CONFIG } from './strict-config';
