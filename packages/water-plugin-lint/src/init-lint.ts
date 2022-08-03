@@ -123,7 +123,7 @@ export async function initLint(projectRoot: string) {
         })}`, '--json']);
       } else {
         await execCommand('npm', ['pkg', 'set', `lint-staged=${JSON.stringify({
-          '*.*.{js,ts}': 'pure lint',
+          '*.{js,ts}': 'pure lint',
         })}`, '--json']);
       }
 
