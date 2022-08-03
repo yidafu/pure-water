@@ -26,12 +26,12 @@ export default class BaseWebpackPlugin extends Plugin {
       .publicPath('/');
     if (isProd()) {
       config.mode('production');
-      config.output.filename('[name]_contenthash:8.js')
-        .chunkFilename('[name]_contenthash:8.js');
+      config.output.filename('[name]_[contenthash:8].js')
+        .chunkFilename('[name]_[contenthash:8].js');
     } else {
       config.mode('development');
       config.output.filename('[name].js')
-        .chunkFilename('name.js');
+        .chunkFilename('[name].js');
     }
 
     config.stats('minimal');

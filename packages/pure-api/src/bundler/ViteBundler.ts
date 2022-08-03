@@ -2,6 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 
 import debug from 'debug';
+import stringifyObject from 'stringify-object';
 
 import {
   createServer, UserConfig as ViteUserConfig, build, mergeConfig,
@@ -81,8 +82,7 @@ class ViteBundler extends Bundler {
   }
 
   async dumpCompileConfig(): Promise<void> {
-    const viteConfigFile = `export default ${JSON.stringify(this.compileOption)
-    }`;
+    const viteConfigFile = `export default ${stringifyObject(this.compileOption)}`;
     const outputPath = path.join(
       this.service.paths.outputPath!,
       'vite.config.js',

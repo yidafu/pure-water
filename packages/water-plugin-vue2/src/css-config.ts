@@ -24,7 +24,7 @@ export function cssConfig(config: WebpackChain) {
     .end();
 
   config.plugin('mini-css-extract-plugin').use(MiniCssExtractPlugin, [{
-    filename: 'css/[name]-[contenthash:8].css',
-    chunkFilename: 'css/[name]-[contenthash:8].css',
+    filename: 'css/[name]_[contenthash:8].css',
+    chunkFilename: 'css/[name]_[contenthash:8].css',
   }]).end();
 }
