@@ -1,5 +1,11 @@
 # @pure-org/api
 
+## 0.1.1-beta.9
+
+### Patch Changes
+
+- update missing peer deps
+
 ## 0.1.1-beta.8
 
 ### Patch Changes
