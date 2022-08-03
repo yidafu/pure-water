@@ -24,11 +24,11 @@ export function assetConfig(config: WebpackChain) {
 
   // FIXME: webpack-chain module.rule() not suport generator
   (config.module.rules.get('svg-asset') as any)
-    .store.set('generator', { filename: 'imgs/[name].[hash:8][ext]' });
+    .store.set('generator', { filename: 'imgs/[name]_[hash:8][ext]' });
   (config.module.rules.get('image-asset') as any)
-    .store.set('generator', { filename: 'imgs/[name].[hash:8][ext]' });
+    .store.set('generator', { filename: 'imgs/[name]_[hash:8][ext]' });
   (config.module.rules.get('media-asset') as any)
-    .store.set('generator', { filename: 'media/[name].[hash:8][ext]' });
+    .store.set('generator', { filename: 'media/[name]_[hash:8][ext]' });
   (config.module.rules.get('font-asset') as any)
-    .store.set('generator', { filename: 'media/[name].[hash:8][ext]' });
+    .store.set('generator', { filename: 'media/[name]_[hash:8][ext]' });
 }
