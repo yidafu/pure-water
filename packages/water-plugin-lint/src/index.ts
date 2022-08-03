@@ -1,15 +1,16 @@
-import { Plugin } from '@pure-org/api';
-import { ESLint } from 'eslint';
-import { ESLINT_CONFIG_MAP } from '@pure-org/eslint-config-water';
-import debug from 'debug';
-import stylelintConfig from '@pure-org/stylelint-config-water';
-import stylelint from 'stylelint';
 import { UserConfig } from '@commitlint/types';
+import { Plugin } from '@pure-org/api';
+import { ESLINT_CONFIG_MAP } from '@pure-org/eslint-config-water';
+import stylelintConfig from '@pure-org/stylelint-config-water';
+import debug from 'debug';
+import { ESLint } from 'eslint';
+import stylelint from 'stylelint';
+
 import { runCommitlint } from './commitlint';
-import { runStylelint } from './stylelint';
-import { runEslint } from './eslint';
 import { ICommitlintMode } from './commitlint-config';
+import { runEslint } from './eslint';
 import { initLint } from './init-lint';
+import { runStylelint } from './stylelint';
 
 const log = debug('pure:plugin:lint');
 declare module '@pure-org/api' {

@@ -1,6 +1,6 @@
+import debug from 'debug';
 import { ESLint } from 'eslint';
 import ora from 'ora';
-import debug from 'debug';
 
 const log = debug('pure:plugin:lint:eslint');
 

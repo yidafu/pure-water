@@ -1,5 +1,5 @@
-import ora from 'ora';
 import debug from 'debug';
+import ora from 'ora';
 import stylelint from 'stylelint';
 
 const log = debug('pure:lint:stylelint');

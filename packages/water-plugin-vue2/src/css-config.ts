@@ -1,7 +1,7 @@
-import WebpackChain from 'webpack-chain';
-import DartSass from 'sass';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { isProd } from '@pure-org/api';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import DartSass from 'sass';
+import WebpackChain from 'webpack-chain';
 
 export function cssConfig(config: WebpackChain) {
   config.module

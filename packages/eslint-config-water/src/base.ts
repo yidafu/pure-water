@@ -14,6 +14,22 @@ const baseEslintConfig: Linter.Config = {
     'import/prefer-default-export': 'off',
     'consistent-return': 'warn',
     'import/no-cycle': 'warn',
+    'import/order': ['error', {
+      groups: [
+        'builtin',
+        'external',
+        'internal',
+        'parent',
+        'sibling',
+        'index',
+        'object',
+        'type',
+      ],
+      'newlines-between': 'always-and-inside-groups',
+      alphabetize: {
+        order: 'asc',
+      },
+    }],
   },
 };
 

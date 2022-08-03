@@ -1,4 +1,5 @@
 import debug from 'debug';
+
 import { CommandService } from '../service/CommandService';
 import { isProd, runAsyncFns } from '../utils';
 

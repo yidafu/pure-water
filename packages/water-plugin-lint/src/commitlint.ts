@@ -1,11 +1,12 @@
-import ora from 'ora';
-import debug from 'debug';
+import format from '@commitlint/format';
+import lint from '@commitlint/lint';
 import load from '@commitlint/load';
 import read from '@commitlint/read';
-import lint from '@commitlint/lint';
-import format from '@commitlint/format';
 import { LintOptions, ParserOptions, UserConfig } from '@commitlint/types';
 import { deepmerge } from '@pure-org/api';
+import debug from 'debug';
+import ora from 'ora';
+
 import { COMMITLINT_CONFIG_MAP, ICommitlintMode } from './commitlint-config';
 
 const log = debug('pure:lint:commitlint');
