@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/eslint-config-water",
-  "version": "0.1.1-beta.5",
+  "version": "0.1.1-beta.6",
   "private": false,
   "description": "eslint-config",
   "main": "index.js",

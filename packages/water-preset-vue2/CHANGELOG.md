@@ -1,5 +1,19 @@
 # @pure-org/water-preset-vue2
 
+## 0.1.1-beta.6
+
+### Patch Changes
+
+- fix some known problem by yidafu [#36](https://github.com/yidafu/pure-water/pull/36)
+  - using stringify-obejct replace JSON.stringify
+  - fix incorrect generated husky config
+  - fix messing output filename
+- Updated dependencies
+  - @pure-org/water-plugin-lint@0.1.1-beta.6
+  - @pure-org/water-plugin-vue2@0.1.1-beta.6
+  - @pure-org/water-plugin-webpack-config@0.1.1-beta.6
+  - @pure-org/water-plugin-babel@0.1.1-beta.6
+
 ## 0.1.1-beta.5
 
 ### Patch Changes

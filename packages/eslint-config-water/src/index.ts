@@ -1,7 +1,8 @@
 import { Linter } from 'eslint';
+
 import baseEslintConfig from './base';
-import vue2EslintConfig from './vue2';
 import vueEslintConfig from './vue';
+import vue2EslintConfig from './vue2';
 
 const ESLINT_CONFIG_MAP = new Map<string, Linter.Config>([
   ['base', baseEslintConfig],

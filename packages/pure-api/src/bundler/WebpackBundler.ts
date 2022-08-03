@@ -1,11 +1,11 @@
 import fs from 'fs/promises';
 import path from 'path';
 
+import stringifyObject from 'stringify-object';
 import webpack, { Configuration } from 'webpack';
 import ChainConfig from 'webpack-chain';
 import WebpackDevServer from 'webpack-dev-server';
 import mergeWebpack from 'webpack-merge';
-import stringifyObject from 'stringify-object';
 
 import { ensureDirectory, isDev, runAsyncFns } from '../utils';
 
@@ -15,11 +15,11 @@ import { WebpackDevCompileDonePlugin } from './WacbpackDevCompileDonePlugin';
 class WebpackBundler extends Bundler {
   name = 'webpack';
 
-  private _cacheConfig?: Configuration;
+  private cacheConfig?: Configuration;
 
   get compileOption(): Promise<Configuration> {
-    if (this._cacheConfig) {
-      return Promise.resolve(this._cacheConfig!);
+    if (this.cacheConfig) {
+      return Promise.resolve(this.cacheConfig!);
     }
 
     const prjConfig = this.service.getProjectConfig().webpackConfig ?? {};
@@ -31,9 +31,9 @@ class WebpackBundler extends Bundler {
     }
 
     return runAsyncFns(this.service.chainWebpackConfigFns, plgConfig)
-      .then(() => { 
-        this._cacheConfig = mergeWebpack(plgConfig.toConfig(), prjConfig)
-        return this._cacheConfig!;
+      .then(() => {
+        this.cacheConfig = mergeWebpack(plgConfig.toConfig(), prjConfig);
+        return this.cacheConfig!;
       });
   }
 
