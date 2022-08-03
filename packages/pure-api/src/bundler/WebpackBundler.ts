@@ -5,6 +5,7 @@ import webpack, { Configuration } from 'webpack';
 import ChainConfig from 'webpack-chain';
 import WebpackDevServer from 'webpack-dev-server';
 import mergeWebpack from 'webpack-merge';
+import stringifyObject from 'stringify-object';
 
 import { ensureDirectory, isDev, runAsyncFns } from '../utils';
 
@@ -94,7 +95,7 @@ class WebpackBundler extends Bundler {
       this.service.paths.outputPath!,
       'webpack.config.js',
     );
-    await fs.writeFile(outputPath, JSON.stringify(compileOption, null, 2));
+    await fs.writeFile(outputPath, stringifyObject(compileOption));
   }
 }
 
