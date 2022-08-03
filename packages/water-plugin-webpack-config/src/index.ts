@@ -33,6 +33,8 @@ export default class BaseWebpackPlugin extends Plugin {
         .chunkFilename('name.js');
     }
 
+    config.stats('minimal');
+
     config.context(this.service.paths.projectRoot!);
 
     config.optimization
