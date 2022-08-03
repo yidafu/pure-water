@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-plugin-babel",
-  "version": "0.1.1-beta.4",
+  "version": "0.1.1-beta.5",
   "private": false,
   "description": "",
   "main": "lib/index.js",

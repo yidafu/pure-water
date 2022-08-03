@@ -11,11 +11,13 @@
     "@pure-org/water-plugin-vue2": "0.1.1-beta.0",
     "@pure-org/water-plugin-webpack-config": "0.1.1-beta.0",
     "@pure-org/water-preset-vue": "0.1.1-beta.1",
-    "@pure-org/water-preset-vue2": "0.1.1-beta.1"
+    "@pure-org/water-preset-vue2": "0.1.1-beta.1",
+    "@pure-org/tsconfig": "0.1.1-beta.4"
   },
   "changesets": [
     "breezy-clocks-peel",
     "empty-bugs-agree",
+    "five-dolls-jam",
     "real-elephants-sleep",
     "stale-mice-sip",
     "tough-taxis-nail"
