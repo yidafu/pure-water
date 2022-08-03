@@ -328,7 +328,7 @@ class CommandService {
             this.onDevServerReadyFns.push(() => plg.onDevServerReady!());
           }
           if (isFunction(plg.onDevCompileDone)) {
-            this.onDevCompileDoneFns.push(() => plg.onDevCompileDone!());
+            this.onDevCompileDoneFns.push((options) => plg.onDevCompileDone!(options));
           }
           if (isFunction(plg.afterBuild)) {
             this.afterBuildFns.push(() => plg.afterBuild!());

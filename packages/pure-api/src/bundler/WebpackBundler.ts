@@ -6,18 +6,34 @@ import ChainConfig from 'webpack-chain';
 import WebpackDevServer from 'webpack-dev-server';
 import mergeWebpack from 'webpack-merge';
 
-import { ensureDirectory, runAsyncFns } from '../utils';
+import { ensureDirectory, isDev, runAsyncFns } from '../utils';
 
 import { Bundler } from './Bundler';
+import { WebpackDevCompileDonePlugin } from './WacbpackDevCompileDonePlugin';
 
 class WebpackBundler extends Bundler {
   name = 'webpack';
 
+  private _cacheConfig?: Configuration;
+
   get compileOption(): Promise<Configuration> {
+    if (this._cacheConfig) {
+      return Promise.resolve(this._cacheConfig!);
+    }
+
     const prjConfig = this.service.getProjectConfig().webpackConfig ?? {};
     const plgConfig = new ChainConfig();
+    if (isDev()) {
+      plgConfig
+        .plugin('WebpackDevCompileDonePlugin')
+        .use(WebpackDevCompileDonePlugin, [this.service.onDevCompileDoneFns]);
+    }
+
     return runAsyncFns(this.service.chainWebpackConfigFns, plgConfig)
-      .then(() => mergeWebpack(plgConfig.toConfig(), prjConfig));
+      .then(() => { 
+        this._cacheConfig = mergeWebpack(plgConfig.toConfig(), prjConfig)
+        return this._cacheConfig!;
+      });
   }
 
   // eslint-disable-next-line class-methods-use-this

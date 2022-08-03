@@ -22,6 +22,8 @@ const log = debug('pure:api:bundler:vite');
 class ViteBundler extends Bundler {
   name = 'vite';
 
+  _cacheConfig?: ViteUserConfig;
+
   /**
    *
    *
@@ -30,13 +32,19 @@ class ViteBundler extends Bundler {
    * @memberof ViteBundler
    */
   get compileOption(): ViteUserConfig {
-    const baseConfig = this.service.getProjectConfig().viteConfig ?? {};
+    if (this._cacheConfig) {
+      return this._cacheConfig!;
+    }
+
+    let baseConfig = this.service.getProjectConfig().viteConfig ?? {};
     // eslint-disable-next-line no-restricted-syntax
     for (const viteConfigFn of this.service.viteConfigFns) {
       const overrideConfig = viteConfigFn();
-      mergeConfig(baseConfig, overrideConfig, false);
+      baseConfig = mergeConfig(baseConfig, overrideConfig, false);
     }
-    return baseConfig;
+
+    this._cacheConfig = baseConfig;
+    return this._cacheConfig!;
   }
 
   /**
@@ -54,11 +62,12 @@ class ViteBundler extends Bundler {
    * @memberof ViteBundler
    */
   async startDevServer(): Promise<void> {
-    log('Vite compile config => %o', this.compileOption);
+    const compileOption = this.compileOption;
+    log('Vite compile config => %o', compileOption);
     const server = await createServer({
       configFile: false,
       root: process.cwd(),
-      ...this.compileOption,
+      ...compileOption,
     });
 
     await server.listen();
