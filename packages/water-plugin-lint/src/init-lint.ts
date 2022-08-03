@@ -1,8 +1,9 @@
+import { spawn } from 'child_process';
 import { readFile, access } from 'fs/promises';
 import { join } from 'path';
-import { spawn } from 'child_process';
-import ora from 'ora';
+
 import { fileExist } from '@pure-org/api';
+import ora from 'ora';
 
 async function readPacakgeJson(dir: string) {
   const buffer = await readFile(join(dir, 'package.json'), { encoding: 'utf-8' });
@@ -88,7 +89,7 @@ export async function initLint(projectRoot: string) {
 
       spinner.text = '开始配置 husky';
       await execCommand('npx', ['husky', 'install']);
-      await execCommand('npm', ['pkg', 'set', 'scripts.prepare', '"husky install"']);
+      await execCommand('npm', ['pkg', 'set', 'scripts.prepare="husky install"']);
       await execCommand('npx', ['husky', 'add', '.husky/pre-commit', '"npx pure lint"']);
       await execCommand('npx', ['husky', 'add', '.husky/commit', '"npx pure commit-msg"']);
       spinner.succeed('husky 配置成功');
