@@ -23,7 +23,7 @@ const log = debug('pure:api:bundler:vite');
 class ViteBundler extends Bundler {
   name = 'vite';
 
-  _cacheConfig?: ViteUserConfig;
+  cacheConfig?: ViteUserConfig;
 
   /**
    *
@@ -33,8 +33,8 @@ class ViteBundler extends Bundler {
    * @memberof ViteBundler
    */
   get compileOption(): ViteUserConfig {
-    if (this._cacheConfig) {
-      return this._cacheConfig!;
+    if (this.cacheConfig) {
+      return this.cacheConfig!;
     }
 
     let baseConfig = this.service.getProjectConfig().viteConfig ?? {};
@@ -44,8 +44,8 @@ class ViteBundler extends Bundler {
       baseConfig = mergeConfig(baseConfig, overrideConfig, false);
     }
 
-    this._cacheConfig = baseConfig;
-    return this._cacheConfig!;
+    this.cacheConfig = baseConfig;
+    return this.cacheConfig!;
   }
 
   /**
@@ -63,7 +63,7 @@ class ViteBundler extends Bundler {
    * @memberof ViteBundler
    */
   async startDevServer(): Promise<void> {
-    const compileOption = this.compileOption;
+    const { compileOption } = this;
     log('Vite compile config => %o', compileOption);
     const server = await createServer({
       configFile: false,

@@ -90,10 +90,8 @@ export async function initLint(projectRoot: string) {
       spinner.text = '开始配置 husky';
       await execCommand('npx', ['husky', 'install']);
       await execCommand('npm', ['pkg', 'set', 'scripts.prepare="husky install"', '--json']);
-      // eslint-disable-next-line no-useless-escape
-      await execCommand('npx', ['husky', 'add', '.husky/pre-commit', '\"npx lint-staged\"']);
-      // eslint-disable-next-line no-useless-escape
-      await execCommand('npx', ['husky', 'add', '.husky/commit-msg', '\"npx pure commit-msg\"']);
+      await execCommand('npx', ['husky', 'add', '.husky/pre-commit', 'npx lint-staged']);
+      await execCommand('npx', ['husky', 'add', '.husky/commit-msg', 'npx pure commit-msg']);
       spinner.succeed('husky 配置成功');
     } catch (err) {
       spinner.fail('husky 配置失败');
@@ -120,7 +118,7 @@ export async function initLint(projectRoot: string) {
         })}`, '--json']);
       } else if (pkgJson?.dependencies?.vue) {
         await execCommand('npm', ['pkg', 'set', `lint-staged=${JSON.stringify({
-          '*.*.{js,ts,vue}': 'pure lint',
+          '*.{js,ts,vue}': 'pure lint',
           '*.{css,scss}': 'pure lint',
         })}`, '--json']);
       } else {

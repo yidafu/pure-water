@@ -1,5 +1,6 @@
 import { deepmerge } from '@pure-org/api';
 import { Linter } from 'eslint';
+
 import baseEslintConfig from './base';
 
 const vueBaseEslintConfig: Linter.Config = {
