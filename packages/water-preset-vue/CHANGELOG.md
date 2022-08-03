@@ -1,5 +1,13 @@
 # @pure-org/water-preset-vue
 
+## 0.1.1-beta.8
+
+### Patch Changes
+
+- husky add hook incorrect
+- Updated dependencies
+  - @pure-org/water-plugin-lint@0.1.1-beta.8
+
 ## 0.1.1-beta.7
 
 ### Patch Changes

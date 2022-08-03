@@ -1,5 +1,13 @@
 # @pure-org/water-plugin-webpack-config
 
+## 0.1.1-beta.8
+
+### Patch Changes
+
+- husky add hook incorrect
+- Updated dependencies
+  - @pure-org/api@0.1.1-beta.8
+
 ## 0.1.1-beta.7
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @pure-org/stylelint-config-water
 
+## 0.1.1-beta.8
+
+### Patch Changes
+
+- husky add hook incorrect
+
 ## 0.1.1-beta.7
 
 ### Patch Changes
