@@ -348,6 +348,7 @@ class CommandService {
           }
         }
       });
+    await runAsyncFns(this.onPluginReadyFns);
   }
 
   /**
