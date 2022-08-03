@@ -46,6 +46,7 @@
     "@pure-org/eslint-config-water": "workspace:^",
     "@pure-org/stylelint-config-water": "workspace:^",
     "@types/ora": "^3.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
     "debug": "^4.3.4",
     "eslint": "^8.20.0",
     "ora": "^5.4.1",
