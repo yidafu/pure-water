@@ -39,6 +39,7 @@
     "deepmerge": "^4.2.2",
     "lodash.merge": "^4.6.2",
     "minimist": "^1.2.6",
+    "stringify-object": "^4.0.1",
     "vite": "^3.0.2",
     "webpack": "^5.74.0",
     "webpack-chain": "^6.5.1",
@@ -50,6 +51,7 @@
     "@types/lodash.merge": "^4.6.7",
     "@types/minimist": "^1.2.2",
     "@types/node": "^18.6.0",
+    "@types/stringify-object": "^4.0.1",
     "@types/webpack": "^5.28.0"
   }
 }
