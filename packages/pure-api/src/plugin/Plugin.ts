@@ -10,7 +10,7 @@ export type PluginViteConfigHook = () => UserConfig;
 export type PluginBeforeCompileHook = () => Promise<void>;
 export type PluginOnPluginReadyHook = () => Promise<void>;
 export type PluginOnDevServerReadyHook = () => Promise<void>;
-export type PluginOnDevCompileDoneHook = () => Promise<void>;
+export type PluginOnDevCompileDoneHook = (options: { isFirstCompile: boolean }) => Promise<void>;
 export type PluginAfterBuildHook = () => Promise<void>;
 export type PluginOnCleanHook = () => Promise<void>;
 
@@ -18,8 +18,9 @@ export interface IPluginConstructor {
   new (service: CommandService): Plugin;
   priority: number;
 }
+
 /**
- *
+ * Asbtract Plugin Define
  *
  * @abstract
  * @class Plugin
@@ -91,18 +92,42 @@ abstract class Plugin {
   registerCommand?: () => (ICommand | ICommand[] | undefined);
 
   /**
-   *
+   * before compile code
    *
    * @memberof Plugin
    */
   beforeCompile?: PluginBeforeCompileHook;
 
+  /**
+   * call when all plugins loaded
+   *
+   * @type {PluginOnPluginReadyHook}
+   * @memberof Plugin
+   */
   onPluginReady?: PluginOnPluginReadyHook;
 
+  /**
+   * dev server is ready
+   *
+   * @type {PluginOnDevServerReadyHook}
+   * @memberof Plugin
+   */
   onDevServerReady?: PluginOnDevServerReadyHook;
 
+  /**
+   * only support webpack bundler
+   *
+   * @type {PluginOnDevCompileDoneHook}
+   * @memberof Plugin
+   */
   onDevCompileDone?: PluginOnDevCompileDoneHook;
 
+  /**
+   * call when build complate
+   *
+   * @type {PluginAfterBuildHook}
+   * @memberof Plugin
+   */
   afterBuild?: PluginAfterBuildHook;
 
   onClean?: PluginOnCleanHook;
