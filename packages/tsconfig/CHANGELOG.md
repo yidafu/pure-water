@@ -1,5 +1,11 @@
 # @pure-org/tsconfig
 
+## 0.1.1-beta.7
+
+### Patch Changes
+
+- downgrade stringify-object@3.3.0
+
 ## 0.1.1-beta.6
 
 ### Patch Changes

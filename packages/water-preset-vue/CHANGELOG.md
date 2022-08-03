@@ -1,5 +1,13 @@
 # @pure-org/water-preset-vue
 
+## 0.1.1-beta.7
+
+### Patch Changes
+
+- downgrade stringify-object@3.3.0
+- Updated dependencies
+  - @pure-org/water-plugin-lint@0.1.1-beta.7
+
 ## 0.1.1-beta.6
 
 ### Patch Changes

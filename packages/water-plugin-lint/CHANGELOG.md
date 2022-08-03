@@ -1,5 +1,15 @@
 # @pure-org/water-plugin-lint
 
+## 0.1.1-beta.7
+
+### Patch Changes
+
+- downgrade stringify-object@3.3.0
+- Updated dependencies
+  - @pure-org/api@0.1.1-beta.7
+  - @pure-org/eslint-config-water@0.1.1-beta.7
+  - @pure-org/stylelint-config-water@0.1.1-beta.7
+
 ## 0.1.1-beta.6
 
 ### Patch Changes
