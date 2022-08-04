@@ -1,5 +1,15 @@
 # @pure-org/water-plugin-lint
 
+## 0.1.1-beta.9
+
+### Patch Changes
+
+- update missing peer deps
+- Updated dependencies
+  - @pure-org/eslint-config-water@0.1.1-beta.9
+  - @pure-org/api@0.1.1-beta.9
+  - @pure-org/stylelint-config-water@0.1.1-beta.9
+
 ## 0.1.1-beta.8
 
 ### Patch Changes
