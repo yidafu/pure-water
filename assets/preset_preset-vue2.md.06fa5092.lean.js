@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as r,a as o}from"./app.a01b9b1f.js";const h=JSON.parse('{"title":"Vue2 \u9879\u76EE","description":"","frontmatter":{},"headers":[],"relativePath":"preset/preset-vue2.md"}'),a={name:"preset/preset-vue2.md"},s=o("",5),c=[s];function d(i,p,l,_,n,u){return r(),t("div",null,c)}var m=e(a,[["render",d]]);export{h as __pageData,m as default};
