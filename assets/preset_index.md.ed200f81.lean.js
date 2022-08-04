@@ -1,0 +1,1 @@
+import{_ as e,c as o,o as t,a as c}from"./app.a01b9b1f.js";const u=JSON.parse('{"title":"Preset","description":"","frontmatter":{},"headers":[],"relativePath":"preset/index.md"}'),r={name:"preset/index.md"},d=c("",4),s=[d];function a(n,p,_,i,f,h){return t(),o("div",null,s)}var m=e(r,[["render",a]]);export{u as __pageData,m as default};
