@@ -1,0 +1,14 @@
+{
+  "extends": "@pure-org/tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "useDefineForClassFields": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "lib": ["ESNext", "DOM"],
+    "types": [
+      "vite/client",
+    ]
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+}
