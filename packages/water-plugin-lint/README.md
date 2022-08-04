@@ -1,0 +1,1 @@
+../../docs/plugin/plugin-lint.md
