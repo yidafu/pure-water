@@ -1,6 +1,7 @@
 export default {
   title: 'Pure Water CLI',
   description: 'Front End Cli Tool.',
+  base: '/pure-water/',
   themeConfig: {
     logo: '/imgs/water.png',
     nav: [
@@ -28,7 +29,7 @@ export default {
         items: [
             { text: '介绍', link: '/plugin/index' },
             { text: 'Lint 插件', link: '/plugin/plugin-lint' },
-            { text: 'Vue2 插件', link: '/plugin/plugin-vue' },
+            { text: 'Vue2 插件', link: '/plugin/plugin-vue2' },
             { text: 'Babel 插件', link: '/plugin/plugin-babel' },
             { text: '基础 Webpack 配置插件', link: '/plugin/plugin-webpack-config' },
         ],
