@@ -23,14 +23,30 @@ interface ILintPluginActionOption {
   fix: boolean;
 }
 
-type StylelintOption = stylelint.LinterOptions & { entry?: string[], disable?: boolean };
-type ESlintOption = ESLint.Options & { entry?: string[], disable?: boolean };
+interface ICommitLintOption extends UserConfig {
+  disable?: boolean
+};
+
+interface IStylelintOption extends stylelint.LinterOptions {
+  entry?: string[];
+  disable?: boolean;
+};
+
+interface IESLintOption extends ESLint.Options {
+  entry?: string[];
+  disable?: boolean;
+};
+
+type ESLintMode = 'base' | 'vue2' | 'vue';
+
 export interface ILintPluginOption {
   presetCommitlint?: ICommitlintMode
-  commitlint?: UserConfig & { disable?: boolean },
-  presetEslint?: 'base' | 'vue2' | 'vue';
-  eslint?: ESlintOption,
-  stylelint?: StylelintOption,
+  commitlint?: ICommitLintOption
+
+  eslintMode?: ESLintMode;
+  eslint?: IESLintOption,
+
+  stylelint?: IStylelintOption,
 }
 
 class LintPlugin extends Plugin {
@@ -48,8 +64,8 @@ class LintPlugin extends Plugin {
         commitlint: commitlintOption = {},
       } = lintPlgOption;
 
-      const { diable, ...restCommitlintOption } = commitlintOption;
-      if (!diable) {
+      const { disable, ...restCommitlintOption } = commitlintOption;
+      if (!disable) {
         await runCommitlint(presetCommitlint, restCommitlintOption);
       }
     }
@@ -57,7 +73,7 @@ class LintPlugin extends Plugin {
       const {
         presetEslint,
         eslint: eslintOption = {},
-        stylelint: stylelitOption = {} as StylelintOption,
+        stylelint: stylelitOption = {} as IESLintOption,
       } = lintPlgOption;
 
       const eslintConfig = ESLINT_CONFIG_MAP.get(presetEslint ?? 'base');
@@ -67,6 +83,7 @@ class LintPlugin extends Plugin {
         ...restEslintConfig
       } = eslintOption;
       if (!eslintDisable) {
+        // TODO: deep merge
         await runEslint(eslintEntry, {
           ...restEslintConfig,
           baseConfig: eslintConfig,
@@ -79,6 +96,7 @@ class LintPlugin extends Plugin {
         ...restStylelintConfig
       } = stylelitOption;
       if (!stylelintDisable) {
+        // TODO: deep merge
         await runStylelint({
           config: stylelintConfig,
           formatter: 'string',
