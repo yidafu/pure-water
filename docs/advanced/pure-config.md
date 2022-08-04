@@ -28,7 +28,7 @@ interface IProjectConfig {
 
 ## presets
 
-目前已有[`vue`](/preset/preset-vue)和[`vue2`](perset/preset-vue2)两个 preset。
+目前已有[`vue`](/preset/preset-vue)和[`vue2`](/preset/preset-vue2)两个 preset。
 
 ## viteConfig
 
