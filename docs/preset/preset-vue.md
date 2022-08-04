@@ -12,3 +12,21 @@
   + header 长度在 30~100 之间
   + subject 长度在 20~80 之间
 
+## 使用方式
+
+### 1. 安装依赖
+
+```sh
+pnpm install @pure-org/water-preset-vue --save-dev
+```
+
+### 2. 启用配置
+
+修改 `pure.config.js`.
+
+```diff
+ module.exports = {
+   name: 'your-project-name'
++  presets: ['vue']
+ }
+```
