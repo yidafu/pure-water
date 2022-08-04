@@ -36,7 +36,7 @@ export default class BaseWebpackPlugin extends Plugin {
 
     config.stats('minimal');
 
-    config.context(this.service.paths.projectRoot!);
+    config.context(this.PROJECT_ROOT);
 
     config.optimization
       .splitChunks({

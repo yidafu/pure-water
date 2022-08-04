@@ -30,5 +30,5 @@ export function assetConfig(config: WebpackChain) {
   (config.module.rules.get('media-asset') as any)
     .store.set('generator', { filename: 'media/[name]_[hash:8][ext]' });
   (config.module.rules.get('font-asset') as any)
-    .store.set('generator', { filename: 'media/[name]_[hash:8][ext]' });
+    .store.set('generator', { filename: 'fonts/[name]_[hash:8][ext]' });
 }
