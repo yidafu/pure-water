@@ -1,7 +1,7 @@
 {
   "name": "@pure-org/water-template-vue3",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.1.1-beta.9",
   "scripts": {
     "dev": "pure dev",
     "build": "vue-tsc --noEmit && pure build",
