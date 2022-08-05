@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm i -g pnpm && pnpm install --frozen-lockfile
+      - run: npm i -g pnpm && pnpm install
 
       - name: Build
         run: pnpm run docs:build
