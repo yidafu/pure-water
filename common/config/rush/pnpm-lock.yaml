@@ -36,7 +36,7 @@ importers:
       '@types/inquirer': ^8.0.0
       '@types/lodash.merge': ^4.6.7
       '@types/minimist': ^1.2.2
-      '@types/node': ^18.6.0
+      '@types/node': ^16.11.47
       '@types/stringify-object': ^3.0.0
       '@types/webpack': ^5.28.0
       axios: ^0.27.2
@@ -51,7 +51,7 @@ importers:
       ora: ^5.4.1
       stringify-object: ^3.3.0
       tar: ^6.1.11
-      vite: ^3.0.2
+      vite: ^3.0.4
       webpack: ^5.74.0
       webpack-chain: ^6.5.1
       webpack-dev-server: ^4.9.3
@@ -79,7 +79,7 @@ importers:
       '@types/inquirer': 8.2.2
       '@types/lodash.merge': 4.6.7
       '@types/minimist': 1.2.2
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
       '@types/stringify-object': 3.3.1
       '@types/webpack': 5.28.0
 
@@ -148,10 +148,10 @@ importers:
       '@pure-org/stylelint-config-water': workspace:^
       '@types/debug': ^4.1.7
       '@types/eslint': ^8.4.5
-      '@types/node': 16.11.47
+      '@types/node': ^16.11.47
       '@types/ora': ^3.2.0
       '@typescript-eslint/eslint-plugin': ^5.30.7
-      '@typescript-eslint/parser': ^5.0.0
+      '@typescript-eslint/parser': ^5.30.7
       debug: ^4.3.4
       eslint: ^8.20.0
       ora: ^5.4.1
@@ -195,7 +195,7 @@ importers:
       style-loader: ^3.3.1
       vue-loader: ^15.10.0
       vue-style-loader: ^4.1.3
-      vue-template-compiler: ^2.6.14
+      vue-template-compiler: ^2.7.8
       webpack: ^5.74.0
       webpack-chain: ^6.5.1
     dependencies:
@@ -249,7 +249,7 @@ importers:
 
   ../../packages/water-preset-vue2:
     specifiers:
-      '@babel/core': ^7.13.0
+      '@babel/core': ^7.18.9
       '@babel/preset-env': ^7.18.9
       '@pure-org/water-plugin-babel': workspace:^
       '@pure-org/water-plugin-lint': workspace:^
@@ -273,7 +273,7 @@ importers:
       core-js: ^3.8.3
       husky: ^8.0.1
       lint-staged: ^13.0.3
-      vue: ^2.6.14
+      vue: ^2.7.8
     dependencies:
       core-js: 3.24.1
       vue: 2.7.8
@@ -290,7 +290,7 @@ importers:
       '@pure-org/water-preset-vue': workspace:^
       husky: ^8.0.1
       lint-staged: ^13.0.3
-      typescript: ^4.6.4
+      typescript: ^4.7.4
       vite: ^3.0.4
       vue: ^3.2.37
       vue-tsc: ^0.38.4
@@ -1734,13 +1734,13 @@ packages:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
       '@types/connect': 3.4.35
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
     dev: false
 
   /@types/bonjour/3.5.10:
     resolution: {integrity: sha512-p7ienRMiS41Nu2/igbJxxLDWrSZ0WxM8UQgCeO9KhoVF7cOVFkrKsiDr1EsJIla8vV3oEEjGcz11jc5yimhzZw==}
     dependencies:
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
     dev: false
 
   /@types/case-sensitive-paths-webpack-plugin/2.1.6:
@@ -1753,13 +1753,13 @@ packages:
     resolution: {integrity: sha512-h8QJa8xSb1WD4fpKBDcATDNGXghFj6/3GRWG6dhmRcu0RX1Ubasur2Uvx5aeEwlf0MwblEC2bMzzMQntxnw/Cw==}
     dependencies:
       '@types/express-serve-static-core': 4.17.30
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
     dev: false
 
   /@types/connect/3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
     dev: false
 
   /@types/debug/4.1.7:
@@ -1789,7 +1789,7 @@ packages:
   /@types/express-serve-static-core/4.17.30:
     resolution: {integrity: sha512-gstzbTWro2/nFed1WXtf+TtrpwxH7Ggs4RLYTLbeVgIkUQOI3WG/JKjgeOU1zXDvezllupjrf8OPIdvTbIaVOQ==}
     dependencies:
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
     dev: false
@@ -1810,7 +1810,7 @@ packages:
   /@types/http-proxy/1.17.9:
     resolution: {integrity: sha512-QsbSjA/fSk7xB+UXlCT3wHBy5ai9wOcNDWwZAtud+jXhwOM3l+EYZh8Lng4+/6n8uar0J7xILzqftJdJ/Wdfkw==}
     dependencies:
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
     dev: false
 
   /@types/inquirer/8.2.2:
@@ -1852,6 +1852,7 @@ packages:
 
   /@types/node/18.6.4:
     resolution: {integrity: sha512-I4BD3L+6AWiUobfxZ49DlU43gtI+FTHSv9pE2Zekg6KjMpre4ByusaljW3vYSLJrvQ1ck1hUaeVu8HVlY3vzHg==}
+    dev: true
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -1888,13 +1889,13 @@ packages:
     resolution: {integrity: sha512-z5xyF6uh8CbjAu9760KDKsH2FcDxZ2tFCsA4HIMWE6IkiYMXfVoa+4f9KX+FN0ZLsaMw1WNG2ETLA6N+/YA+cg==}
     dependencies:
       '@types/mime': 3.0.1
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
     dev: false
 
   /@types/sockjs/0.3.33:
     resolution: {integrity: sha512-f0KEEe05NvUnat+boPTZ0dgaLZ4SfSouXUgv5noUiefG2ajgKjmETo9ZJyuqsl7dfl2aHlLJUiki6B4ZYldiiw==}
     dependencies:
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
     dev: false
 
   /@types/source-list-map/0.1.2:
@@ -1912,7 +1913,7 @@ packages:
   /@types/through/0.0.30:
     resolution: {integrity: sha512-FvnCJljyxhPM3gkRgWmxmDZyAQSiBQQWLI0A0VFL0K7W1oRUrPJSqNO0NvTnLkBcotdlp3lKvaT0JrnyRDkzOg==}
     dependencies:
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
     dev: true
 
   /@types/uglify-js/3.16.0:
@@ -1943,7 +1944,7 @@ packages:
   /@types/webpack/5.28.0:
     resolution: {integrity: sha512-8cP0CzcxUiFuA9xGJkfeVpqmWTk9nx6CWwamRGCj95ph1SmlRRk9KlCZ6avhCbZd4L68LvYT6l1kpdEnQXrF8w==}
     dependencies:
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
       tapable: 2.2.1
       webpack: 5.74.0
     transitivePeerDependencies:
@@ -1956,7 +1957,7 @@ packages:
   /@types/ws/8.5.3:
     resolution: {integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==}
     dependencies:
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
     dev: false
 
   /@typescript-eslint/eslint-plugin/5.32.0_iosr3hrei2tubxveewluhu5lhy:
@@ -5013,7 +5014,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.6.4
+      '@types/node': 16.11.47
       merge-stream: 2.0.0
       supports-color: 8.1.1
 

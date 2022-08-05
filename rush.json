@@ -385,7 +385,7 @@
    * to projects. If this property is not specified, any tag is allowed. This
    * list is useful in preventing typos when specifying tags for projects.
    */
-  "allowedProjectTags": [ "config", "plugin", "preset", "template" ],
+  "allowedProjectTags": [ "core", "config", "plugin", "preset", "template" ],
 
   /**
    * (Required) This is the inventory of projects to be managed by Rush.
@@ -504,6 +504,7 @@
       "packageName": "@pure-org/water-plugin-babel",
       "projectFolder": "packages/water-plugin-babel",
       "reviewCategory": "production",
+      "versionPolicyName": "PureWater",
       "shouldPublish": true,
       "tags": ["plugin"]
     },
