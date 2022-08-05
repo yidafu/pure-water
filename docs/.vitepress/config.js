@@ -3,7 +3,7 @@ export default {
   description: 'Front End Cli Tool.',
   base: '/pure-water/',
   themeConfig: {
-    logo: '/imgs/water.png',
+    logo: 'https://raw.githubusercontent.com/yidafu/pure-water/master/docs/imgs/water.png',
     nav: [
       { text: '首页', link: '/' },
       { text: '快速开始', link: '/get-started' },
