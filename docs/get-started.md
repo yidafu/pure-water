@@ -2,7 +2,19 @@
 
 ## 创建新应用
 
-TODO
+首先，全局安装 `@pure-org/create`
+
+```sh
+pnpm i -g @pure-org/create
+```
+
+然后，就可以通过 `pure-create` 命令创建应用了。
+
+```sh
+pure-create test-app
+```
+
+![Pure Create command](/imgs/pure-create.gif)
 
 ## 已有项目使用
 
