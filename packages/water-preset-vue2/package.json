@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-preset-vue2",
-  "version": "0.1.1-beta.11",
+  "version": "0.1.1-beta.12",
   "private": false,
   "description": "",
   "main": "index.js",
@@ -21,10 +21,10 @@
   "dependencies": {
     "@babel/core": "^7.18.9",
     "@babel/preset-env": "^7.18.9",
-    "@pure-org/water-plugin-babel": "workspace:^0.1.1-beta.11",
-    "@pure-org/water-plugin-lint": "workspace:^0.1.1-beta.11",
-    "@pure-org/water-plugin-vue2": "workspace:^0.1.1-beta.11",
-    "@pure-org/water-plugin-webpack-config": "workspace:^0.1.1-beta.11"
+    "@pure-org/water-plugin-babel": "workspace:^0.1.1-beta.12",
+    "@pure-org/water-plugin-lint": "workspace:^0.1.1-beta.12",
+    "@pure-org/water-plugin-vue2": "workspace:^0.1.1-beta.12",
+    "@pure-org/water-plugin-webpack-config": "workspace:^0.1.1-beta.12"
   },
   "devDependencies": {
     "vue": "^2.7.8"
