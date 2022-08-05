@@ -53,7 +53,7 @@ async function getRegistryInfo(pkgName: string, registry: string) {
   throw new Error(resp.data);
 }
 
-async function downloadTarball(versionInfo) {
+async function downloadTarball(versionInfo: any) {
   const { dist } = versionInfo;
   const tmpDir = `/tmp/pure_water/download/${
     encodeURIComponent(versionInfo.name)}/${
@@ -146,10 +146,7 @@ export const createCommand: ICommand = {
         message: '请选择你需要的模板',
         type: 'list',
         prefix: '👉',
-        choices: DEFAULT_TEMPLATE_MAP.keys(),
-        transformer(input: string) {
-          return DEFAULT_TEMPLATE_MAP.get(input) ?? '@pure-org/water-template-vue3';
-        },
+        choices: Array.from(DEFAULT_TEMPLATE_MAP.keys()),
       });
     }
 
@@ -164,7 +161,7 @@ export const createCommand: ICommand = {
         }
         return appName;
       },
-      validate(input) {
+      validate(input: string) {
         const dirExist = existsSync(path.join(process.cwd(), input));
         if (dirExist && !options.force) {
           return '该目录已存在请重新输入, 或使用 --force 参数重新执行命令';
@@ -176,7 +173,9 @@ export const createCommand: ICommand = {
     const answer = await inquirer.prompt(promptList);
 
     const appDir = path.join(process.cwd(), answer.appName);
-    const templateName = options.template ?? answer.tplName;
+    const templateName = options.template
+      ?? DEFAULT_TEMPLATE_MAP.get(answer.tplName)
+      ?? '@pure-org/water-template-vue3';
     const registry = options.registry ?? 'https://registry.npmjs.org';
 
     const tplDir = await downloadTemplate(templateName, registry);
@@ -184,9 +183,13 @@ export const createCommand: ICommand = {
     const tempalteParams: Record<string, string> = {
       appName,
     };
-    await generateAppTemplate(tplDir, appDir, tempalteParams);
+    await generateAppTemplate(tplDir!, appDir, tempalteParams);
     console.log(chalk.green(`
-
+项目已经初始化完成:
+\tcd ${answer.appName}
+\tpnpm run dev # start dev server
+\tpnpm run build # build production assets
+\tpnpm run lint # lint code
 `));
   },
 };
