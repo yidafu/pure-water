@@ -8,6 +8,7 @@
       "type": "pwa-node",
       "request": "launch",
       "name": "Launch Program",
+      "runtimeVersion": "16.16.0",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -16,7 +17,7 @@
         "${workspaceFolder}/**/*.js"
       ],
       "cwd": "${fileDirname}",
-      "args": ["lint"]
+      "args": ["build"]
     }
   ]
 }
