@@ -29,7 +29,6 @@ import {
   tryResolve,
 } from '../utils';
 
-import { createCommand } from './create-command';
 import { mergeProjectConfig } from './utils';
 
 const PRESET_PATH_KEY = Symbol('__PRESET_PATH__');
@@ -438,8 +437,6 @@ class CommandService {
         ...defaultOptions,
       },
     });
-
-    this.registerCommand(createCommand);
 
     this.registerCommand({
       name: 'clean',

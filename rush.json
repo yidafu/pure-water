@@ -485,6 +485,14 @@
       "tags": ["core"]
     },
     {
+      "packageName": "@pure-org/create",
+      "projectFolder": "packages/pure-create",
+      "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
+      "tags": ["core"]
+    },
+    {
       "packageName": "@pure-org/stylelint-config-water",
       "projectFolder": "packages/stylelint-config-water",
       "reviewCategory": "production",

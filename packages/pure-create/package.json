@@ -1,0 +1,50 @@
+{
+  "name": "@pure-org/create",
+  "version": "0.1.1-beta.13",
+  "private": false,
+  "description": "",
+  "exports": "lib/index.js",
+  "bin": {
+    "pure-create": "bin/index.js"
+  },
+  "types": "./lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib/*",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "node": ">=14.16",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rm -fr ./lib && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "@pure-org/api": "workspace:^0.1.1-beta.13",
+    "axios": "^0.27.2",
+    "chalk": "^4.1.2",
+    "commander": "^8.3.0",
+    "debug": "^4.3.4",
+    "globby": "^11.1.0",
+    "inquirer": "^8.2.4",
+    "minimist": "^1.2.6",
+    "ora": "^5.4.1",
+    "tar": "^6.1.11"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.7",
+    "@types/inquirer": "^8.0.0",
+    "@types/minimist": "^1.2.2",
+    "@types/tar": "^6.1.2"
+  }
+}

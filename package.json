@@ -24,6 +24,7 @@
   "license": "ISC",
   "devDependencies": {
     "@pure-org/cli": "workspace:*",
+    "@pure-org/create": "workspace:*",
     "@pure-org/eslint-config-water": "workspace:*",
     "@pure-org/tsconfig": "workspace:*",
     "@pure-org/water-preset-vue": "workspace:*",
