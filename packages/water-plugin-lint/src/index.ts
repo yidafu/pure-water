@@ -25,17 +25,17 @@ interface ILintPluginActionOption {
 
 interface ICommitLintOption extends UserConfig {
   disable?: boolean
-};
+}
 
 interface IStylelintOption extends stylelint.LinterOptions {
   entry?: string[];
   disable?: boolean;
-};
+}
 
 interface IESLintOption extends ESLint.Options {
   entry?: string[];
   disable?: boolean;
-};
+}
 
 type ESLintMode = 'base' | 'vue2' | 'vue';
 
@@ -71,12 +71,12 @@ class LintPlugin extends Plugin {
     }
     async function preCommitAction(option: ILintPluginActionOption) {
       const {
-        presetEslint,
+        eslintMode,
         eslint: eslintOption = {},
         stylelint: stylelitOption = {} as IESLintOption,
       } = lintPlgOption;
 
-      const eslintConfig = ESLINT_CONFIG_MAP.get(presetEslint ?? 'base');
+      const eslintConfig = ESLINT_CONFIG_MAP.get(eslintMode ?? 'base');
       const {
         entry: eslintEntry = [],
         disable: eslintDisable = false,
