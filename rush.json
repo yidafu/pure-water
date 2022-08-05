@@ -62,7 +62,7 @@
      * The default value is false to avoid legacy compatibility issues.
      * It is strongly recommended to set strictPeerDependencies=true.
      */
-    // "strictPeerDependencies": true,
+    "strictPeerDependencies": true,
 
     /**
      * Configures the strategy used to select versions during installation.
@@ -176,7 +176,7 @@
    * and set projectFolderMaxDepth to a large number.
    */
   // "projectFolderMinDepth": 2,
-  // "projectFolderMaxDepth": 2,
+  "projectFolderMaxDepth": 2,
 
   /**
    * Today the npmjs.com registry enforces fairly strict naming rules for packages, but in the early
@@ -290,19 +290,19 @@
      * your PR branch, and in this situation "rush change" will also automatically invoke "git fetch"
      * to retrieve the latest activity for the remote main branch.
      */
-    // "url": "https://github.com/microsoft/rush-example",
+    "url": "https://github.com/yidafu/pure-water",
 
     /**
      * The default branch name. This tells "rush change" which remote branch to compare against.
      * The default value is "main"
      */
-    // "defaultBranch": "main",
+    "defaultBranch": "master",
 
     /**
      * The default remote. This tells "rush change" which remote to compare against if the remote URL is
      * not set or if a remote matching the provided remote URL is not found.
      */
-    // "defaultRemote": "origin"
+    "defaultRemote": "origin"
   },
 
   /**
@@ -385,7 +385,7 @@
    * to projects. If this property is not specified, any tag is allowed. This
    * list is useful in preventing typos when specifying tags for projects.
    */
-  // "allowedProjectTags": [ "apps", "Web", "tools" ],
+  "allowedProjectTags": [ "config", "plugin", "preset", "template" ],
 
   /**
    * (Required) This is the inventory of projects to be managed by Rush.
@@ -466,7 +466,7 @@
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",
-      "tags": ["config", "eslint"]
+      "tags": ["config"]
     },
     {
       "packageName": "@pure-org/api",
@@ -474,7 +474,7 @@
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",
-      "tags": ["cli", "core"]
+      "tags": ["core"]
     },
     {
       "packageName": "@pure-org/cli",
@@ -482,7 +482,7 @@
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",
-      "tags": ["config", "eslint"]
+      "tags": ["core"]
     },
     {
       "packageName": "@pure-org/stylelint-config-water",
@@ -490,7 +490,7 @@
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",
-      "tags": ["config", "stylelint"]
+      "tags": ["config"]
     },
     {
       "packageName": "@pure-org/tsconfig",
@@ -498,14 +498,14 @@
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",
-      "tags": ["tsconfig"]
+      "tags": ["config"]
     },
     {
       "packageName": "@pure-org/water-plugin-babel",
       "projectFolder": "packages/water-plugin-babel",
       "reviewCategory": "production",
       "shouldPublish": true,
-      "tags": ["plugin", "babel"]
+      "tags": ["plugin"]
     },
     {
       "packageName": "@pure-org/water-plugin-lint",
@@ -513,7 +513,7 @@
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",
-      "tags": ["plugin", "lint"]
+      "tags": ["plugin"]
     },
 
     {
@@ -522,7 +522,7 @@
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",
-      "tags": ["plugin", "vue2"]
+      "tags": ["plugin"]
     },
 
     {
@@ -531,7 +531,7 @@
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",
-      "tags": ["plugin", "webpack-config"]
+      "tags": ["plugin", "config"]
     },
 
     {
@@ -540,14 +540,14 @@
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",
-      "tags": ["preset", "vue"]
+      "tags": ["preset"]
     },
     {
       "packageName": "@pure-org/water-preset-vue2",
       "projectFolder": "packages/water-preset-vue2",
       "reviewCategory": "production",
       "versionPolicyName": "PureWater",
-      "tags": ["preset", "vue2"]
+      "tags": ["preset"]
     },
     {
       "packageName": "@pure-org/water-template-vue3",
@@ -555,7 +555,7 @@
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",
-      "tags": ["template", "vue"]
+      "tags": ["template"]
     },
     {
       "packageName": "@pure-org/water-template-vue2",
@@ -563,7 +563,7 @@
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",
-      "tags": ["template", "vue2"]
+      "tags": ["template"]
     },
   ]
 }
