@@ -464,42 +464,55 @@
       "packageName": "@pure-org/eslint-config-water",
       "projectFolder": "packages/eslint-config-water",
       "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
       "tags": ["config", "eslint"]
     },
     {
       "packageName": "@pure-org/api",
       "projectFolder": "packages/pure-api",
       "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
       "tags": ["cli", "core"]
     },
     {
       "packageName": "@pure-org/cli",
       "projectFolder": "packages/pure-cli",
       "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
       "tags": ["config", "eslint"]
     },
     {
       "packageName": "@pure-org/stylelint-config-water",
       "projectFolder": "packages/stylelint-config-water",
       "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
       "tags": ["config", "stylelint"]
     },
     {
       "packageName": "@pure-org/tsconfig",
       "projectFolder": "packages/tsconfig",
       "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
       "tags": ["tsconfig"]
     },
     {
       "packageName": "@pure-org/water-plugin-babel",
       "projectFolder": "packages/water-plugin-babel",
       "reviewCategory": "production",
+      "shouldPublish": true,
       "tags": ["plugin", "babel"]
     },
     {
       "packageName": "@pure-org/water-plugin-lint",
       "projectFolder": "packages/water-plugin-lint",
       "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
       "tags": ["plugin", "lint"]
     },
 
@@ -507,6 +520,8 @@
       "packageName": "@pure-org/water-plugin-vue2",
       "projectFolder": "packages/water-plugin-vue2",
       "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
       "tags": ["plugin", "vue2"]
     },
 
@@ -514,6 +529,8 @@
       "packageName": "@pure-org/water-plugin-webpack-config",
       "projectFolder": "packages/water-plugin-webpack-config",
       "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
       "tags": ["plugin", "webpack-config"]
     },
 
@@ -521,24 +538,31 @@
       "packageName": "@pure-org/water-preset-vue",
       "projectFolder": "packages/water-preset-vue",
       "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
       "tags": ["preset", "vue"]
     },
     {
       "packageName": "@pure-org/water-preset-vue2",
       "projectFolder": "packages/water-preset-vue2",
       "reviewCategory": "production",
+      "versionPolicyName": "PureWater",
       "tags": ["preset", "vue2"]
     },
     {
       "packageName": "@pure-org/water-template-vue3",
       "projectFolder": "templates/water-template-vue3",
       "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
       "tags": ["template", "vue"]
     },
     {
       "packageName": "@pure-org/water-template-vue2",
       "projectFolder": "templates/water-template-vue2",
       "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
       "tags": ["template", "vue2"]
     },
   ]
