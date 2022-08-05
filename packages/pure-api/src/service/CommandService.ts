@@ -29,6 +29,7 @@ import {
   tryResolve,
 } from '../utils';
 
+import { createCommand } from './create-command';
 import { mergeProjectConfig } from './utils';
 
 const PRESET_PATH_KEY = Symbol('__PRESET_PATH__');
@@ -68,6 +69,7 @@ type CommandOption = string | {
 interface ICommand {
   name: string;
   alias?: string;
+  args?: Record<string, string>;
   action(...args: any[]): Promise<void>;
   options: Record<string, CommandOption>;
   description?: string;
@@ -418,6 +420,7 @@ class CommandService {
         description: '打包环境, 可选: dev/prod. dev 命令默认是: dev, build 命令默认是: prod',
       },
     };
+
     this.registerCommand({
       name: 'dev',
       action: this.dev,
@@ -426,6 +429,7 @@ class CommandService {
         ...defaultOptions,
       },
     });
+
     this.registerCommand({
       name: 'build',
       action: this.build,
@@ -434,6 +438,9 @@ class CommandService {
         ...defaultOptions,
       },
     });
+
+    this.registerCommand(createCommand);
+
     this.registerCommand({
       name: 'clean',
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
