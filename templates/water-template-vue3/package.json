@@ -10,9 +10,9 @@
     ".eslintrc.js",
     ".gitignore",
     "package.json",
-    "package.tpl.json",
-    "pure.config.js",
-    "README.md"
+    "package.json.tpl",
+    "pure.config.js.tpl",
+    "README.md.tpl"
   ],
   "scripts": {
     "dev": "pure dev",
