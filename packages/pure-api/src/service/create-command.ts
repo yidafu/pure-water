@@ -146,10 +146,7 @@ export const createCommand: ICommand = {
         message: '请选择你需要的模板',
         type: 'list',
         prefix: '👉',
-        choices: DEFAULT_TEMPLATE_MAP.keys(),
-        transformer(input: string) {
-          return DEFAULT_TEMPLATE_MAP.get(input) ?? '@pure-org/water-template-vue3';
-        },
+        choices: Array.from(DEFAULT_TEMPLATE_MAP.keys()),
       });
     }
 
@@ -176,7 +173,9 @@ export const createCommand: ICommand = {
     const answer = await inquirer.prompt(promptList);
 
     const appDir = path.join(process.cwd(), answer.appName);
-    const templateName = options.template ?? answer.tplName;
+    const templateName = options.template
+      ?? DEFAULT_TEMPLATE_MAP.get(answer.tplName)
+      ?? '@pure-org/water-template-vue3';
     const registry = options.registry ?? 'https://registry.npmjs.org';
 
     const tplDir = await downloadTemplate(templateName, registry);
@@ -186,7 +185,11 @@ export const createCommand: ICommand = {
     };
     await generateAppTemplate(tplDir!, appDir, tempalteParams);
     console.log(chalk.green(`
-
+项目已经初始化完成:
+\tcd ${answer.appName}
+\tpnpm run dev # start dev server
+\tpnpm run build # build production assets
+\tpnpm run lint # lint code
 `));
   },
 };
