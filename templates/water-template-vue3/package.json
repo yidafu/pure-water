@@ -7,6 +7,9 @@
     "build": "vue-tsc --noEmit && pure build",
     "lint": "pure lint"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "vue": "^3.2.37"
   },

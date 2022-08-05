@@ -7,6 +7,9 @@
     "build": "pure build",
     "lint": "pure lint"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "dependencies": {
     "core-js": "^3.8.3",
     "vue": "^2.7.8"
