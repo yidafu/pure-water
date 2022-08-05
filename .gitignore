@@ -69,3 +69,4 @@ common/autoinstallers/*/.npmrc
 
 # ignore tsc product
 lib/
+dist/
