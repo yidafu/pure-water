@@ -1,4 +1,5 @@
 module.exports = {
+  name: '<%= appName =>',
   presets: ['vue'],
   plugins: {
     lint: {

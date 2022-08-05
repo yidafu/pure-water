@@ -2,6 +2,18 @@
   "name": "@pure-org/water-template-vue3",
   "private": false,
   "version": "0.1.1-beta.11",
+  "files": [
+    "src/*",
+    "public/*",
+    ".husky/*",
+    ".stylelintrc.js",
+    ".eslintrc.js",
+    ".gitignore",
+    "package.json",
+    "package.tpl.json",
+    "pure.config.js",
+    "README.md"
+  ],
   "scripts": {
     "dev": "pure dev",
     "build": "vue-tsc --noEmit && pure build",
