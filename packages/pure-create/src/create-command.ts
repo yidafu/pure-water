@@ -2,6 +2,7 @@ import { existsSync, createWriteStream } from 'fs';
 import { readFile, writeFile, rm as rmFile } from 'fs/promises';
 import path from 'path';
 
+import { ensureDirectory, ICommand } from '@pure-org/api';
 import axios from 'axios';
 import chalk from 'chalk';
 import debug from 'debug';
@@ -9,10 +10,6 @@ import globby from 'globby';
 import inquirer from 'inquirer';
 import ora from 'ora';
 import tar from 'tar';
-
-import { ensureDirectory } from '../utils';
-
-import { ICommand } from './CommandService';
 
 const log = debug('pure:api:create');
 
@@ -198,8 +195,8 @@ export const createCommand: ICommand = {
 
     const tempalteParams: Record<string, string> = {
       appName,
-      // eslint-disable-next-line global-require
-      packageVersion: require('../../package.json').version,
+      // eslint-disable-next-line global-require, import/no-dynamic-require
+      packageVersion: require('../package.json').version,
     };
     await generateAppTemplate(tplDir!, appDir, tempalteParams);
     console.log(chalk.green(`

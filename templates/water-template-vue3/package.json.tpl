@@ -1,5 +1,5 @@
 {
-  "name": "<%= appName =>",
+  "name": "<%= appName %>",
   "private": true,
   "scripts": {
     "dev": "pure dev",
@@ -11,10 +11,10 @@
     "vue": "^3.2.37"
   },
   "devDependencies": {
-    "@pure-org/cli": "^<%= packageVersion =>",
-    "@pure-org/eslint-config-water": "^<%= packageVersion =>",
-    "@pure-org/stylelint-config-water": "^<%= packageVersion =>",
-    "@pure-org/water-preset-vue": "^<%= packageVersion =>",
+    "@pure-org/cli": "^<%= packageVersion %>",
+    "@pure-org/eslint-config-water": "^<%= packageVersion %>",
+    "@pure-org/stylelint-config-water": "^<%= packageVersion %>",
+    "@pure-org/water-preset-vue": "^<%= packageVersion %>",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "typescript": "^4.6.4",
