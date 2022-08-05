@@ -2,6 +2,18 @@
   "name": "@pure-org/water-template-vue2",
   "version": "0.1.1-beta.11",
   "private": false,
+  "files": [
+    "src/**/*",
+    "public/**/*",
+    ".husky/*",
+    ".stylelintrc.js",
+    ".eslintrc.js",
+    ".gitignore",
+    "package.json",
+    "package.tpl.json",
+    "pure.config.js",
+    "README.md"
+  ],
   "scripts": {
     "dev": "pure dev",
     "build": "pure build",

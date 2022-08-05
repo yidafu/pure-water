@@ -96,16 +96,13 @@ async function generateAppTemplate(
   const spinner = ora({ text: chalk.green('开始复制模板..'), color: 'green' }).start();
   console.log('');
   try {
-    const files2Copy = await globby([`${templateDir}/**/*`], { dot: true });
+    const files2Copy: string[] = await globby([`${templateDir}/**/*`], { dot: true });
+    const tplExtFiles = files2Copy.filter((filepath) => filepath.endsWith('.tpl'));
+    const normalFiles = files2Copy.filter((filepath) => !filepath.endsWith('.tpl'));
     // eslint-disable-next-line no-restricted-syntax
-    for (const sourcePath of files2Copy) {
+    for (const sourcePath of normalFiles) {
       // eslint-disable-next-line no-await-in-loop
-      let tmpelateFile = await readFile(sourcePath, { encoding: 'utf-8' });
-      Object.entries(tmpleateParams).forEach(([key, value]) => {
-        const replacementRegexp = new RegExp(`<%= ${key} %>`, 'g');
-        tmpelateFile = tmpelateFile.replace(replacementRegexp, value);
-      });
-
+      const tmpelateFile = await readFile(sourcePath, { encoding: 'utf-8' });
       const targetPath = sourcePath.replace(templateDir, appDir);
       // eslint-disable-next-line no-await-in-loop
       await ensureDirectory(path.dirname(targetPath));
@@ -113,6 +110,25 @@ async function generateAppTemplate(
       await writeFile(targetPath, tmpelateFile);
       console.log(chalk.green(`  创建文件: ${targetPath.replace(appDir, '')}`));
     }
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const sourcePath of tplExtFiles) {
+      // eslint-disable-next-line no-await-in-loop
+      let tmpelateFile = await readFile(sourcePath, { encoding: 'utf-8' });
+      Object.entries(tmpleateParams).forEach(([key, value]) => {
+        const replacementRegexp = new RegExp(`<%= ${key} %>`, 'g');
+        tmpelateFile = tmpelateFile.replace(replacementRegexp, value);
+      });
+
+      const targetPath = sourcePath.replace(templateDir, appDir)
+        .replace(/\.tpl$/, '');
+      // eslint-disable-next-line no-await-in-loop
+      await ensureDirectory(path.dirname(targetPath));
+      // eslint-disable-next-line no-await-in-loop
+      await writeFile(targetPath, tmpelateFile);
+      console.log(chalk.green(`  创建文件: ${targetPath.replace(appDir, '')}`));
+    }
+
     spinner.succeed('完成复制模板');
   } catch (err) {
     spinner.fail('复制模板失败');
@@ -182,6 +198,8 @@ export const createCommand: ICommand = {
 
     const tempalteParams: Record<string, string> = {
       appName,
+      // eslint-disable-next-line global-require
+      packageVersion: require('../../package.json').version,
     };
     await generateAppTemplate(tplDir!, appDir, tempalteParams);
     console.log(chalk.green(`
