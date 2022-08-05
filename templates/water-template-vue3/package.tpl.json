@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "pure dev",
     "build": "vue-tsc --noEmit && pure build",
-    "lint": "pure lint"
+    "lint": "pure lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "vue": "^3.2.37"

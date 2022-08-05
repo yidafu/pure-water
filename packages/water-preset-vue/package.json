@@ -22,5 +22,11 @@
     "@pure-org/water-plugin-lint": "workspace:^",
     "@vitejs/plugin-vue": "^3.0.1",
     "vite": "^3.0.4"
+  },
+  "devDependencies": {
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
   }
 }

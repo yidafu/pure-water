@@ -19,6 +19,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
+    "@babel/core": "^7.13.0",
     "@babel/preset-env": "^7.18.9",
     "@pure-org/water-plugin-babel": "workspace:^",
     "@pure-org/water-plugin-lint": "workspace:^",

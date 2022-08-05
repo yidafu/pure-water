@@ -381,10 +381,10 @@
   // "hotfixChangeEnabled": false,
 
   /**
-    * This is an optional, but recommended, list of available tags that can be applied
-    * to projects. If this property is not specified, any tag is allowed. This
-    * list is useful in preventing typos when specifying tags for projects.
-    */
+   * This is an optional, but recommended, list of available tags that can be applied
+   * to projects. If this property is not specified, any tag is allowed. This
+   * list is useful in preventing typos when specifying tags for projects.
+   */
   // "allowedProjectTags": [ "apps", "Web", "tools" ],
 
   /**
@@ -460,18 +460,86 @@
     //   // "tags": ["apps", "web"]
     // },
     // 
-    // {
-    //   "packageName": "my-controls",
-    //   "projectFolder": "libraries/my-controls",
-    //   "reviewCategory": "production",
-    //   "tags": ["libraries", "web"]
-    // },
-    // 
-    // {
-    //   "packageName": "my-toolchain",
-    //   "projectFolder": "tools/my-toolchain",
-    //   "reviewCategory": "tools",
-    //   "tags": ["tools"]
-    // }
+    {
+      "packageName": "@pure-org/eslint-config-water",
+      "projectFolder": "packages/eslint-config-water",
+      "reviewCategory": "production",
+      "tags": ["config", "eslint"]
+    },
+    {
+      "packageName": "@pure-org/api",
+      "projectFolder": "packages/pure-api",
+      "reviewCategory": "production",
+      "tags": ["cli", "core"]
+    },
+    {
+      "packageName": "@pure-org/cli",
+      "projectFolder": "packages/pure-cli",
+      "reviewCategory": "production",
+      "tags": ["config", "eslint"]
+    },
+    {
+      "packageName": "@pure-org/stylelint-config-water",
+      "projectFolder": "packages/stylelint-config-water",
+      "reviewCategory": "production",
+      "tags": ["config", "stylelint"]
+    },
+    {
+      "packageName": "@pure-org/tsconfig",
+      "projectFolder": "packages/tsconfig",
+      "reviewCategory": "production",
+      "tags": ["tsconfig"]
+    },
+    {
+      "packageName": "@pure-org/water-plugin-babel",
+      "projectFolder": "packages/water-plugin-babel",
+      "reviewCategory": "production",
+      "tags": ["plugin", "babel"]
+    },
+    {
+      "packageName": "@pure-org/water-plugin-lint",
+      "projectFolder": "packages/water-plugin-lint",
+      "reviewCategory": "production",
+      "tags": ["plugin", "lint"]
+    },
+
+    {
+      "packageName": "@pure-org/water-plugin-vue2",
+      "projectFolder": "packages/water-plugin-vue2",
+      "reviewCategory": "production",
+      "tags": ["plugin", "vue2"]
+    },
+
+    {
+      "packageName": "@pure-org/water-plugin-webpack-config",
+      "projectFolder": "packages/water-plugin-webpack-config",
+      "reviewCategory": "production",
+      "tags": ["plugin", "webpack-config"]
+    },
+
+    {
+      "packageName": "@pure-org/water-preset-vue",
+      "projectFolder": "packages/water-preset-vue",
+      "reviewCategory": "production",
+      "tags": ["preset", "vue"]
+    },
+    {
+      "packageName": "@pure-org/water-preset-vue2",
+      "projectFolder": "packages/water-preset-vue2",
+      "reviewCategory": "production",
+      "tags": ["preset", "vue2"]
+    },
+    {
+      "packageName": "@pure-org/water-template-vue3",
+      "projectFolder": "templates/water-template-vue3",
+      "reviewCategory": "production",
+      "tags": ["template", "vue"]
+    },
+    {
+      "packageName": "@pure-org/water-template-vue2",
+      "projectFolder": "templates/water-template-vue2",
+      "reviewCategory": "production",
+      "tags": ["template", "vue2"]
+    },
   ]
 }

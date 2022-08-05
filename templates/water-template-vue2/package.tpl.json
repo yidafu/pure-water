@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "pure dev",
     "build": "pure build",
-    "lint": "pure lint"
+    "lint": "pure lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "core-js": "^3.8.3",
