@@ -23,7 +23,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@changesets/cli": "^2.24.1",
     "@pure-org/cli": "workspace:*",
     "@pure-org/eslint-config-water": "workspace:*",
     "@pure-org/tsconfig": "workspace:*",
