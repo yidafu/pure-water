@@ -53,7 +53,7 @@ async function getRegistryInfo(pkgName: string, registry: string) {
   throw new Error(resp.data);
 }
 
-async function downloadTarball(versionInfo) {
+async function downloadTarball(versionInfo: any) {
   const { dist } = versionInfo;
   const tmpDir = `/tmp/pure_water/download/${
     encodeURIComponent(versionInfo.name)}/${
@@ -164,7 +164,7 @@ export const createCommand: ICommand = {
         }
         return appName;
       },
-      validate(input) {
+      validate(input: string) {
         const dirExist = existsSync(path.join(process.cwd(), input));
         if (dirExist && !options.force) {
           return '该目录已存在请重新输入, 或使用 --force 参数重新执行命令';
@@ -184,7 +184,7 @@ export const createCommand: ICommand = {
     const tempalteParams: Record<string, string> = {
       appName,
     };
-    await generateAppTemplate(tplDir, appDir, tempalteParams);
+    await generateAppTemplate(tplDir!, appDir, tempalteParams);
     console.log(chalk.green(`
 
 `));

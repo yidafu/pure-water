@@ -58,6 +58,7 @@
     "@types/minimist": "^1.2.2",
     "@types/node": "^16.11.47",
     "@types/stringify-object": "^3.0.0",
+    "@types/tar": "^6.1.2",
     "@types/webpack": "^5.28.0"
   }
 }
