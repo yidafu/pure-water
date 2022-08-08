@@ -39,6 +39,7 @@ export default {
         items: [
           { text: 'Plugin API', link: '/advanced/plugin-api' },
           { text: 'pure.config.js', link: '/advanced/pure-config' },
+          { text: '模板', link: '/advanced/template' },
         ]
       }
     ],

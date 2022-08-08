@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-template-vue2",
-  "version": "0.1.1-beta.14",
+  "version": "0.1.1-beta.15",
   "private": false,
   "files": [
     "src/**/*",
@@ -27,8 +27,8 @@
     "vue": "^2.7.8"
   },
   "devDependencies": {
-    "@pure-org/cli": "workspace:^0.1.1-beta.14",
-    "@pure-org/water-preset-vue2": "workspace:^0.1.1-beta.14",
+    "@pure-org/cli": "workspace:^0.1.1-beta.15",
+    "@pure-org/water-preset-vue2": "workspace:^0.1.1-beta.15",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3"
   },

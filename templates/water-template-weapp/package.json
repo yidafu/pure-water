@@ -1,0 +1,38 @@
+{
+  "name": "@pure-org/water-template-weapp",
+  "version": "0.1.1-beta.15",
+  "description": "",
+  "main": "miniprogram/app.ts",
+  "files": [
+    ".gitlab",
+    ".husky",
+    "miniprogram/*",
+    "typings",
+    ".eslintrc.js",
+    ".gitignore",
+    ".stylelintrc.js",
+    "package.json",
+    "package.json.tpl",
+    "project.config.json",
+    "project.private.config.json",
+    "pure.config.js",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yidafu",
+  "license": "ISC",
+  "devDependencies": {
+    "@pure-org/cli": "workspace:*",
+    "@pure-org/water-preset-weapp": "workspace:*",
+    "@pure-org/eslint-config-water": "workspace:*",
+    "@pure-org/stylelint-config-water": "workspace:*",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "miniprogram-api-typings": "^2.8.3-1"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "pure lint"
+  }
+}
