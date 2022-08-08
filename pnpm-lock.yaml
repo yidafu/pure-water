@@ -47,7 +47,7 @@ importers:
 
   packages/eslint-config-water:
     specifiers:
-      '@pure-org/api': workspace:^0.1.1-beta.14
+      '@pure-org/api': workspace:^0.1.1-beta.15
       '@typescript-eslint/eslint-plugin': ^5.30.7
       '@typescript-eslint/parser': ^5.30.7
       eslint: ^8.20.0
@@ -115,7 +115,7 @@ importers:
 
   packages/pure-cli:
     specifiers:
-      '@pure-org/api': workspace:^0.1.1-beta.14
+      '@pure-org/api': workspace:^0.1.1-beta.15
       commander: ^9.4.0
       debug: ^4.3.4
     dependencies:
@@ -125,7 +125,7 @@ importers:
 
   packages/pure-create:
     specifiers:
-      '@pure-org/api': workspace:^0.1.1-beta.14
+      '@pure-org/api': workspace:^0.1.1-beta.15
       '@types/debug': ^4.1.7
       '@types/inquirer': ^8.0.0
       '@types/minimist': ^1.2.2
@@ -182,7 +182,7 @@ importers:
   packages/water-plugin-babel:
     specifiers:
       '@babel/core': ^7.18.9
-      '@pure-org/api': workspace:^0.1.1-beta.14
+      '@pure-org/api': workspace:^0.1.1-beta.15
       babel-loader: ^8.2.5
       fork-ts-checker-webpack-plugin: ^7.2.13
       typescript: ^4.7.4
@@ -206,9 +206,9 @@ importers:
       '@commitlint/load': ^17.0.3
       '@commitlint/read': ^17.0.0
       '@commitlint/types': ^17.0.0
-      '@pure-org/api': workspace:^0.1.1-beta.14
-      '@pure-org/eslint-config-water': workspace:^0.1.1-beta.14
-      '@pure-org/stylelint-config-water': workspace:^0.1.1-beta.14
+      '@pure-org/api': workspace:^0.1.1-beta.15
+      '@pure-org/eslint-config-water': workspace:^0.1.1-beta.15
+      '@pure-org/stylelint-config-water': workspace:^0.1.1-beta.15
       '@types/debug': ^4.1.7
       '@types/eslint': ^8.4.5
       '@types/node': ^16.11.47
@@ -247,7 +247,7 @@ importers:
 
   packages/water-plugin-vue2:
     specifiers:
-      '@pure-org/api': workspace:^0.1.1-beta.14
+      '@pure-org/api': workspace:^0.1.1-beta.15
       css-loader: ^6.7.1
       html-webpack-plugin: ^5.5.0
       mini-css-extract-plugin: ^2.6.1
@@ -280,7 +280,7 @@ importers:
 
   packages/water-plugin-webpack-config:
     specifiers:
-      '@pure-org/api': workspace:^0.1.1-beta.14
+      '@pure-org/api': workspace:^0.1.1-beta.15
       '@types/case-sensitive-paths-webpack-plugin': ^2.1.6
       case-sensitive-paths-webpack-plugin: ^2.4.0
       copy-webpack-plugin: ^11.0.0
@@ -299,7 +299,7 @@ importers:
 
   packages/water-preset-vue:
     specifiers:
-      '@pure-org/water-plugin-lint': workspace:^0.1.1-beta.14
+      '@pure-org/water-plugin-lint': workspace:^0.1.1-beta.15
       '@vitejs/plugin-vue': ^3.0.1
       vite: ^3.0.4
       vue: ^3.2.37
@@ -314,10 +314,10 @@ importers:
     specifiers:
       '@babel/core': ^7.18.9
       '@babel/preset-env': ^7.18.9
-      '@pure-org/water-plugin-babel': workspace:^0.1.1-beta.14
-      '@pure-org/water-plugin-lint': workspace:^0.1.1-beta.14
-      '@pure-org/water-plugin-vue2': workspace:^0.1.1-beta.14
-      '@pure-org/water-plugin-webpack-config': workspace:^0.1.1-beta.14
+      '@pure-org/water-plugin-babel': workspace:^0.1.1-beta.15
+      '@pure-org/water-plugin-lint': workspace:^0.1.1-beta.15
+      '@pure-org/water-plugin-vue2': workspace:^0.1.1-beta.15
+      '@pure-org/water-plugin-webpack-config': workspace:^0.1.1-beta.15
       vue: ^2.7.8
     dependencies:
       '@babel/core': 7.18.9
@@ -337,8 +337,8 @@ importers:
 
   templates/water-template-vue2:
     specifiers:
-      '@pure-org/cli': workspace:^0.1.1-beta.14
-      '@pure-org/water-preset-vue2': workspace:^0.1.1-beta.14
+      '@pure-org/cli': workspace:^0.1.1-beta.15
+      '@pure-org/water-preset-vue2': workspace:^0.1.1-beta.15
       core-js: ^3.8.3
       husky: ^8.0.1
       lint-staged: ^13.0.3
@@ -354,9 +354,9 @@ importers:
 
   templates/water-template-vue3:
     specifiers:
-      '@pure-org/cli': workspace:^0.1.1-beta.14
-      '@pure-org/eslint-config-water': workspace:^0.1.1-beta.14
-      '@pure-org/water-preset-vue': workspace:^0.1.1-beta.14
+      '@pure-org/cli': workspace:^0.1.1-beta.15
+      '@pure-org/eslint-config-water': workspace:^0.1.1-beta.15
+      '@pure-org/water-preset-vue': workspace:^0.1.1-beta.15
       husky: ^8.0.1
       lint-staged: ^13.0.3
       typescript: ^4.7.4
@@ -378,12 +378,16 @@ importers:
   templates/water-template-weapp:
     specifiers:
       '@pure-org/cli': workspace:*
+      '@pure-org/eslint-config-water': workspace:*
+      '@pure-org/stylelint-config-water': workspace:*
       '@pure-org/water-preset-weapp': workspace:*
       husky: ^8.0.1
       lint-staged: ^13.0.3
       miniprogram-api-typings: ^2.8.3-1
     devDependencies:
       '@pure-org/cli': link:../../packages/pure-cli
+      '@pure-org/eslint-config-water': link:../../packages/eslint-config-water
+      '@pure-org/stylelint-config-water': link:../../packages/stylelint-config-water
       '@pure-org/water-preset-weapp': link:../../packages/weater-preset-weapp
       husky: 8.0.1
       lint-staged: 13.0.3
