@@ -3,6 +3,21 @@
   "version": "0.1.1-beta.15",
   "description": "",
   "main": "miniprogram/app.ts",
+  "files": [
+    ".gitlab",
+    ".husky",
+    "miniprogram/*",
+    "typings",
+    ".eslintrc.js",
+    ".gitignore",
+    ".stylelintrc.js",
+    "package.json",
+    "package.json.tpl",
+    "project.config.json",
+    "project.private.config.json",
+    "pure.config.js",
+    "tsconfig.json"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
