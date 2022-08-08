@@ -4,7 +4,7 @@ import { Plugin, PluginChainWebpackConfigHook } from '@pure-org/api';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { VueLoaderPlugin } from 'vue-loader';
 
-import { assetConfig } from './asset-config';
+import { assetConfig, ISpriteOption } from './asset-config';
 import { cssConfig } from './css-config';
 
 declare module '@pure-org/api' {
@@ -14,7 +14,15 @@ declare module '@pure-org/api' {
 }
 
 export interface IPluginVu2Options {
-  htmlOption?: HtmlWebpackPlugin.Options,
+  htmlOption: HtmlWebpackPlugin.Options,
+  sprite: ISpriteOption | false;
+  /**
+   *
+   * @see https://juejin.cn/post/6844903918518927367#heading-2
+   * @type {boolean}
+   * @memberof IPluginVu2Options
+   */
+  enableXss: boolean;
 }
 
 // eslint-disable-next-line import/no-default-export
@@ -22,8 +30,8 @@ export default class Vu2Plugin extends Plugin {
   static priority = 40;
 
   chainWebpackConfig: PluginChainWebpackConfigHook = async (config) => {
-    const vue2Options: IPluginVu2Options = this.getPluginOption('vue2');
-    const { htmlOption = {} } = vue2Options;
+    const vue2Options: Partial<IPluginVu2Options> = this.getPluginOption('vue2');
+    const { htmlOption = {}, sprite, enableXss } = vue2Options;
     config.resolve.extensions.add('.vue');
     config.module
       .rule('compile-vue')
@@ -33,13 +41,22 @@ export default class Vu2Plugin extends Plugin {
       .options({
         compileOptions: {
           preserveWhitespace: false,
+          directives: {
+            html: enableXss ? (node: any, directiveMeta: any) => {
+              // eslint-disable-next-line no-param-reassign
+              (node.props || (node.props = [])).push({
+                name: 'innerHTML',
+                value: `xss(_s(${directiveMeta.value}))`,
+              });
+            } : undefined,
+          },
         },
       })
       .end();
 
     cssConfig(config);
 
-    assetConfig(config);
+    assetConfig(config, { sprite, projectRoot: this.PROJECT_ROOT });
 
     config.plugin('vue-loader-plugin').use(VueLoaderPlugin);
 

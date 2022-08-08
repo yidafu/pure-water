@@ -7,11 +7,22 @@ const stylelintConfig: Config = {
   ],
   plugins: [
     'stylelint-order',
+    'stylelint-scss',
   ],
   rules: {
     'order/properties-alphabetical-order': 'always',
     'unit-no-unknown': [true, { ignoreUnits: ['rpx'] }],
   },
+  overrides: [
+    {
+      files: ['*.scss', '**/*.scss'],
+      customSyntax: 'postcss-scss',
+    },
+    {
+      files: ['*.vue', '**/*.vue'],
+      customSyntax: 'postcss-html',
+    },
+  ],
 };
 
 export = stylelintConfig;
