@@ -10,7 +10,7 @@
 
 设计思路如下:
 
-![Design]('./docs/imgs/design.jpg)
+![Design](./docs/imgs/design.jpg)
 
 # 使用说明
 
