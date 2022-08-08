@@ -1,5 +1,7 @@
-import { program } from 'commander';
+#!/usr/bin/env node
+
 import { CommandService } from '@pure-org/api';
+import { program } from 'commander';
 
 const service = new CommandService();
 
@@ -14,9 +16,9 @@ service.load().then(() => {
     if (cmd.alias) {
       cmdInst.alias(cmd.alias);
     }
-   Object.entries(cmd.args ?? {}).forEach(([name, desc]) => {
-    cmdInst.argument(name, desc);
-   });
+    Object.entries(cmd.args ?? {}).forEach(([name, desc]) => {
+      cmdInst.argument(name, desc);
+    });
     // TODO common --config/--debug flag
     // cmdInst.option('--config <config>').description('pure.config.js 文件路径');
     Object.entries(cmd.options).forEach(([flag, cmdOpt]) => {
