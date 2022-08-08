@@ -5,7 +5,7 @@ import baseEslintConfig from './base';
 
 const vue3BaseEslintConfig: Linter.Config = {
   parser: 'vue-eslint-parser',
-  extends: ['plugin:vue/vue3-recommended'],
+  extends: ['plugin:vue/vue3-recommended', 'check-file'],
   parserOptions: {
     parser: '@typescript-eslint/parser',
     extraFileExtensions: ['.vue'],
@@ -13,6 +13,30 @@ const vue3BaseEslintConfig: Linter.Config = {
       filter: true,
       interpolationAsNonHTML: false,
     },
+  },
+  rules: {
+    'check-file/folder-match-with-fex': [
+      'error',
+      {
+        '*.test.{js,jsx,ts,tsx}': '**/__tests__/',
+        '*.styled.{jsx,tsx}': '**/pages/',
+      },
+    ],
+    'check-file/filename-naming-convention': [
+      'error',
+      {
+        '**/*.{jsx,tsx}': 'CAMEL_CASE',
+        '**/*.{js,ts}': 'KEBAB_CASE',
+      },
+    ],
+    'check-file/no-index': 'error',
+    'check-file/folder-naming-convention': [
+      'error',
+      {
+        'src/**/': 'CAMEL_CASE',
+        'mocks/*/': 'KEBAB_CASE',
+      },
+    ],
   },
 };
 
