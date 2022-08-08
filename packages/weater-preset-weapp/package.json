@@ -1,0 +1,24 @@
+{
+  "name": "@pure-org/water-preset-weapp",
+  "version": "0.1.1-beta.14",
+  "private": false,
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "yidafu",
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "@pure-org/water-plugin-lint": "workspace:^0.1.1-beta.14"
+  }
+}

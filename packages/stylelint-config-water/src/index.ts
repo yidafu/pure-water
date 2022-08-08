@@ -10,6 +10,7 @@ const stylelintConfig: Config = {
   ],
   rules: {
     'order/properties-alphabetical-order': 'always',
+    'unit-no-unknown': [true, { ignoreUnits: ['rpx'] }],
   },
 };
 

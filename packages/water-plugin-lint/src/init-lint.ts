@@ -91,7 +91,9 @@ export async function initLint(projectRoot: string) {
       await execCommand('npx', ['husky', 'install']);
       await execCommand('npm', ['pkg', 'set', 'scripts.prepare="husky install"', '--json']);
       await execCommand('npx', ['husky', 'add', '.husky/pre-commit', 'npx lint-staged']);
+      await execCommand('chmod', ['+x', '.husky/pre-commit']);
       await execCommand('npx', ['husky', 'add', '.husky/commit-msg', 'npx pure commit-msg']);
+      await execCommand('chmod', ['+x', '.husky/commit-msg']);
       spinner.succeed('husky 配置成功');
     } catch (err) {
       spinner.fail('husky 配置失败');

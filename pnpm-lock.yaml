@@ -329,6 +329,12 @@ importers:
     devDependencies:
       vue: 2.7.8
 
+  packages/weater-preset-weapp:
+    specifiers:
+      '@pure-org/water-plugin-lint': workspace:^0.1.1-beta.14
+    dependencies:
+      '@pure-org/water-plugin-lint': link:../water-plugin-lint
+
   templates/water-template-vue2:
     specifiers:
       '@pure-org/cli': workspace:^0.1.1-beta.14
@@ -368,6 +374,20 @@ importers:
       typescript: 4.7.4
       vite: 3.0.4
       vue-tsc: 0.38.9_typescript@4.7.4
+
+  templates/water-template-weapp:
+    specifiers:
+      '@pure-org/cli': workspace:*
+      '@pure-org/water-preset-weapp': workspace:*
+      husky: ^8.0.1
+      lint-staged: ^13.0.3
+      miniprogram-api-typings: ^2.8.3-1
+    devDependencies:
+      '@pure-org/cli': link:../../packages/pure-cli
+      '@pure-org/water-preset-weapp': link:../../packages/weater-preset-weapp
+      husky: 8.0.1
+      lint-staged: 13.0.3
+      miniprogram-api-typings: 2.12.0
 
 packages:
 
@@ -5743,6 +5763,10 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       yallist: 4.0.0
+    dev: true
+
+  /miniprogram-api-typings/2.12.0:
+    resolution: {integrity: sha512-ibvbqeslVFur0IAvTxLMvsbtvVcMo6gwvOnj0YZHV7aeDLu091VQRrETT2QuiG9P6aZWRcxeNGJChRKVPCp9VQ==}
     dev: true
 
   /minizlib/2.1.2:

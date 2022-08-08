@@ -138,6 +138,7 @@ async function generateAppTemplate(
 const DEFAULT_TEMPLATE_MAP = new Map([
   ['Vue3(TypeScript + Vite)', '@pure-org/water-template-vue3'],
   ['Vue2(JavaScript + Webpack)', '@pure-org/water-template-vue2'],
+  ['Weapp(TypeSript + Sass)', '@pure-org/water-template-weapp'],
 ]);
 
 export const createCommand: ICommand = {
