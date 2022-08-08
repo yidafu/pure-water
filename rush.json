@@ -574,5 +574,13 @@
       "versionPolicyName": "PureWater",
       "tags": ["template"]
     },
+    {
+      "packageName": "@pure-org/water-template-weapp",
+      "projectFolder": "templates/water-template-weapp",
+      "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
+      "tags": ["template"]
+    },
   ]
 }
