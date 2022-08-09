@@ -15,8 +15,6 @@
     "README.md.tpl"
   ],
   "scripts": {
-    "dev": "pure dev",
-    "build": "pure build",
     "lint": "pure lint"
   },
   "publishConfig": {
