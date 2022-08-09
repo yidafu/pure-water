@@ -20,11 +20,12 @@
   },
   "dependencies": {
     "@babel/core": "^7.18.9",
-    "@babel/preset-env": "^7.18.9",
     "@pure-org/water-plugin-babel": "workspace:^0.1.1-beta.18",
     "@pure-org/water-plugin-lint": "workspace:^0.1.1-beta.18",
     "@pure-org/water-plugin-vue2": "workspace:^0.1.1-beta.18",
-    "@pure-org/water-plugin-webpack-config": "workspace:^0.1.1-beta.18"
+    "@pure-org/water-plugin-webpack-config": "workspace:^0.1.1-beta.18",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
+    "@vue/babel-preset-app": "^5.0.8"
   },
   "devDependencies": {
     "vue": "^2.7.8"

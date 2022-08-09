@@ -57,7 +57,6 @@ class WebpackBundler extends Bundler {
           devMiddleware: {
             writeToDisk: true,
           },
-          open: true,
         },
         compiler,
       );

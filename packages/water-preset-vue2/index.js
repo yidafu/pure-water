@@ -12,10 +12,10 @@ module.exports = {
     babel: {
       typeCheck: false,
       presets: [
-        [
-          '@babel/preset-env',
-          { targets: '> 2%, not dead' },
-        ],
+        // [
+        '@vue/babel-preset-app',
+        //   { targets: ['> 2%', 'not dead', 'last 2 versions'] },
+        // ],
       ],
     },
     'webpack-config': {
