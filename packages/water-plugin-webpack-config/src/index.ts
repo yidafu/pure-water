@@ -6,9 +6,11 @@ import {
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import * as dotenv from 'dotenv';
+import dotenvExpand from 'dotenv-expand';
 import TerserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
-import WebapckBundleAnalyzer from 'webpack-bundle-analyzer';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import Config from 'webpack-chain';
 import WebpackBar from 'webpackbar';
 
@@ -85,7 +87,7 @@ export default class BaseWebpackPlugin extends Plugin {
         .chunkFilename('[name].js');
     }
 
-    config.stats('minimal');
+    config.stats('errors-only');
 
     config.context(this.PROJECT_ROOT);
 
@@ -95,7 +97,7 @@ export default class BaseWebpackPlugin extends Plugin {
           defaultVendors: {
             name: 'chunk-vendors',
             test: /[\\/]node_modules[\\/]/,
-            priority: -10,
+            priority: 10,
             chunks: 'initial',
           },
           fawkes: {
@@ -115,6 +117,20 @@ export default class BaseWebpackPlugin extends Plugin {
       })
       .minimizer('terser').use(TerserPlugin);
 
+    const envs = dotenv.config({
+      path: `${this.PROJECT_ROOT}/.env${process.env.NODE_ENV
+        ? `.${process.env.NODE_ENV}`
+        : ''
+      }`,
+    });
+
+    dotenvExpand.expand(envs);
+    const processEnv: Record<string, string> = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [key, value] of Object.entries(envs.parsed ?? {})) {
+      processEnv[key] = JSON.stringify(value);
+    }
+
     config
       .plugin('webpack-bar')
       .use(WebpackBar, [{ color: 'green' }])
@@ -126,6 +142,7 @@ export default class BaseWebpackPlugin extends Plugin {
         'process.env': {
           NODE_ENV: isProd() ? '"production"' : '"development"',
           BASE_URL: '"/"',
+          ...processEnv,
         },
       }])
       .end()
@@ -164,7 +181,7 @@ export default class BaseWebpackPlugin extends Plugin {
     config.when(Boolean(analyzerEnable), (configInner) => {
       configInner
         .plugin('webpack-analyzer-plugin')
-        .use(WebapckBundleAnalyzer, [restAnalyzerOption])
+        .use(BundleAnalyzerPlugin, [restAnalyzerOption])
         .end();
     });
 
