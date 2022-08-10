@@ -53,12 +53,12 @@ export function assetConfig(config: WebpackChain, options: IAssetConfigOption) {
     .end()
 
     .rule('media-asset')
-    .type('asset' as any)
+    .type('asset/resource' as any)
     .test(/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/)
     .end()
 
     .rule('font-asset')
-    .type('asset' as any)
+    .type('asset/resource' as any)
     .test(/\.(woff2?|eot|ttf|otf)(\?.*)?$/i)
     .end();
 

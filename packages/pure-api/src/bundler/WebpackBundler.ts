@@ -52,10 +52,12 @@ class WebpackBundler extends Bundler {
           static: staticOptions,
           ...restOpts,
           client: {
-            progress: true,
+            logging: 'error',
+            progress: false,
           },
           devMiddleware: {
             writeToDisk: true,
+            stats: 'errors-only',
           },
         },
         compiler,
