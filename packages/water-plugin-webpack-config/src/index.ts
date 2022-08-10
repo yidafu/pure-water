@@ -8,7 +8,7 @@ import CompressionPlugin from 'compression-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import * as dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
-import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+// import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
@@ -166,11 +166,11 @@ export default class BaseWebpackPlugin extends Plugin {
           info: { minimized: true },
         }],
       }])
-      .end()
-
-      .plugin('HardSourceWebpackPlugin')
-      .use(HardSourceWebpackPlugin)
       .end();
+
+    // .plugin('HardSourceWebpackPlugin')
+    // .use(HardSourceWebpackPlugin)
+    // .end();
 
     config.when(compress, (configInner) => {
       configInner
