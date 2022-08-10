@@ -96,7 +96,17 @@ class WebpackBundler extends Bundler {
       this.service.paths.outputPath!,
       'webpack.config.js',
     );
-    await fs.writeFile(outputPath, stringifyObject(compileOption));
+    await fs.writeFile(
+      outputPath,
+      stringifyObject(compileOption, {
+        transform(object: any, property: any, originalResult: any) {
+          if (typeof object[property] === 'function') {
+            return 'function () { /* omitted long function */ }';
+          }
+          return originalResult;
+        },
+      }),
+    );
   }
 }
 

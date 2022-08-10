@@ -45,7 +45,6 @@
     "@pure-org/api": "workspace:^0.1.1-beta.20",
     "@pure-org/eslint-config-water": "workspace:^0.1.1-beta.20",
     "@pure-org/stylelint-config-water": "workspace:^0.1.1-beta.20",
-    "@types/ora": "^3.2.0",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "debug": "^4.3.4",
