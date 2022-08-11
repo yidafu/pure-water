@@ -37,7 +37,7 @@ export function tryResolve(filepath: string, root = __dirname) {
     // return customRequire.resolve(filepath);
     return require.resolve(filepath, { paths: [root] });
   } catch (err) {
-    log(`try resolve fail ${root} ==> `, err);
+    log(`try resolve fail, file: ${filepath}, root: ${root}`, err);
     return false;
   }
 }
