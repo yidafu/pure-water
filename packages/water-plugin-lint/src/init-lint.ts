@@ -121,7 +121,7 @@ export async function initLint(projectRoot: string) {
       } else if (pkgJson?.dependencies?.vue) {
         await execCommand('npm', ['pkg', 'set', `lint-staged=${JSON.stringify({
           '*.{js,ts,vue}': 'pure lint',
-          '*.{css,scss}': 'pure lint',
+          '*.{vue,css,scss}': 'pure lint',
         })}`, '--json']);
       } else {
         await execCommand('npm', ['pkg', 'set', `lint-staged=${JSON.stringify({
