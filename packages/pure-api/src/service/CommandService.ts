@@ -1,3 +1,4 @@
+import fs from 'fs/promises';
 import path from 'path';
 
 import debug from 'debug';
@@ -30,6 +31,7 @@ import {
 } from '../utils';
 
 import { mergeProjectConfig } from './utils';
+import chalk from 'chalk';
 
 const PRESET_PATH_KEY = Symbol('__PRESET_PATH__');
 
@@ -186,10 +188,22 @@ class CommandService {
    * @memberof CommandService
    */
   build = async () => {
+    await this.clean();
     if ((this.argv.env ?? 'prod') === 'prod') {
       process.env.NODE_ENV = 'production';
     }
     await this.bundler.build();
+  };
+
+  clean = async () => {
+    if (this.paths.outputPath) {
+      await fs.rm(this.paths.outputPath, { force: true, recursive: true });
+      // eslint-disable-next-line no-console
+      console.log(chalk.green(`已清理目录: ${this.paths.outputPath}`));
+    }
+    if (this.onCleanFns.length > 0) {
+      runAsyncFns(this.onCleanFns);
+    }
   };
 
   /**
@@ -440,14 +454,8 @@ class CommandService {
 
     this.registerCommand({
       name: 'clean',
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      action: async (e) => {
-        // TODO: Clean logic
-        // removeDirectory(this.paths.outputPath)
-        if (this.onCleanFns.length > 0) {
-          runAsyncFns(this.onCleanFns);
-        }
-      },
+      action: this.clean,
+      description: '清理构建产物目录',
       options: {
         // '--all': '清理应用所有缓存',
       },

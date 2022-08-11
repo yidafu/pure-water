@@ -5,6 +5,8 @@ import Config from 'webpack-chain';
 
 import { CommandService, ICommand } from '../service/CommandService';
 
+import { SharedFucntion } from './SharedFunction';
+
 export type PluginChainWebpackConfigHook = (config: Config) => Promise<void>;
 export type PluginViteConfigHook = () => UserConfig;
 export type PluginBeforeCompileHook = () => Promise<void>;
@@ -27,6 +29,8 @@ export interface IPluginConstructor {
  */
 abstract class Plugin {
   protected service: CommandService;
+
+  public api = new SharedFucntion();
 
   /**
    * Creates an instance of Plugin.

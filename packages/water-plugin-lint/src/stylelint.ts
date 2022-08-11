@@ -39,7 +39,7 @@ export async function runStylelint(options: stylelint.LinterOptions, context: IS
     } else if (Array.isArray(customConfig.extends)) {
       customConfig.extends = customConfig.extends.filter((etd) => etd !== STYLELINT_CONFIG_WATER);
     }
-    finalStylelintConfig = deepmerge(customConfig, stylelintConfig);
+    finalStylelintConfig = deepmerge(stylelintConfig, customConfig);
   }
 
   const realStylelintOptions: stylelint.LinterOptions = {
