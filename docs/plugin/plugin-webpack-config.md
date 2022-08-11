@@ -28,3 +28,47 @@ pnpm install @pure-org/water-plugin-webpack-config --save-dev
    }
  }
 ```
+
+## 插件配置
+
+```ts
+interface BaseConfigPluginOpitons {
+  entry: string[];
+
+  dist: string;
+
+  compress: boolean;
+
+  customConfig(config: WebpackChian, context: { projectRoot: string }): void;
+
+  bundleAnalyzer: { enable: boolean } & BundleAnalyzerPlugin.Options
+}
+```
+
+### entry
+
+webpack 编译入口，默认是：`src/main.js`
+
+### dist
+
+构建产物目录，默认是：`dist/`
+
+### compress
+
+是否压缩构建产物，默认生产环境会开启
+
+### customConfig
+
+用于自定义修改 webpack 配置，在插件最后执行
+
+### bundleAnalyzer
+
+打包分析插件 [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
+
+#### enable
+
+控制是否开启该插件，默认关闭
+
+#### 属于参数
+
+webpack-bundle-analyzer 配置，参考：[Options (for plugin)](https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin)

@@ -34,6 +34,8 @@ npx pure lint
 npx pure lint --fix
 ```
 
+`pure lint` 默认会一起执行`ESLint`和`Stylelint`，如果只想执行 `ESLint` 或 `Stylelint`，请加上`--only-eslint`/`--only-stylelint`
+
 ## 插件配置
 
 插件配置定义如下：
