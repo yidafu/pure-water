@@ -22,7 +22,7 @@ declare module '@pure-org/api' {
 }
 
 export interface BaseConfigPluginOpitons {
-  etnry: string[];
+  entry: string[];
   dist: string;
   /**
    * 是否开启压缩
@@ -45,7 +45,7 @@ export interface BaseConfigPluginOpitons {
    */
   bundleAnalyzer: {
     enable: boolean,
-  }
+  } & BundleAnalyzerPlugin.Options
 }
 
 // eslint-disable-next-line import/no-default-export
@@ -55,7 +55,7 @@ export default class BaseWebpackPlugin extends Plugin {
   chainWebpackConfig: PluginChainWebpackConfigHook = async (config) => {
     const options: Partial<BaseConfigPluginOpitons> = this.getPluginOption('webpack-config');
     const {
-      etnry = [path.join(this.PROJECT_ROOT, './src/main.js')],
+      entry = [path.join(this.PROJECT_ROOT, './src/main.js')],
       dist,
       compress = false,
       customConfig,
@@ -64,11 +64,9 @@ export default class BaseWebpackPlugin extends Plugin {
 
     const { enable: analyzerEnable, ...restAnalyzerOption } = bundleAnalyzer ?? {};
 
-    customConfig?.(config, { projectRoot: this.PROJECT_ROOT });
-
     const entryConfig = config
       .entry('main');
-    etnry.forEach((e) => {
+    entry.forEach((e) => {
       entryConfig.add(e);
     });
     entryConfig.end();
@@ -209,5 +207,7 @@ export default class BaseWebpackPlugin extends Plugin {
     }
 
     // TODO: ESLint plugin
+
+    customConfig?.(config, { projectRoot: this.PROJECT_ROOT });
   };
 }
