@@ -25,7 +25,7 @@
   "license": "ISC",
   "devDependencies": {
     "@pure-org/cli": "workspace:^0.2.0",
-    "@pure-org/water-preset-weapp": "workspace:^0.1.1-beta.18",
+    "@pure-org/water-preset-weapp": "workspace:*",
     "@pure-org/eslint-config-water": "workspace:^0.2.0",
     "@pure-org/stylelint-config-water": "workspace:^0.2.0",
     "husky": "^8.0.1",
