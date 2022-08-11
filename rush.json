@@ -542,7 +542,6 @@
       "versionPolicyName": "PureWater",
       "tags": ["plugin", "config"]
     },
-
     {
       "packageName": "@pure-org/water-preset-vue",
       "projectFolder": "packages/water-preset-vue",
@@ -555,6 +554,14 @@
       "packageName": "@pure-org/water-preset-vue2",
       "projectFolder": "packages/water-preset-vue2",
       "reviewCategory": "production",
+      "versionPolicyName": "PureWater",
+      "tags": ["preset"]
+    },
+    {
+      "packageName": "@pure-org/water-preset-weapp",
+      "projectFolder": "packages/water-preset-weapp",
+      "reviewCategory": "production",
+      "shouldPublish": true,
       "versionPolicyName": "PureWater",
       "tags": ["preset"]
     },
