@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/eslint-config-water",
-  "version": "0.1.1-beta.24",
+  "version": "0.2.0",
   "private": false,
   "description": "eslint-config",
   "main": "index.js",
@@ -23,7 +23,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@pure-org/api": "workspace:^0.1.1-beta.24",
+    "@pure-org/api": "workspace:^0.2.0",
     "@typescript-eslint/parser": "^5.30.7",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",

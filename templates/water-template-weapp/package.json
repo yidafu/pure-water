@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-template-weapp",
-  "version": "0.1.1-beta.24",
+  "version": "0.2.0",
   "description": "",
   "main": "miniprogram/app.ts",
   "files": [
@@ -24,10 +24,10 @@
   "author": "yidafu",
   "license": "ISC",
   "devDependencies": {
-    "@pure-org/cli": "workspace:^0.1.1-beta.24",
+    "@pure-org/cli": "workspace:^0.2.0",
     "@pure-org/water-preset-weapp": "workspace:^0.1.1-beta.18",
-    "@pure-org/eslint-config-water": "workspace:^0.1.1-beta.24",
-    "@pure-org/stylelint-config-water": "workspace:^0.1.1-beta.24",
+    "@pure-org/eslint-config-water": "workspace:^0.2.0",
+    "@pure-org/stylelint-config-water": "workspace:^0.2.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "miniprogram-api-typings": "^2.8.3-1"
