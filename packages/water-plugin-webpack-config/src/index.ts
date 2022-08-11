@@ -4,25 +4,79 @@ import {
   isDev, isProd, Plugin, PluginChainWebpackConfigHook,
 } from '@pure-org/api';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import * as dotenv from 'dotenv';
+import dotenvExpand from 'dotenv-expand';
+// import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import Config from 'webpack-chain';
 import WebpackBar from 'webpackbar';
+
+declare module '@pure-org/api' {
+  interface IProjectPluginConfig {
+    'webpack-config': BaseConfigPluginOpitons
+  }
+}
+
+export interface BaseConfigPluginOpitons {
+  etnry: string[];
+  dist: string;
+  /**
+   * 是否开启压缩
+   *
+   * @type {boolean}
+   * @memberof BaseConfigPluginOpitons
+   */
+  compress: boolean;
+
+  customConfig(config: Config, context: { projectRoot: string }): void;
+  // https://www.npmjs.com/package/webpack-bundle-analyzer
+
+  /**
+   *
+   *
+   * @type {{
+   *
+   *   }}
+   * @memberof BaseConfigPluginOpitons
+   */
+  bundleAnalyzer: {
+    enable: boolean,
+  }
+}
 
 // eslint-disable-next-line import/no-default-export
 export default class BaseWebpackPlugin extends Plugin {
   static priority = 5;
 
   chainWebpackConfig: PluginChainWebpackConfigHook = async (config) => {
-    config
-      .entry('main')
-      .add(path.join(this.PROJECT_ROOT, './src/main.js'))
-      .end();
+    const options: Partial<BaseConfigPluginOpitons> = this.getPluginOption('webpack-config');
+    const {
+      etnry = [path.join(this.PROJECT_ROOT, './src/main.js')],
+      dist,
+      compress = false,
+      customConfig,
+      bundleAnalyzer,
+    } = options;
+
+    const { enable: analyzerEnable, ...restAnalyzerOption } = bundleAnalyzer ?? {};
+
+    customConfig?.(config, { projectRoot: this.PROJECT_ROOT });
+
+    const entryConfig = config
+      .entry('main');
+    etnry.forEach((e) => {
+      entryConfig.add(e);
+    });
+    entryConfig.end();
 
     // output config
     config
       .output
-      .path(path.join(this.PROJECT_ROOT, 'dist'))
+      .path(path.join(this.PROJECT_ROOT, dist ?? 'dist'))
       .publicPath('/');
     if (isProd()) {
       config.mode('production');
@@ -34,7 +88,7 @@ export default class BaseWebpackPlugin extends Plugin {
         .chunkFilename('[name].js');
     }
 
-    config.stats('minimal');
+    config.stats('errors-only');
 
     config.context(this.PROJECT_ROOT);
 
@@ -44,19 +98,39 @@ export default class BaseWebpackPlugin extends Plugin {
           defaultVendors: {
             name: 'chunk-vendors',
             test: /[\\/]node_modules[\\/]/,
-            priority: -10,
+            priority: 10,
+            chunks: 'initial',
+          },
+          fawkes: {
+            name: 'chunk-fawkes',
+            priority: 20,
+            test: /[\\/]node_modules[\\/]_?fawkes-lib(.*)/,
             chunks: 'initial',
           },
           common: {
             name: 'chunk-common',
             minChunks: 2,
-            priority: -20,
+            priority: 30,
             chunks: 'initial',
             reuseExistingChunk: true,
           },
         },
       })
       .minimizer('terser').use(TerserPlugin);
+
+    const envs = dotenv.config({
+      path: `${this.PROJECT_ROOT}/.env${process.env.NODE_ENV
+        ? `.${process.env.NODE_ENV}`
+        : ''
+      }`,
+    });
+
+    dotenvExpand.expand(envs);
+    const processEnv: Record<string, string> = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [key, value] of Object.entries(envs.parsed ?? {})) {
+      processEnv[key] = JSON.stringify(value);
+    }
 
     config
       .plugin('webpack-bar')
@@ -69,6 +143,7 @@ export default class BaseWebpackPlugin extends Plugin {
         'process.env': {
           NODE_ENV: isProd() ? '"production"' : '"development"',
           BASE_URL: '"/"',
+          ...processEnv,
         },
       }])
       .end()
@@ -90,7 +165,31 @@ export default class BaseWebpackPlugin extends Plugin {
           },
           info: { minimized: true },
         }],
-      }]);
+      }])
+      .end();
+
+    // .plugin('HardSourceWebpackPlugin')
+    // .use(HardSourceWebpackPlugin)
+    // .end();
+
+    config.when(compress, (configInner) => {
+      configInner
+        .plugin('compress-webpack-plugin')
+        .use(CompressionPlugin, [{
+          algorithm: 'gzip',
+          threshold: 10 * 1024, // 10kb
+          test: /\.(js|css|html)/,
+          deleteOriginalAssets: true,
+        }])
+        .end();
+    });
+
+    config.when(Boolean(analyzerEnable), (configInner) => {
+      configInner
+        .plugin('webpack-analyzer-plugin')
+        .use(BundleAnalyzerPlugin, [restAnalyzerOption])
+        .end();
+    });
 
     if (isDev()) {
       config.devServer

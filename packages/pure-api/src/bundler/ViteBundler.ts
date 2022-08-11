@@ -82,7 +82,14 @@ class ViteBundler extends Bundler {
   }
 
   async dumpCompileConfig(): Promise<void> {
-    const viteConfigFile = `export default ${stringifyObject(this.compileOption)}`;
+    const viteConfigFile = `export default ${stringifyObject(this.compileOption, {
+      transform(object: any, property: any, originalResult: any) {
+        if (typeof object[property] === 'function') {
+          return 'function () { /* omitted long function */ }';
+        }
+        return originalResult;
+      },
+    })}`;
     const outputPath = path.join(
       this.service.paths.outputPath!,
       'vite.config.js',
