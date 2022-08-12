@@ -6,13 +6,16 @@
     "src/*",
     "public/*",
     ".husky/*",
+    ".github/*",
     ".stylelintrc.js",
     ".eslintrc.js",
     ".gitignore",
+    "index.html",
     "package.json",
     "package.json.tpl",
     "pure.config.js.tpl",
-    "README.md.tpl"
+    "README.md.tpl",
+    "tsconfig.json"
   ],
   "scripts": {
     "lint": "pure lint"
