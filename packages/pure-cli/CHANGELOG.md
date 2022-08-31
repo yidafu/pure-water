@@ -1,7 +1,12 @@
 # Change Log - @pure-org/cli
 
-This log was last generated on Thu, 11 Aug 2022 03:52:56 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Aug 2022 07:01:25 GMT and should not be manually modified.
 
+## 0.2.1
+
++ 修复 `template-vue3` 缺失文件和依赖问题 by yidafu [#65](https://github.com/yidafu/pure-water/pull/65)
+
+_Version update only_
 ## 0.2.0
 
 by yidafu

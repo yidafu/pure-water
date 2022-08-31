@@ -8,6 +8,7 @@ const vueBaseEslintConfig: Linter.Config = {
   extends: ['plugin:vue/recommended'],
   parserOptions: {
     parser: '@typescript-eslint/parser',
+    extraFileExtensions: ['.vue'],
   },
   rules: {
     'vue/order-in-components': [
