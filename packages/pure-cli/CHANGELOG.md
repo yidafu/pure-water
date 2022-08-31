@@ -1,6 +1,12 @@
 # Change Log - @pure-org/cli
 
-This log was last generated on Tue, 23 Aug 2022 07:01:25 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Aug 2022 09:17:30 GMT and should not be manually modified.
+
+## 0.2.2
+
++ 修复 `@pure-org/water-template-weapp` publishConfig
++ 修复 `pure.config.js` 配置 webpack 插件为报错 by yidafu [#66](https://github.com/yidafu/pure-water/pull/66)
++ 修复 vue2 eslint 配置缺失 `extraFileExtension: ['.vue']`
 
 ## 0.2.1
 
@@ -38,6 +44,9 @@ by yidafu
 + 新增 vue 的 preset [#9](https://github.com/yidafu/pure-water/pull/9)
 + eslint 配置 airbnb 配置 [#7](https://github.com/yidafu/pure-water/pull/7)
 + 插件加载机制 [#6](https://github.com/yidafu/pure-water/pull/6)
+
+_Initial release_
+
 
 _Initial release_
 

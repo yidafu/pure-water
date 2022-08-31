@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-preset-vue",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": false,
   "description": "",
   "main": "index.js",
@@ -19,7 +19,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@pure-org/water-plugin-lint": "workspace:^0.2.1",
+    "@pure-org/water-plugin-lint": "workspace:^0.2.2",
     "@vitejs/plugin-vue": "^3.0.1",
     "vite": "^3.0.4"
   },

@@ -2,6 +2,12 @@
   "name": "@pure-org/cli",
   "entries": [
     {
+      "version": "0.2.2",
+      "tag": "@pure-org/cli_v0.2.2",
+      "date": "Wed, 31 Aug 2022 09:17:30 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.2.1",
       "tag": "@pure-org/cli_v0.2.1",
       "date": "Tue, 23 Aug 2022 07:01:25 GMT",
