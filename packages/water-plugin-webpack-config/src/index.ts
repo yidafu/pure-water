@@ -153,12 +153,16 @@ export default class BaseWebpackPlugin extends Plugin {
       .plugin('copy-plugin')
       .use(CopyPlugin, [{
         patterns: [{
-          from: this.PUBLIC_PATH,
-          to: this.OUTPUT_PATH,
+          from: path.resolve(this.PUBLIC_PATH),
+          to: path.resolve(this.OUTPUT_PATH),
           globOptions: {
+            // @see https://webpack.js.org/plugins/copy-webpack-plugin/#for-windows
             ignore: [
-              '**/.DS_Store',
-              path.join(this.PUBLIC_PATH, 'index.html'),
+              path.posix.join(
+                path.resolve(this.PUBLIC_PATH).replace(/\\/g, '/'),
+                '**/.DS_Store',
+              ),
+              path.posix.join(path.resolve(this.PUBLIC_PATH).replace(/\\/g, '/'), '*.html'),
             ],
           },
           info: { minimized: true },

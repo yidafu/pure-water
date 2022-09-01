@@ -1,7 +1,7 @@
 {
   "name": "@pure-org/water-template-vue3",
   "private": false,
-  "version": "0.2.1",
+  "version": "0.2.3",
   "files": [
     "src/*",
     "public/*",
@@ -27,9 +27,9 @@
     "vue": "^3.2.37"
   },
   "devDependencies": {
-    "@pure-org/cli": "workspace:^0.2.1",
-    "@pure-org/eslint-config-water": "workspace:^0.2.1",
-    "@pure-org/water-preset-vue": "workspace:^0.2.1",
+    "@pure-org/cli": "workspace:^0.2.3",
+    "@pure-org/eslint-config-water": "workspace:^0.2.3",
+    "@pure-org/water-preset-vue": "workspace:^0.2.3",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "typescript": "^4.7.4",
