@@ -1,6 +1,10 @@
 # Change Log - @pure-org/cli
 
-This log was last generated on Wed, 31 Aug 2022 09:17:30 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Sep 2022 03:20:41 GMT and should not be manually modified.
+
+## 0.2.3
+
++ 修复 webpack copy plugin 的 ignore 配置没有在 window 下生效 by yidafu [#67](https://github.com/yidafu/pure-water/pull/67)
 
 ## 0.2.2
 

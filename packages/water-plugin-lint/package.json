@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-plugin-lint",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": false,
   "main": "./lib/index.js",
   "files": [
@@ -42,9 +42,9 @@
     "@commitlint/load": "^17.0.3",
     "@commitlint/read": "^17.0.0",
     "@commitlint/types": "^17.0.0",
-    "@pure-org/api": "workspace:^0.2.2",
-    "@pure-org/eslint-config-water": "workspace:^0.2.2",
-    "@pure-org/stylelint-config-water": "workspace:^0.2.2",
+    "@pure-org/api": "workspace:^0.2.3",
+    "@pure-org/eslint-config-water": "workspace:^0.2.3",
+    "@pure-org/stylelint-config-water": "workspace:^0.2.3",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "debug": "^4.3.4",
