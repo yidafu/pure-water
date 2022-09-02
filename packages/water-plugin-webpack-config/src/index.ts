@@ -78,8 +78,8 @@ export default class BaseWebpackPlugin extends Plugin {
       .publicPath('/');
     if (isProd()) {
       config.mode('production');
-      config.output.filename('[name]_[contenthash:8].js')
-        .chunkFilename('[name]_[contenthash:8].js');
+      config.output.filename('js/[name]_[contenthash:8].js')
+        .chunkFilename('js/[name]_[contenthash:8].js');
     } else {
       config.mode('development');
       config.output.filename('[name].js')
@@ -109,7 +109,7 @@ export default class BaseWebpackPlugin extends Plugin {
             name: 'chunk-common',
             minChunks: 2,
             priority: 30,
-            chunks: 'initial',
+            chunks: 'async',
             reuseExistingChunk: true,
           },
         },
