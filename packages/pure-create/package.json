@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/create",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": false,
   "description": "",
   "exports": "lib/index.js",
@@ -30,7 +30,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@pure-org/api": "workspace:^0.2.3",
+    "@pure-org/api": "workspace:^0.2.4",
     "axios": "^0.27.2",
     "chalk": "^4.1.2",
     "commander": "^8.3.0",

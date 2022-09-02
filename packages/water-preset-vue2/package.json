@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-preset-vue2",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": false,
   "description": "",
   "main": "index.js",
@@ -20,10 +20,10 @@
   },
   "dependencies": {
     "@babel/core": "^7.18.9",
-    "@pure-org/water-plugin-babel": "workspace:^0.2.3",
-    "@pure-org/water-plugin-lint": "workspace:^0.2.3",
-    "@pure-org/water-plugin-vue2": "workspace:^0.2.3",
-    "@pure-org/water-plugin-webpack-config": "workspace:^0.2.3",
+    "@pure-org/water-plugin-babel": "workspace:^0.2.4",
+    "@pure-org/water-plugin-lint": "workspace:^0.2.4",
+    "@pure-org/water-plugin-vue2": "workspace:^0.2.4",
+    "@pure-org/water-plugin-webpack-config": "workspace:^0.2.4",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
     "@vue/babel-preset-app": "^5.0.8"
   },

@@ -1,6 +1,10 @@
 # Change Log - @pure-org/cli
 
-This log was last generated on Thu, 01 Sep 2022 03:20:41 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Sep 2022 07:28:38 GMT and should not be manually modified.
+
+## 0.2.4
+
++ js/css 资源放入子目录下 by yidafu [#68](https://github.com/yidafu/pure-water/pull/68)
 
 ## 0.2.3
 
