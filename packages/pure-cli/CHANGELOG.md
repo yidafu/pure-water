@@ -1,6 +1,10 @@
 # Change Log - @pure-org/cli
 
-This log was last generated on Fri, 02 Sep 2022 07:28:38 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Sep 2022 08:39:52 GMT and should not be manually modified.
+
+## 0.2.5
+
++ 修复 pure.config.js 不符预期的数组合并行为 by 易大富 [#69](https://github.com/yidafu/pure-water/pull/69)
 
 ## 0.2.4
 
