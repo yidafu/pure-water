@@ -1,4 +1,4 @@
-import { isPlainObject } from 'is-plain-object'
+import { isPlainObject } from 'is-plain-object';
 
 import { deepmerge } from '../utils';
 
@@ -9,8 +9,13 @@ export function mergeProjectConfig(
   source: Partial<IProjectConfig>,
 ): Partial<IProjectConfig> {
   return deepmerge(target, source, {
-      isMergeableObject: isPlainObject,
-      customMerge(key) {
+    isMergeableObject: (obj) => {
+      if (Array.isArray(obj)) {
+        return true;
+      }
+      return isPlainObject(obj);
+    },
+    customMerge(key) {
       if (key === 'entry') {
         return (_tArr, sArr) => sArr;
       }
