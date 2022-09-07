@@ -61,8 +61,8 @@ export default class Vu2Plugin extends Plugin {
     config.plugin('vue-loader-plugin').use(VueLoaderPlugin);
 
     config.plugin('html-webpack-plugin').use(HtmlWebpackPlugin, [{
-      filename: path.join(this.PROJECT_ROOT, 'dist/index.html'),
-      template: path.join(this.PROJECT_ROOT, 'public/index.html'),
+      filename: path.join(this.OUTPUT_PATH, 'index.html'),
+      template: path.join(this.PUBLIC_PATH, 'index.html'),
       templateParameters: {
         BASE_URL: '/',
       },

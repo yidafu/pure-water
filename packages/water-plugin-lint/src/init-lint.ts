@@ -3,6 +3,7 @@ import { readFile, access } from 'fs/promises';
 import { join } from 'path';
 
 import { fileExist } from '@pure-org/api';
+import chalk from 'chalk';
 import ora from 'ora';
 
 async function readPacakgeJson(dir: string) {
@@ -66,7 +67,13 @@ function sleep(ms: number) {
  * @param {string} projectRoot
  */
 export async function initLint(projectRoot: string) {
-  const pkgJson = await readPacakgeJson(projectRoot);
+  let pkgJson = null;
+  try {
+    pkgJson = await readPacakgeJson(projectRoot);
+  } catch (err) {
+    console.log(chalk.blue('该目录不存在 package.json, 跳过 git hook 初始化'));
+    return;
+  }
   const pkgManager = await getPackageManager(projectRoot);
   const isWorkspace = !!pkgJson.workspaces
     || await fileExist(join(projectRoot, 'pnpm-workpsace.yaml'));
