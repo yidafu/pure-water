@@ -43,6 +43,10 @@ interface IProjectConfig {
   name: string;
 
   bundler: 'vite' | 'webpack';
+  /**
+   * TODO: 控制 vite/webpack 的 outDir
+   */
+  outDir: string;
 
   devServer: boolean;
   outputPath: string;
@@ -238,6 +242,11 @@ class CommandService {
       log('projectConfig#bundler => vite');
       this.bundler = new ViteBundler(this);
     }
+
+    this.paths.outputPath = path.resolve(
+      this.paths.projectRoot!,
+      this.projectConfig.outDir ?? 'dist',
+    );
   }
 
   /**

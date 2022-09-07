@@ -1,10 +1,13 @@
 # Change Log - @pure-org/cli
 
-This log was last generated on Mon, 05 Sep 2022 08:39:52 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Sep 2022 09:23:19 GMT and should not be manually modified.
+
+## 0.2.6
++ 如果项目根目录不存在`package.json`就不生成 git hook 配置 by yidafu [#70]()
 
 ## 0.2.5
 
-+ 修复 pure.config.js 不符预期的数组合并行为 by 易大富 [#69](https://github.com/yidafu/pure-water/pull/69)
++ 修复 pure.config.js 不符预期的数组合并行为 by yidafu [#69](https://github.com/yidafu/pure-water/pull/69)
 
 ## 0.2.4
 
