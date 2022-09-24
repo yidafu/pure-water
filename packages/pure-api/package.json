@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/api",
-  "version": "0.2.6",
+  "version": "0.2.7-0",
   "private": false,
   "description": "",
   "main": "lib/index.js",

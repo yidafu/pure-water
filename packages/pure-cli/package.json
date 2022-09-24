@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/cli",
-  "version": "0.2.6",
+  "version": "0.2.7-0",
   "private": false,
   "description": "",
   "exports": "lib/index.js",
@@ -33,7 +33,7 @@
   "dependencies": {
     "commander": "^9.4.0",
     "debug": "^4.3.4",
-    "@pure-org/api": "workspace:^0.2.6"
+    "@pure-org/api": "workspace:^0.2.7-0"
   },
   "devDependencies": {}
 }
