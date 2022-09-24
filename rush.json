@@ -26,7 +26,7 @@
    * Specify one of: "pnpmVersion", "npmVersion", or "yarnVersion".  See the Rush documentation
    * for details about these alternatives.
    */
-  "pnpmVersion": "7.8.0",
+  "pnpmVersion": "7.9.0",
 
   // "npmVersion": "6.14.15",
   // "yarnVersion": "1.9.4",
@@ -542,7 +542,6 @@
       "versionPolicyName": "PureWater",
       "tags": ["plugin", "config"]
     },
-
     {
       "packageName": "@pure-org/water-preset-vue",
       "projectFolder": "packages/water-preset-vue",
@@ -559,6 +558,14 @@
       "tags": ["preset"]
     },
     {
+      "packageName": "@pure-org/water-preset-weapp",
+      "projectFolder": "packages/water-preset-weapp",
+      "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
+      "tags": ["preset"]
+    },
+    {
       "packageName": "@pure-org/water-template-vue3",
       "projectFolder": "templates/water-template-vue3",
       "reviewCategory": "production",
@@ -569,6 +576,14 @@
     {
       "packageName": "@pure-org/water-template-vue2",
       "projectFolder": "templates/water-template-vue2",
+      "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
+      "tags": ["template"]
+    },
+    {
+      "packageName": "@pure-org/water-template-weapp",
+      "projectFolder": "templates/water-template-weapp",
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",

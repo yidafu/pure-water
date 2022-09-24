@@ -14,15 +14,17 @@
     "@pure-org/cli": "^<%= packageVersion %>",
     "@pure-org/eslint-config-water": "^<%= packageVersion %>",
     "@pure-org/stylelint-config-water": "^<%= packageVersion %>",
+    "@pure-org/tsconfig": "^<%= packageVersion %>",
     "@pure-org/water-preset-vue": "^<%= packageVersion %>",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
+    "sass": "^1.54.5",
     "typescript": "^4.6.4",
     "vite": "^3.0.4",
     "vue-tsc": "^0.38.4"
   },
   "lint-staged": {
-    "*.{js,ts,vue}": "pure lint",
-    "*.{css,scss}": "pure lint"
+    "*.{js,ts,vue}": "pure lint --only-eslint",
+    "*.{css,scss}": "pure lint --only-stylelint"
   }
 }

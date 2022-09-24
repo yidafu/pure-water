@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-plugin-webpack-config",
-  "version": "0.1.1-beta.16",
+  "version": "0.2.6",
   "private": false,
   "description": "",
   "main": "lib/index.js",
@@ -26,17 +26,26 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@pure-org/api": "workspace:^0.1.1-beta.16",
+    "@pure-org/api": "workspace:^0.2.6",
+    "@types/webpack-bundle-analyzer": "^4.4.1",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "compression-webpack-plugin": "^10.0.0",
     "copy-webpack-plugin": "^11.0.0",
+    "dotenv": "^16.0.1",
+    "dotenv-expand": "^8.0.3",
+    "hard-source-webpack-plugin": "^0.13.1",
     "terser-webpack-plugin": "^5.3.3",
+    "webpack-bundle-analyzer": "^4.5.0",
     "webpackbar": "^5.0.2"
   },
   "devDependencies": {
     "@types/case-sensitive-paths-webpack-plugin": "^2.1.6",
-    "webpack": "^5.74.0"
+    "@types/hard-source-webpack-plugin": "^1.0.4",
+    "webpack": "^5.74.0",
+    "webpack-chain": "^6.5.1"
   },
   "peerDependencies": {
-    "webpack": "^5.74.0"
+    "webpack": "^5.74.0",
+    "webpack-chain": "^6.5.1"
   }
 }

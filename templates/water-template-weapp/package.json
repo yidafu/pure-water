@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-template-weapp",
-  "version": "0.1.1-beta.15",
+  "version": "0.2.6",
   "description": "",
   "main": "miniprogram/app.ts",
   "files": [
@@ -18,16 +18,19 @@
     "pure.config.js",
     "tsconfig.json"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "yidafu",
   "license": "ISC",
   "devDependencies": {
-    "@pure-org/cli": "workspace:*",
+    "@pure-org/cli": "workspace:^0.2.6",
     "@pure-org/water-preset-weapp": "workspace:*",
-    "@pure-org/eslint-config-water": "workspace:*",
-    "@pure-org/stylelint-config-water": "workspace:*",
+    "@pure-org/eslint-config-water": "workspace:^0.2.6",
+    "@pure-org/stylelint-config-water": "workspace:^0.2.6",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "miniprogram-api-typings": "^2.8.3-1"

@@ -1,16 +1,14 @@
 import { UserConfig } from '@commitlint/types';
 import { Plugin } from '@pure-org/api';
 import { ESLINT_CONFIG_MAP } from '@pure-org/eslint-config-water';
-import stylelintConfig from '@pure-org/stylelint-config-water';
 import debug from 'debug';
 import { ESLint } from 'eslint';
-import stylelint from 'stylelint';
 
 import { runCommitlint } from './commitlint';
 import { ICommitlintMode } from './commitlint-config';
 import { runEslint } from './eslint';
 import { initLint } from './init-lint';
-import { runStylelint } from './stylelint';
+import { runStylelint, IStylelintOption } from './stylelint';
 
 const log = debug('pure:plugin:lint');
 declare module '@pure-org/api' {
@@ -21,15 +19,12 @@ declare module '@pure-org/api' {
 
 interface ILintPluginActionOption {
   fix: boolean;
+  onlyEslint: boolean;
+  onlyStylelint: boolean;
 }
 
 interface ICommitLintOption extends UserConfig {
   disable?: boolean
-}
-
-interface IStylelintOption extends stylelint.LinterOptions {
-  entry?: string[];
-  disable?: boolean;
 }
 
 interface IESLintOption extends ESLint.Options {
@@ -51,9 +46,10 @@ export interface ILintPluginOption {
 
 class LintPlugin extends Plugin {
   registerCommand = () => {
+    const { PROJECT_ROOT } = this;
     const lintPlgOption: ILintPluginOption = this.getPluginOption('lint');
     /**
-     * TODO: only lint commit before commit
+     * only lint commit before commit
      *
      * @param {ILintPluginActionOption} option
      */
@@ -82,7 +78,7 @@ class LintPlugin extends Plugin {
         disable: eslintDisable = false,
         ...restEslintConfig
       } = eslintOption;
-      if (!eslintDisable) {
+      if (!eslintDisable && !option.onlyStylelint) {
         // TODO: deep merge
         await runEslint(eslintEntry, {
           ...restEslintConfig,
@@ -95,15 +91,12 @@ class LintPlugin extends Plugin {
         disable: stylelintDisable = false,
         ...restStylelintConfig
       } = stylelitOption;
-      if (!stylelintDisable) {
-        // TODO: deep merge
+      if (!stylelintDisable && !option.onlyEslint) {
         await runStylelint({
-          config: stylelintConfig,
-          formatter: 'string',
           files: stylelintEntry,
           ...restStylelintConfig,
           fix: option.fix,
-        });
+        }, { projectRoot: PROJECT_ROOT });
       }
     }
     return [
@@ -118,6 +111,8 @@ class LintPlugin extends Plugin {
         alias: 'pre-commit',
         options: {
           '--fix': 'Automatically fix problems',
+          '-e, --only-eslint': 'only execute eslint',
+          '-s, --only-stylelint': 'only execute stylelint',
         },
         action: preCommitAction,
         description: 'lint TS/JS/CSS Code',

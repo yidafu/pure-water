@@ -2,7 +2,11 @@
 
 Vue2 相关的 Webpack 配置。
 
+> 需要注意 Vue 2.6 和 Vue 2.7 是不兼容，升级请充分测试保证兼容 
+
 ## 使用方式
+
+支持 Vue 版本 `>= 2.6.0`
 
 ### 1. 安装依赖
 
@@ -25,18 +29,41 @@ pnpm install @pure-org/water-plugin-vue2 --save-dev
 ## 插件配置
 
 ```ts
+interface ISpriteOption {
+  sourceDir: string;
+}
+
 interface IPluginVu2Options {
   htmlOption?: HtmlWebpackPlugin.Options,
+
+  sprite: ISpriteOption | false;
+
+  enableXss: boolean;
 }
 ```
+### htmlOption
 
+参考 `html-webpack-plugin` 的 [HtmlWebpackPlugin#Options](https://github.com/jantimon/html-webpack-plugin#options)
+
+### sprite
+
+基于`svg-sprite-loader`实现。默认是：`false` 关闭雪碧图 Loader
+
+`sourceDir` 存放 svg 格式的雪碧图目录。
+
+### enableXss
+
+vue 是 `v-html` 指令是否做 XSS 过滤。
+
+如果开启需要，项目里安装`xss`包，并将`xss`挂载到 vue 原型上。
+
+```js
+import xss from 'xss';
+Vue.prototype.xss = xss
+```
 ## index.html
 
 默认 index.html 在 `<projectRoot>/public/index.html`。
-
-### htmlOption
-
-参考 `html-webpack-plugin` 的 `HtmlWebpackPlugin.Options`
 
 ## `.vue` 文件
 

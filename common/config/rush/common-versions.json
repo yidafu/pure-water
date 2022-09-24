@@ -56,7 +56,7 @@
      * (in addition to whatever "usual" version is being used by other projects in the repo):
      */
     "vue": [
-      "^2.7.8", "^3.2.37"
+      "^2.6.0", "^3.2.37"
     ],
     "commander": ["^9.4.0", "^8.3.0"]
   }

@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   bundler: 'webpack',
   plugins: {
@@ -10,12 +12,17 @@ module.exports = {
     babel: {
       typeCheck: false,
       presets: [
-        [
-          '@babel/preset-env',
-          { targets: '> 2%, not dead' },
-        ],
+        // [
+        '@vue/babel-preset-app',
+        //   { targets: ['> 2%', 'not dead', 'last 2 versions'] },
+        // ],
       ],
     },
-    'webpack-config': {},
+    'webpack-config': {
+      compress: process.env.NODE_ENV === 'production',
+      customConfig(config, ctx) {
+        config.resolve.alias.set('@', path.join(ctx.projectRoot, 'src'));
+      },
+    },
   },
 };
