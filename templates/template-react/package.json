@@ -1,0 +1,35 @@
+{
+  "name": "@pure-org/template-react",
+  "private": false,
+  "version": "0.2.7",
+  "scripts": {
+    "dev": "pure dev",
+    "build": "pure build",
+    "lint": "pure lint"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@pure-org/cli": "workspace:^0.2.7",
+    "@pure-org/water-preset-react": "workspace:^0.2.7",
+    "@pure-org/eslint-config-water": "workspace:^0.2.7",
+    "@pure-org/stylelint-config-water": "workspace:^0.2.7",
+    "@pure-org/tsconfig": "workspace:^0.2.7",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "husky": "^8.0.1",
+    "typescript": "^4.7.4",
+    "vite": "^3.0.4",
+    "lint-staged": "^13.0.3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "pure lint -e",
+    "*.{css,scss}": "pure lint -s"
+  }
+}

@@ -1,9 +1,12 @@
 # Change Log - @pure-org/cli
 
-This log was last generated on Wed, 07 Sep 2022 09:23:19 GMT and should not be manually modified.
+This log was last generated on Sat, 24 Sep 2022 14:01:14 GMT and should not be manually modified.
+
+## 0.2.7
++ 添加 React 和 NestJS 模板 by yidafu [#71](https://github.com/yidafu/pure-water/pull/71)
 
 ## 0.2.6
-+ 如果项目根目录不存在`package.json`就不生成 git hook 配置 by yidafu [#70]()
++ 如果项目根目录不存在`package.json`就不生成 git hook 配置 by yidafu [#70](https://github.com/yidafu/pure-water/pull/70)
 
 ## 0.2.5
 
