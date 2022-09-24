@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/tsconfig",
-  "version": "0.2.7-2",
+  "version": "0.2.7",
   "private": false,
   "description": "tsconfig",
   "files": [
