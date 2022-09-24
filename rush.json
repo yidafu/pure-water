@@ -558,12 +558,12 @@
       "tags": ["preset"]
     },
     {
-      "packageName": "@pure-org/water-preset-weapp",
-      "projectFolder": "packages/water-preset-weapp",
+      "packageName": "@pure-org/template-react",
+      "projectFolder": "templates/template-react",
       "reviewCategory": "production",
       "shouldPublish": true,
       "versionPolicyName": "PureWater",
-      "tags": ["preset"]
+      "tags": ["template"]
     },
     {
       "packageName": "@pure-org/water-template-vue3",

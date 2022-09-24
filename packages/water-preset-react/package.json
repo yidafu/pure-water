@@ -1,0 +1,32 @@
+{
+  "name": "@pure-org/water-preset-react",
+  "version": "0.2.6",
+  "private": false,
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "yidafu",
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "dependencies": {
+    "@pure-org/water-plugin-lint": "workspace:^0.2.6",
+    "@vitejs/plugin-react": "2.1.0",
+    "vite": "^3.0.4"
+  },
+  "devDependencies": {
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
+  }
+}

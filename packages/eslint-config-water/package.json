@@ -25,9 +25,13 @@
   "dependencies": {
     "@pure-org/api": "workspace:^0.2.6",
     "@typescript-eslint/parser": "^5.30.7",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-vue": "^9.3.0",
     "vue-eslint-parser": "^9.0.3"
   },

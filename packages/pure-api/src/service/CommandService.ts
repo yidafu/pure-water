@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 
+import chalk from 'chalk';
 import debug from 'debug';
 import minimist, { ParsedArgs } from 'minimist';
 import { UserConfig } from 'vite';
@@ -31,7 +32,6 @@ import {
 } from '../utils';
 
 import { mergeProjectConfig } from './utils';
-import chalk from 'chalk';
 
 const PRESET_PATH_KEY = Symbol('__PRESET_PATH__');
 
