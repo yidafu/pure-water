@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/stylelint-config-water",
-  "version": "0.2.7-0",
+  "version": "0.2.7-1",
   "private": false,
   "description": "",
   "main": "index.js",
@@ -23,10 +23,12 @@
     "registry": "https://registry.npmjs.org"
   },
   "devDependencies": {
-    "stylelint": "^14.9.1"
+    "stylelint": "^14.9.1",
+    "@types/stylelint": "^14.0.0"
   },
   "peerDependencies": {
-    "stylelint": ">=14.0.0"
+    "stylelint": ">=14.0.0",
+    "@types/stylelint": "^14.0.0"
   },
   "dependencies": {
     "postcss": "^8.4.14",

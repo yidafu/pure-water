@@ -47,7 +47,7 @@ importers:
 
   packages/eslint-config-water:
     specifiers:
-      '@pure-org/api': workspace:^0.2.6
+      '@pure-org/api': workspace:^0.2.7-1
       '@typescript-eslint/eslint-plugin': ^5.30.7
       '@typescript-eslint/parser': ^5.30.7
       eslint: ^8.20.0
@@ -125,7 +125,7 @@ importers:
 
   packages/pure-cli:
     specifiers:
-      '@pure-org/api': workspace:^0.2.6
+      '@pure-org/api': workspace:^0.2.7-1
       commander: ^9.4.0
       debug: ^4.3.4
     dependencies:
@@ -135,7 +135,7 @@ importers:
 
   packages/pure-create:
     specifiers:
-      '@pure-org/api': workspace:^0.2.6
+      '@pure-org/api': workspace:^0.2.7-1
       '@types/debug': ^4.1.7
       '@types/inquirer': ^8.0.0
       '@types/minimist': ^1.2.2
@@ -168,6 +168,7 @@ importers:
 
   packages/stylelint-config-water:
     specifiers:
+      '@types/stylelint': ^14.0.0
       postcss: ^8.4.14
       postcss-html: ^1.5.0
       postcss-scss: ^4.0.4
@@ -185,6 +186,7 @@ importers:
       stylelint-order: 5.0.0_stylelint@14.9.1
       stylelint-scss: 4.3.0_stylelint@14.9.1
     devDependencies:
+      '@types/stylelint': 14.0.0
       stylelint: 14.9.1
 
   packages/tsconfig:
@@ -196,7 +198,7 @@ importers:
   packages/water-plugin-babel:
     specifiers:
       '@babel/core': ^7.18.9
-      '@pure-org/api': workspace:^0.2.6
+      '@pure-org/api': workspace:^0.2.7-1
       babel-loader: ^8.2.5
       fork-ts-checker-webpack-plugin: ^7.2.13
       typescript: ^4.7.4
@@ -220,15 +222,15 @@ importers:
       '@commitlint/load': ^17.0.3
       '@commitlint/read': ^17.0.0
       '@commitlint/types': ^17.0.0
-      '@pure-org/api': workspace:^0.2.6
-      '@pure-org/eslint-config-water': workspace:^0.2.6
-      '@pure-org/stylelint-config-water': workspace:^0.2.6
+      '@pure-org/api': workspace:^0.2.7-1
+      '@pure-org/eslint-config-water': workspace:^0.2.7-1
+      '@pure-org/stylelint-config-water': workspace:^0.2.7-1
       '@types/debug': ^4.1.7
       '@types/eslint': ^8.4.5
       '@types/node': ^16.11.47
       '@typescript-eslint/eslint-plugin': ^5.30.7
       '@typescript-eslint/parser': ^5.30.7
-      chalk: 4.1.2
+      chalk: ^4.1.2
       debug: ^4.3.4
       eslint: ^8.20.0
       ora: ^5.4.1
@@ -261,7 +263,7 @@ importers:
 
   packages/water-plugin-vue2:
     specifiers:
-      '@pure-org/api': workspace:^0.2.6
+      '@pure-org/api': workspace:^0.2.7-1
       autoprefixer: ^10.4.8
       css-loader: ^6.7.1
       html-webpack-plugin: ^5.5.0
@@ -298,7 +300,7 @@ importers:
 
   packages/water-plugin-webpack-config:
     specifiers:
-      '@pure-org/api': workspace:^0.2.6
+      '@pure-org/api': workspace:^0.2.7-1
       '@types/case-sensitive-paths-webpack-plugin': ^2.1.6
       '@types/hard-source-webpack-plugin': ^1.0.4
       '@types/webpack-bundle-analyzer': ^4.4.1
@@ -333,8 +335,8 @@ importers:
 
   packages/water-preset-react:
     specifiers:
-      '@pure-org/water-plugin-lint': workspace:^0.2.6
-      '@vitejs/plugin-react': 2.1.0
+      '@pure-org/water-plugin-lint': workspace:^0.2.7-1
+      '@vitejs/plugin-react': ^2.1.0
       vite: ^3.0.4
       vue: ^3.2.37
     dependencies:
@@ -346,7 +348,7 @@ importers:
 
   packages/water-preset-vue:
     specifiers:
-      '@pure-org/water-plugin-lint': workspace:^0.2.6
+      '@pure-org/water-plugin-lint': workspace:^0.2.7-1
       '@vitejs/plugin-vue': ^3.0.1
       vite: ^3.0.4
       vue: ^3.2.37
@@ -360,10 +362,10 @@ importers:
   packages/water-preset-vue2:
     specifiers:
       '@babel/core': ^7.18.9
-      '@pure-org/water-plugin-babel': workspace:^0.2.6
-      '@pure-org/water-plugin-lint': workspace:^0.2.6
-      '@pure-org/water-plugin-vue2': workspace:^0.2.6
-      '@pure-org/water-plugin-webpack-config': workspace:^0.2.6
+      '@pure-org/water-plugin-babel': workspace:^0.2.7-1
+      '@pure-org/water-plugin-lint': workspace:^0.2.7-1
+      '@pure-org/water-plugin-vue2': workspace:^0.2.7-1
+      '@pure-org/water-plugin-webpack-config': workspace:^0.2.7-1
       '@vue/babel-helper-vue-jsx-merge-props': ^1.2.1
       '@vue/babel-preset-app': ^5.0.8
       vue: ^2.6.0
@@ -386,11 +388,11 @@ importers:
 
   templates/template-react:
     specifiers:
-      '@pure-org/cli': workspace:^0.2.6
-      '@pure-org/eslint-config-water': workspace:^0.2.6
-      '@pure-org/stylelint-config-water': workspace:^0.2.6
-      '@pure-org/tsconfig': workspace:^0.2.6
-      '@pure-org/water-preset-react': workspace:^0.2.6
+      '@pure-org/cli': workspace:^0.2.7-1
+      '@pure-org/eslint-config-water': workspace:^0.2.7-1
+      '@pure-org/stylelint-config-water': workspace:^0.2.7-1
+      '@pure-org/tsconfig': workspace:^0.2.7-1
+      '@pure-org/water-preset-react': workspace:^0.2.7-1
       '@types/react': ^18.0.17
       '@types/react-dom': ^18.0.6
       '@vitejs/plugin-react': ^2.1.0
@@ -398,8 +400,8 @@ importers:
       lint-staged: ^13.0.3
       react: ^18.2.0
       react-dom: ^18.2.0
-      typescript: ^4.6.4
-      vite: ^3.1.0
+      typescript: ^4.7.4
+      vite: ^3.0.4
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -419,8 +421,8 @@ importers:
 
   templates/water-template-vue2:
     specifiers:
-      '@pure-org/cli': workspace:^0.2.6
-      '@pure-org/water-preset-vue2': workspace:^0.2.6
+      '@pure-org/cli': workspace:^0.2.7-1
+      '@pure-org/water-preset-vue2': workspace:^0.2.7-1
       core-js: ^3.8.3
       husky: ^8.0.1
       lint-staged: ^13.0.3
@@ -436,9 +438,9 @@ importers:
 
   templates/water-template-vue3:
     specifiers:
-      '@pure-org/cli': workspace:^0.2.6
-      '@pure-org/eslint-config-water': workspace:^0.2.6
-      '@pure-org/water-preset-vue': workspace:^0.2.6
+      '@pure-org/cli': workspace:^0.2.7-1
+      '@pure-org/eslint-config-water': workspace:^0.2.7-1
+      '@pure-org/water-preset-vue': workspace:^0.2.7-1
       husky: ^8.0.1
       lint-staged: ^13.0.3
       typescript: ^4.7.4
@@ -459,9 +461,9 @@ importers:
 
   templates/water-template-weapp:
     specifiers:
-      '@pure-org/cli': workspace:^0.2.6
-      '@pure-org/eslint-config-water': workspace:^0.2.6
-      '@pure-org/stylelint-config-water': workspace:^0.2.6
+      '@pure-org/cli': workspace:^0.2.7-1
+      '@pure-org/eslint-config-water': workspace:^0.2.7-1
+      '@pure-org/stylelint-config-water': workspace:^0.2.7-1
       '@pure-org/water-preset-weapp': workspace:*
       husky: ^8.0.1
       lint-staged: ^13.0.3
@@ -842,6 +844,7 @@ packages:
   /@babel/helper-plugin-utils/7.18.9:
     resolution: {integrity: sha512-aBXPT3bmtLryXaoJLyYPXPlSD4p1ld9aYeR+sJNOZjJJGiOpb+fKfh3NkcCu7J54nUJwCERPBExCCpyCOHnu/w==}
     engines: {node: '>=6.9.0'}
+    dev: false
 
   /@babel/helper-plugin-utils/7.19.0:
     resolution: {integrity: sha512-40Ryx7I8mT+0gaNxm8JGTZFUITNqdLAgdg0hXzeVZxVD6nFsdhQvip6v8dqkRHzsz1VFpFAaOCHNn0vKBL7Czw==}
@@ -1265,7 +1268,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.18.9
-      '@babel/helper-plugin-utils': 7.18.9
+      '@babel/helper-plugin-utils': 7.19.0
     dev: false
 
   /@babel/plugin-syntax-jsx/7.18.6_@babel+core@7.19.1:
@@ -1275,7 +1278,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.19.1
-      '@babel/helper-plugin-utils': 7.18.9
+      '@babel/helper-plugin-utils': 7.19.0
 
   /@babel/plugin-syntax-logical-assignment-operators/7.10.4_@babel+core@7.18.9:
     resolution: {integrity: sha512-d8waShlpFDinQ5MtvGU9xDAOzKH47+FFoney2baFIoMr952hKOLp1HR7VszoZvOsV/4+RRszNY7D17ba0te0ig==}
@@ -2492,6 +2495,15 @@ packages:
 
   /@types/stringify-object/3.3.1:
     resolution: {integrity: sha512-bpCBW0O+QrMLNFBY/+rkZtGzcYRmc2aTD8qYHOMNUmednqETfEZtFcGEA11l9xqbIeiT1PgXG0eq3zqayVzZSQ==}
+    dev: true
+
+  /@types/stylelint/14.0.0:
+    resolution: {integrity: sha512-0eFbWemetFjcDiBBKne7QJBfdicxdmdJ1qGMye3sDYe7mCh8EfuovjkUTg6zXvYhJcWBhIIQnC6bmFYjpYetgQ==}
+    deprecated: This is a stub types definition. stylelint provides its own type definitions, so you do not need this installed.
+    dependencies:
+      stylelint: 14.9.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@types/tapable/1.0.8:
