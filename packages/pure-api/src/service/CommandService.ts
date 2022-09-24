@@ -325,11 +325,15 @@ class CommandService {
    */
   async loadPlugins() {
     const { plugins = {} } = this.projectConfig;
+    const { projectRoot } = this.paths;
 
     // eslint-disable-next-line array-callback-return
     const loadPlgPromises = Object.keys(plugins).map((pluginName) => {
       try {
-        return this.loadPlugin(pluginName, plugins[pluginName][PRESET_PATH_KEY]);
+        if (plugins[pluginName][PRESET_PATH_KEY]) {
+          return this.loadPlugin(pluginName, plugins[pluginName][PRESET_PATH_KEY]);
+        }
+        return this.loadPlugin(pluginName, [projectRoot!]);
       } catch (err) {
         exitWithMessage(`加载插件[${pluginName}]失败,请检查依赖是否按住`);
       }

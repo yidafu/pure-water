@@ -566,6 +566,14 @@
       "tags": ["preset"]
     },
     {
+      "packageName": "@pure-org/template-nestjs",
+      "projectFolder": "templates/template-nestjs",
+      "reviewCategory": "production",
+      "shouldPublish": true,
+      "versionPolicyName": "PureWater",
+      "tags": ["template"]
+    },
+    {
       "packageName": "@pure-org/template-react",
       "projectFolder": "templates/template-react",
       "reviewCategory": "production",
