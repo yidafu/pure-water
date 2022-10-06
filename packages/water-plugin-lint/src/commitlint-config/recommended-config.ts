@@ -9,6 +9,6 @@ export const RECOMMENDED_COMMITLINT_CONFIG: UserConfig = {
     'scope-empty': [2, 'never'],
     'scope-case': [2, 'always', ['camel-case', 'pascal-case', 'lower-case']],
     'subject-max-length': [2, 'always', 80],
-    'subject-min-length': [2, 'always', 20],
+    'subject-min-length': [2, 'always', 5],
   },
 };

@@ -1,7 +1,7 @@
 {
   "name": "@pure-org/template-react",
   "private": false,
-  "version": "0.2.7",
+  "version": "0.2.8",
   "scripts": {
     "dev": "pure dev",
     "build": "pure build",
@@ -15,11 +15,11 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@pure-org/cli": "workspace:^0.2.7",
-    "@pure-org/water-preset-react": "workspace:^0.2.7",
-    "@pure-org/eslint-config-water": "workspace:^0.2.7",
-    "@pure-org/stylelint-config-water": "workspace:^0.2.7",
-    "@pure-org/tsconfig": "workspace:^0.2.7",
+    "@pure-org/cli": "workspace:^0.2.8",
+    "@pure-org/water-preset-react": "workspace:^0.2.8",
+    "@pure-org/eslint-config-water": "workspace:^0.2.8",
+    "@pure-org/stylelint-config-water": "workspace:^0.2.8",
+    "@pure-org/tsconfig": "workspace:^0.2.8",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",

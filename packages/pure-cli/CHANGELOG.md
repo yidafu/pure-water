@@ -1,6 +1,9 @@
 # Change Log - @pure-org/cli
 
-This log was last generated on Sat, 24 Sep 2022 14:01:14 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Oct 2022 15:37:26 GMT and should not be manually modified.
+
+## 0.2.8
++ 修改 React 的 eslint 规则. 修改推荐的 commitlint subject 最小长度至少为 5 by yidafu [#72](https://github.com/yidafu/pure-water/pull/72)
 
 ## 0.2.7
 + 添加 React 和 NestJS 模板 by yidafu [#71](https://github.com/yidafu/pure-water/pull/71)

@@ -11,9 +11,13 @@ const reactBaseEslintConfig: Linter.Config = {
     'plugin:react/jsx-runtime',
   ],
   rules: {
-    'import/extensions': ['error', { ts: 'always', tsx: 'never' }],
+    'import/extensions': ['error', { ts: 'never', tsx: 'never' }],
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.jsx'] }],
     'react/button-has-type': 'warn',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'react/jsx-first-prop-new-line': ['error', 'multiline'],
+    'object-curly-newline': ['error', { minProperties: 2 }],
   },
 };
 
