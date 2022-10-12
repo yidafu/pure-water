@@ -4,6 +4,9 @@ const { defineConfig } = require('vite');
 module.exports = {
   viteConfig: defineConfig({
     plugins: [react()],
+    server: {
+      port: 8201,
+    },
   }),
   plugins: {
     lint: {

@@ -1,6 +1,10 @@
 # Change Log - @pure-org/cli
 
-This log was last generated on Thu, 06 Oct 2022 15:37:26 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Oct 2022 12:52:13 GMT and should not be manually modified.
+
+## 0.2.9
+
++ 修改推荐级别 commit-msg 的最长度为 10; 修改默认 dev server 端口 8201 by yidafu [#73](https://github.com/yidafu/pure-water/pull/73)
 
 ## 0.2.8
 + 修改 React 的 eslint 规则. 修改推荐的 commitlint subject 最小长度至少为 5 by yidafu [#72](https://github.com/yidafu/pure-water/pull/72)
