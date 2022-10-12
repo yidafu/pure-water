@@ -4,6 +4,9 @@ const { defineConfig } = require('vite');
 module.exports = {
   viteConfig: defineConfig({
     plugins: [vue()],
+    server: {
+      port: 8201,
+    },
   }),
   plugins: {
     lint: {

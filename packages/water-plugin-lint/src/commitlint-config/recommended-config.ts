@@ -4,7 +4,7 @@ export const RECOMMENDED_COMMITLINT_CONFIG: UserConfig = {
   extends: ['@commitlint/config-conventional'],
   rules: {
     'header-max-length': [2, 'always', 100],
-    'header-min-length': [2, 'always', 30],
+    'header-min-length': [2, 'always', 10],
 
     'scope-empty': [2, 'never'],
     'scope-case': [2, 'always', ['camel-case', 'pascal-case', 'lower-case']],
