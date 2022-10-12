@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/stylelint-config-water",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "private": false,
   "description": "",
   "main": "index.js",
