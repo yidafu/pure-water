@@ -84,6 +84,7 @@ class LintPlugin extends Plugin {
           ...restEslintConfig,
           baseConfig: eslintConfig,
           fix: option.fix,
+          cache: true,
         });
       }
       const {
