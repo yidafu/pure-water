@@ -1,7 +1,7 @@
 {
   "name": "@pure-org/template-react",
   "private": false,
-  "version": "0.2.9",
+  "version": "0.2.10",
   "scripts": {
     "dev": "pure dev",
     "build": "pure build",
@@ -15,18 +15,18 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@pure-org/cli": "workspace:^0.2.9",
-    "@pure-org/water-preset-react": "workspace:^0.2.9",
-    "@pure-org/eslint-config-water": "workspace:^0.2.9",
-    "@pure-org/stylelint-config-water": "workspace:^0.2.9",
-    "@pure-org/tsconfig": "workspace:^0.2.9",
+    "@pure-org/cli": "workspace:^0.2.10",
+    "@pure-org/eslint-config-water": "workspace:^0.2.10",
+    "@pure-org/stylelint-config-water": "workspace:^0.2.10",
+    "@pure-org/tsconfig": "workspace:^0.2.10",
+    "@pure-org/water-preset-react": "workspace:^0.2.10",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
     "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "typescript": "^4.7.4",
-    "vite": "^3.0.4",
-    "lint-staged": "^13.0.3"
+    "vite": "^3.0.4"
   },
   "lint-staged": {
     "*.{ts,tsx}": "pure lint -e",
