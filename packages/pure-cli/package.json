@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/cli",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "private": false,
   "description": "",
   "exports": "lib/index.js",
@@ -31,9 +31,8 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
+    "@pure-org/api": "workspace:^0.2.10",
     "commander": "^9.4.0",
-    "debug": "^4.3.4",
-    "@pure-org/api": "workspace:^0.2.9"
-  },
-  "devDependencies": {}
+    "debug": "^4.3.4"
+  }
 }
