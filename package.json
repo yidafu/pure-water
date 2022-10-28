@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -36,6 +33,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-vue": "^9.3.0",
     "husky": "^8.0.0",
+    "lerna": "^6.0.1",
     "lint-staged": "^13.0.3",
     "rollup": "^2.77.0",
     "typescript": "^4.7.4",
