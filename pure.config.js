@@ -4,7 +4,7 @@ module.exports = {
   plugins: {
     lint: {
       eslint: {
-        entry: ['packages/**/*.ts', 'packages/**/*.ts'],
+        entry: ['packages/**/*.ts'],
       },
       stylelint: {
         disable: true,
