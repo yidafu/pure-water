@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-plugin-vue2",
-  "version": "0.2.10",
+  "version": "0.2.11-alpha.0",
   "private": false,
   "description": "",
   "main": "lib/index.js",
@@ -26,7 +26,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@pure-org/api": "workspace:^0.2.10",
+    "@pure-org/api": "workspace:^0.2.11-alpha.0",
     "autoprefixer": "^10.4.8",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",

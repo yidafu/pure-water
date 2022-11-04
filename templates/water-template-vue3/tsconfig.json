@@ -6,8 +6,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "lib": ["ESNext", "DOM"],
+    "paths": {
+      "@/*": ["src/*"],
+      "util/*": ["src/util/*"],
+      "pages/*": ["src/pages/*"],
+      "components/*": ["src/components/*"],
+      "assets/*": ["src/assets/*"]
+    },
     "types": [
       "vite/client",
+      "element-plus/global"
     ]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],

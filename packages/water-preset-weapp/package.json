@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-preset-weapp",
-  "version": "0.2.10",
+  "version": "0.2.11-alpha.0",
   "private": false,
   "description": "",
   "main": "index.js",
