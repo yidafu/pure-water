@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@pure-org/cli": "workspace:^0.2.12",
-    "@pure-org/water-preset-vue2": "workspace:^0.2.11",
+    "@pure-org/water-preset-vue2": "workspace:^0.2.12",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3"
   },

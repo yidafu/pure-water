@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/template-nestjs",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "",
   "author": "",
   "private": false,
@@ -32,8 +32,8 @@
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
-    "@pure-org/eslint-config-water": "workspace:^0.2.11",
-    "@pure-org/water-plugin-lint": "workspace:^0.2.11",
+    "@pure-org/eslint-config-water": "workspace:^0.2.12",
+    "@pure-org/water-plugin-lint": "workspace:^0.2.12",
     "@types/express": "^4.17.13",
     "@types/jest": "28.1.8",
     "@types/node": "^16.11.47",
