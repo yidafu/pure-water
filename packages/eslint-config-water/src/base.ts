@@ -47,6 +47,12 @@ const baseEslintConfig: Linter.Config = {
       },
     ],
   },
+  // https://github.com/import-js/eslint-plugin-import/issues/1485
+  settings: {
+    'import/resolver': {
+      typescript: {}, // this loads <rootdir>/tsconfig.json to eslint
+    },
+  },
 };
 
 export = baseEslintConfig;
