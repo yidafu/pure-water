@@ -28,6 +28,7 @@
   "dependencies": {
     "element-plus": "^2.2.19",
     "pinia": "^2.0.23",
+    "normalize.css": "^8.0.1",
     "vue": "^3.2.37",
     "vue-router": "^4.1.6"
   },
