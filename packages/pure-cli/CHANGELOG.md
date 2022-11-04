@@ -1,6 +1,17 @@
 # Change Log - @pure-org/cli
 
 This log was last generated on Wed, 12 Oct 2022 12:52:13 GMT and should not be manually modified.
+## 0.2.12
+
++ 更新 changelog by yidafu [#74](https://github.com/yidafu/pure-water/pull/76)
+
+## 0.2.11
+
++ 更新 vue3 模板 & 解决 eslint 报错  'import/no-unresolved' by yidafu [#74](https://github.com/yidafu/pure-water/pull/75)
+
+## 0.2.10
+
++ 迁移到 lerna v6 & eslint 加上 cache 配置 by yidafu [#74](https://github.com/yidafu/pure-water/pull/74)
 
 ## 0.2.9
 
