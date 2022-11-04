@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-template-weapp",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "",
   "main": "miniprogram/app.ts",
   "files": [
@@ -27,7 +27,7 @@
   "author": "yidafu",
   "license": "ISC",
   "devDependencies": {
-    "@pure-org/cli": "workspace:^0.2.11",
+    "@pure-org/cli": "workspace:^0.2.12",
     "@pure-org/eslint-config-water": "workspace:^0.2.11",
     "@pure-org/stylelint-config-water": "workspace:^0.2.11",
     "@pure-org/water-preset-weapp": "workspace:*",

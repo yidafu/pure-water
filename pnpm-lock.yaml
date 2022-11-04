@@ -450,7 +450,7 @@ importers:
 
   templates/template-react:
     specifiers:
-      "@pure-org/cli": workspace:^0.2.11
+      "@pure-org/cli": workspace:^0.2.12
       "@pure-org/eslint-config-water": workspace:^0.2.11
       "@pure-org/stylelint-config-water": workspace:^0.2.11
       "@pure-org/tsconfig": workspace:^0.2.11
@@ -483,7 +483,7 @@ importers:
 
   templates/water-template-vue2:
     specifiers:
-      "@pure-org/cli": workspace:^0.2.11
+      "@pure-org/cli": workspace:^0.2.12
       "@pure-org/water-preset-vue2": workspace:^0.2.11
       core-js: ^3.8.3
       husky: ^8.0.1
@@ -500,7 +500,7 @@ importers:
 
   templates/water-template-vue3:
     specifiers:
-      "@pure-org/cli": workspace:^0.2.11
+      "@pure-org/cli": workspace:^0.2.12
       "@pure-org/eslint-config-water": workspace:^0.2.11
       "@pure-org/water-preset-vue": workspace:^0.2.11
       husky: ^8.0.1
@@ -523,7 +523,7 @@ importers:
 
   templates/water-template-weapp:
     specifiers:
-      "@pure-org/cli": workspace:^0.2.11
+      "@pure-org/cli": workspace:^0.2.12
       "@pure-org/eslint-config-water": workspace:^0.2.11
       "@pure-org/stylelint-config-water": workspace:^0.2.11
       "@pure-org/water-preset-weapp": workspace:*

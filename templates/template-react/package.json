@@ -1,7 +1,7 @@
 {
   "name": "@pure-org/template-react",
   "private": false,
-  "version": "0.2.11",
+  "version": "0.2.12",
   "scripts": {
     "dev": "pure dev",
     "build": "pure build",
@@ -15,7 +15,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@pure-org/cli": "workspace:^0.2.11",
+    "@pure-org/cli": "workspace:^0.2.12",
     "@pure-org/eslint-config-water": "workspace:^0.2.11",
     "@pure-org/stylelint-config-water": "workspace:^0.2.11",
     "@pure-org/tsconfig": "workspace:^0.2.11",
