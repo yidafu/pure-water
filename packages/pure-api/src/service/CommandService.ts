@@ -296,8 +296,14 @@ class CommandService {
         this.paths.projectConfig,
       );
       if (typeof filepathOrFail === 'string') {
-        // eslint-disable-next-line no-await-in-loop
-        const presetCfg: IProjectConfig = await requireDefault(filepathOrFail);
+        // eslint-disable-next-line operator-linebreak
+        let presetCfg: IProjectConfig | ((service: CommandService) => IProjectConfig) =
+          // eslint-disable-next-line no-await-in-loop
+          await requireDefault(filepathOrFail);
+        if (isFunction(presetCfg)) {
+          presetCfg = presetCfg(this);
+        }
+
         if (presetCfg) {
           if (presetCfg.plugins) {
             Object.values(presetCfg.plugins).forEach((plgCfg: any) => {
