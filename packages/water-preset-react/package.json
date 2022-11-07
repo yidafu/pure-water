@@ -1,6 +1,6 @@
 {
   "name": "@pure-org/water-preset-react",
-  "version": "0.2.12",
+  "version": "0.2.13-alpha.0",
   "private": false,
   "description": "",
   "main": "index.js",
@@ -19,7 +19,7 @@
     "registry": "https://registry.npmjs.org"
   },
   "dependencies": {
-    "@pure-org/water-plugin-lint": "workspace:^0.2.12",
+    "@pure-org/water-plugin-lint": "workspace:^0.2.13-alpha.0",
     "@vitejs/plugin-react": "^2.1.0",
     "vite": "^3.0.4"
   },
