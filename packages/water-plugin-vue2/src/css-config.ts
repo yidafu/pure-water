@@ -23,7 +23,7 @@ export function cssConfig(config: WebpackChain) {
     .rule('compile-css')
     .test(/\.css$/i)
     .use('css-extract').loader(MiniCssExtractPlugin.loader)
-    .options({ publicPath: '/' })
+    .options({ publicPath: '' })
     .end()
     .use('css-loader')
     .loader(require.resolve('css-loader'))
@@ -39,7 +39,7 @@ export function cssConfig(config: WebpackChain) {
     .rule('compile-scss')
     .test(/\.scss$/i)
     .use('css-extract').loader(MiniCssExtractPlugin.loader)
-    .options({ publicPath: '/' })
+    .options({ publicPath: '' })
     .end()
     .use('css-loader')
     .loader(require.resolve('css-loader'))
@@ -55,7 +55,7 @@ export function cssConfig(config: WebpackChain) {
     .end();
 
   config.plugin('mini-css-extract-plugin').use(MiniCssExtractPlugin, [{
-    filename: 'css/[name]_[contenthash:8].css',
-    chunkFilename: 'css/[name]_[contenthash:8].css',
+    filename: '[name]_[contenthash:8].css',
+    chunkFilename: '[name]_[contenthash:8].css',
   }]).end();
 }

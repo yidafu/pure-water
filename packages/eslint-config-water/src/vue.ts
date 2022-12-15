@@ -55,6 +55,7 @@ const vue3BaseEslintConfig: Linter.Config = {
         ],
       },
     ],
+    'no-param-reassign': 'warn',
   },
 };
 
